@@ -308,6 +308,10 @@ fieldset {
   text-align-last: left;
 }
 
+.skills__description {
+  margin-bottom: 20px;
+}
+
 .skills__list {
   display: flex;
 }
