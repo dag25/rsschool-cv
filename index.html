@@ -3,10 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="normalize.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
+  <header class="header">
+    <div class="container  header__container">
+      <div class="header__burger burger">
+        <input id="burger__toggle" type="checkbox" />
+        <label class="burger__btn" for="burger__toggle">
+        <span class="burger__line"></span>
+        </label>
+        <nav class="header__nav  nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a class="nav__link" href="#">Skills</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Education</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Languages</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Contacts</a>
+            </li>
+          </ul>
+          <ul class="social__list">
+            <li class="social__item">
+              <a class="social__link" href="#">
+                <svg class="social__svg" width="20" height="19" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 0C4.475 0 0 4.36167 0 9.74107C0 14.0457 2.865 17.6962 6.8375 18.9832C7.3375 19.0749 7.52083 18.7734 7.52083 18.5148C7.52083 18.2835 7.5125 17.6706 7.50833 16.8585C4.72667 17.4459 4.14 15.5517 4.14 15.5517C3.685 14.4274 3.0275 14.1267 3.0275 14.1267C2.12167 13.5228 3.0975 13.5352 3.0975 13.5352C4.10167 13.603 4.62917 14.5389 4.62917 14.5389C5.52083 16.0283 6.97 15.5979 7.54167 15.3493C7.63167 14.719 7.88917 14.2903 8.175 14.0466C5.95417 13.8029 3.62 12.9652 3.62 9.23304C3.62 8.16988 4.0075 7.30085 4.64917 6.61934C4.53667 6.37317 4.19917 5.3827 4.73667 4.04116C4.73667 4.04116 5.57417 3.78012 7.48667 5.03988C8.28667 4.82345 9.13667 4.71606 9.98667 4.7111C10.8367 4.71606 11.6867 4.82345 12.4867 5.03988C14.3867 3.78012 15.2242 4.04116 15.2242 4.04116C15.7617 5.3827 15.4242 6.37317 15.3242 6.61934C15.9617 7.30085 16.3492 8.16988 16.3492 9.23304C16.3492 12.9752 14.0117 13.7987 11.7867 14.0383C12.1367 14.3307 12.4617 14.928 12.4617 15.8408C12.4617 17.1444 12.4492 18.1918 12.4492 18.5082C12.4492 18.7635 12.6242 19.0683 13.1367 18.9708C17.1375 17.692 20 14.0391 20 9.74107C20 4.36167 15.5225 0 10 0Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="social__link" href="#">
+                <svg class="social__svg" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1117 4.49449C23.4296 2.94472 21.9074 1.65683 20.4317 2.227L2.3425 9.21601C0.694517 9.85273 0.621087 12.1572 2.22518 12.8975L6.1645 14.7157L8.03849 21.2746C8.13583 21.6153 8.40618 21.8791 8.74917 21.968C9.09216 22.0568 9.45658 21.9576 9.70712 21.707L12.5938 18.8203L16.6375 21.8531C17.8113 22.7334 19.5019 22.0922 19.7967 20.6549L23.1117 4.49449ZM3.0633 11.0816L21.1525 4.0926L17.8375 20.2531L13.1 16.6999C12.7019 16.4013 12.1448 16.4409 11.7929 16.7928L10.5565 18.0292L10.928 15.9861L18.2071 8.70703C18.5614 8.35278 18.5988 7.79106 18.2947 7.39293C17.9906 6.99479 17.4389 6.88312 17.0039 7.13168L6.95124 12.876L3.0633 11.0816ZM8.17695 14.4791L8.78333 16.6015L9.01614 15.321C9.05253 15.1209 9.14908 14.9366 9.29291 14.7928L11.5128 12.573L8.17695 14.4791Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="social__link" href="#">
+                <svg class="social__svg" height="20" width="20" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"  xml:space="preserve">
+                  <path d="M510.746,110.361c-2.128-10.754-6.926-20.918-13.926-29.463c-1.422-1.794-2.909-3.39-4.535-5.009
+                  c-12.454-12.52-29.778-19.701-47.531-19.701H67.244c-17.951,0-34.834,7-47.539,19.708c-1.608,1.604-3.099,3.216-4.575,5.067
+                  c-6.97,8.509-11.747,18.659-13.824,29.428C0.438,114.62,0,119.002,0,123.435v265.137c0,9.224,1.874,18.206,5.589,26.745
+                  c3.215,7.583,8.093,14.772,14.112,20.788c1.516,1.509,3.022,2.901,4.63,4.258c12.034,9.966,27.272,15.45,42.913,15.45h377.51
+                  c15.742,0,30.965-5.505,42.967-15.56c1.604-1.298,3.091-2.661,4.578-4.148c5.818-5.812,10.442-12.49,13.766-19.854l0.438-1.05
+                  c3.646-8.377,5.497-17.33,5.497-26.628V123.435C512,119.06,511.578,114.649,510.746,110.361z M34.823,99.104
+                  c0.951-1.392,2.165-2.821,3.714-4.382c7.689-7.685,17.886-11.914,28.706-11.914h377.51c10.915,0,21.115,4.236,28.719,11.929
+                  c1.313,1.327,2.567,2.8,3.661,4.272l2.887,3.88l-201.5,175.616c-6.212,5.446-14.21,8.443-22.523,8.443
+                  c-8.231,0-16.222-2.99-22.508-8.436L32.19,102.939L34.823,99.104z M26.755,390.913c-0.109-0.722-0.134-1.524-0.134-2.341V128.925
+                  l156.37,136.411L28.199,400.297L26.755,390.913z M464.899,423.84c-6.052,3.492-13.022,5.344-20.145,5.344H67.244
+                  c-7.127,0-14.094-1.852-20.142-5.344l-6.328-3.668l159.936-139.379l17.528,15.246c10.514,9.128,23.922,14.16,37.761,14.16
+                  c13.89,0,27.32-5.032,37.827-14.16l17.521-15.253L471.228,420.18L464.899,423.84z M485.372,388.572
+                  c0,0.803-0.015,1.597-0.116,2.304l-1.386,9.472L329.012,265.409l156.36-136.418V388.572z"
+                  fill="currentColor"/>
 
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero  section">
+      <div class="container  hero__container">
+        <div class="hero__content">
+          <p class="hero__description">My name Dmitri</p>
+          <h1 class="hero__title">I am Front-End Developer from Saratov</h1>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="skills section">
+      <div class="container  skills__container">
+        <img class="skills__img" src="./skills-bg.jpg" width="400" height="600" alt="notebook">
+
+        <div class="skills__content">
+          <p class="skills__subtitle  section__subtitle">Skills</p>
+          <h2 class="skills__title  section__title">My skills</h2>
+          <ul class="skills__list">
+            <li class="skills__item">
+              <article class="article-block">
+                <div class="article-block__fig article-block__fig--web"></div>
+                <div class="article-block__text">
+                  <h3 class="article-block__title">
+                    Web-разработка
+                  </h3>
+                  <p class="article-block__description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ducimus non sunt perferendis doloribus ea.
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="skills__item">
+              <article class="article-block">
+                <div class="article-block__fig article-block__fig--design"></div>
+                <div class="article-block__text">
+                  <h3 class="article-block__title">
+                    Дизайн
+                  </h3>
+                  <p class="article-block__description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ducimus non sunt perferendis doloribus ea.
+                  </p>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="education  section">
+      <div class="container  education__container">
+        <p class="education__subtitle  section__subtitle">
+          Education
+        </p>
+        <h2 class="education__title  section__title">
+          My education
+        </h2>
+        <ul class="education__list">
+          <li class="education__item">
+            <article class="article-block">
+              <div class="article-block__fig article-block__fig--udemy"></div>
+              <div class="article-block__text">
+                <h3 class="article-block__title">
+                    Udemy
+                </h3>
+                <p class="article-block__description">
+                  Ведущая платформа для онлайн-обучения, где можно найти курсы как для профессионального, так и для личностного роста.
+                </p>
+              </div>
+            </article>
+          </li>
+          <li class="education__item">
+            <article class="article-block">
+              <div class="article-block__fig article-block__fig--stepik"></div>
+              <div class="article-block__text">
+                <h3 class="article-block__title">
+                    Stepik
+                </h3>
+                <p class="article-block__description">
+                  Российская образовательная платформа и конструктор бесплатных и платных открытых онлайн-курсов и уроков.
+                </p>
+              </div>
+            </article>
+          </li>
+          <li class="education__item">
+            <article class="article-block">
+              <div class="article-block__fig article-block__fig--rsschool"></div>
+              <div class="article-block__text">
+                <h3 class="article-block__title">
+                    RS School
+                </h3>
+                <p class="article-block__description">
+                  это бесплатные курсы, проводимые сообществом разработчиков The Rolling Scopes с 2013 года.
+                </p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="tools  section">
+      <div class="container  tools__container">
+        <p class="tools__subtitle  section__subtitle">
+          Tools
+        </p>
+        <h2 class="tools__title  section__title">
+          My tools
+        </h2>
+        <ul class="tools__list">
+          <li class="tools__item">
+            <article class="article-block  article-block--tools">
+              <img class="article-block__img" src="./html5.svg" alt="HTML5">
+              <div class="article-block__text">
+                <h3 class="article-block__title">
+                    HTML5
+                </h3>
+                <p class="article-block__description">
+                  Именно он создает каркас вашего сайта или приложения, а пятая версия позволит мне создавать более SEO-оптимизированную структуру вашего продукта
+                </p>
+              </div>
+            </article>
+          </li>
+          <li class="tools__item">
+            <article class="article-block  article-block--tools">
+              <img class="article-block__img" src="./css3.svg" alt="CSS3">
+              <div class="article-block__text">
+                <h3 class="article-block__title">
+                    CSS3
+                </h3>
+                <p class="article-block__description">
+                  Этот язык стилей позволяет мне создавать абсолютно любой внешний вид вашего сайта или приложения. Все ограничивается только вашей фантазией!
+                </p>
+              </div>
+            </article>
+          </li>
+          <li class="tools__item">
+            <article class="article-block  article-block--tools">
+              <img class="article-block__img" src="./js.svg" alt="JavaScript">
+              <div class="article-block__text">
+                <h3 class="article-block__title">
+                    JavaScript
+                </h3>
+                <p class="article-block__description">
+                  Этот язык программирования позволяет оживить все что угодно: слайдеры, окна, подсказки, вкладки, получение данных от сервера и многое другое
+                </p>
+              </div>
+            </article>
+          </li>
+          <li class="tools__item">
+            <article class="article-block  article-block--tools">
+              <img class="article-block__img" src=".//figma_logo.svg" alt="Figma">
+              <div class="article-block__text">
+                <h3 class="article-block__title">
+                    FIGMA
+                </h3>
+                <p class="article-block__description">
+                  Онлайн-редактор, в котором удобно проектировать интерфейсы, создавать макеты сайтов, мобильных приложений, презентации, иллюстрации, логотипы и анимацию.
+                </p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="contacts section">
+      <div class="container contacts__container">
+        <img class="contacts__img" src="./skills-bg.jpg" width="400" height="600" alt="notebook">
+        <div class="contacts__content">
+          <p class="contacts__subtitle  section__subtitle">
+            Contacts
+          </p>
+          <h2 class="contacts__title  section__title">
+          Contact with me
+          </h2>
+          <form class="contacts__form">
+            <input class="contacts__input" type="text" placeholder="Your name" required>
+            <input class="contacts__input" type="email" placeholder="Your email" required>
+            <textarea class="contacts__texarea" placeholder="Your message" required></textarea>
+            <button class="contacts__btn" type="submit">Send</button>
+            <p class="contacts__note">
+              *All fields are required
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container  footer__container">
+      <p class="footer__content">Социальные сети</p>
+      <ul class="social__list">
+            <li class="social__item">
+              <a class="social__link" href="#">
+                <svg class="social__svg  social__svg--footer" width="20" height="19" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 0C4.475 0 0 4.36167 0 9.74107C0 14.0457 2.865 17.6962 6.8375 18.9832C7.3375 19.0749 7.52083 18.7734 7.52083 18.5148C7.52083 18.2835 7.5125 17.6706 7.50833 16.8585C4.72667 17.4459 4.14 15.5517 4.14 15.5517C3.685 14.4274 3.0275 14.1267 3.0275 14.1267C2.12167 13.5228 3.0975 13.5352 3.0975 13.5352C4.10167 13.603 4.62917 14.5389 4.62917 14.5389C5.52083 16.0283 6.97 15.5979 7.54167 15.3493C7.63167 14.719 7.88917 14.2903 8.175 14.0466C5.95417 13.8029 3.62 12.9652 3.62 9.23304C3.62 8.16988 4.0075 7.30085 4.64917 6.61934C4.53667 6.37317 4.19917 5.3827 4.73667 4.04116C4.73667 4.04116 5.57417 3.78012 7.48667 5.03988C8.28667 4.82345 9.13667 4.71606 9.98667 4.7111C10.8367 4.71606 11.6867 4.82345 12.4867 5.03988C14.3867 3.78012 15.2242 4.04116 15.2242 4.04116C15.7617 5.3827 15.4242 6.37317 15.3242 6.61934C15.9617 7.30085 16.3492 8.16988 16.3492 9.23304C16.3492 12.9752 14.0117 13.7987 11.7867 14.0383C12.1367 14.3307 12.4617 14.928 12.4617 15.8408C12.4617 17.1444 12.4492 18.1918 12.4492 18.5082C12.4492 18.7635 12.6242 19.0683 13.1367 18.9708C17.1375 17.692 20 14.0391 20 9.74107C20 4.36167 15.5225 0 10 0Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="social__link" href="#">
+                <svg class="social__svg  social__svg--footer" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1117 4.49449C23.4296 2.94472 21.9074 1.65683 20.4317 2.227L2.3425 9.21601C0.694517 9.85273 0.621087 12.1572 2.22518 12.8975L6.1645 14.7157L8.03849 21.2746C8.13583 21.6153 8.40618 21.8791 8.74917 21.968C9.09216 22.0568 9.45658 21.9576 9.70712 21.707L12.5938 18.8203L16.6375 21.8531C17.8113 22.7334 19.5019 22.0922 19.7967 20.6549L23.1117 4.49449ZM3.0633 11.0816L21.1525 4.0926L17.8375 20.2531L13.1 16.6999C12.7019 16.4013 12.1448 16.4409 11.7929 16.7928L10.5565 18.0292L10.928 15.9861L18.2071 8.70703C18.5614 8.35278 18.5988 7.79106 18.2947 7.39293C17.9906 6.99479 17.4389 6.88312 17.0039 7.13168L6.95124 12.876L3.0633 11.0816ZM8.17695 14.4791L8.78333 16.6015L9.01614 15.321C9.05253 15.1209 9.14908 14.9366 9.29291 14.7928L11.5128 12.573L8.17695 14.4791Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="social__link" href="#">
+                <svg class="social__svg  social__svg--footer" height="20" width="20" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"  xml:space="preserve">
+                  <path d="M510.746,110.361c-2.128-10.754-6.926-20.918-13.926-29.463c-1.422-1.794-2.909-3.39-4.535-5.009
+                  c-12.454-12.52-29.778-19.701-47.531-19.701H67.244c-17.951,0-34.834,7-47.539,19.708c-1.608,1.604-3.099,3.216-4.575,5.067
+                  c-6.97,8.509-11.747,18.659-13.824,29.428C0.438,114.62,0,119.002,0,123.435v265.137c0,9.224,1.874,18.206,5.589,26.745
+                  c3.215,7.583,8.093,14.772,14.112,20.788c1.516,1.509,3.022,2.901,4.63,4.258c12.034,9.966,27.272,15.45,42.913,15.45h377.51
+                  c15.742,0,30.965-5.505,42.967-15.56c1.604-1.298,3.091-2.661,4.578-4.148c5.818-5.812,10.442-12.49,13.766-19.854l0.438-1.05
+                  c3.646-8.377,5.497-17.33,5.497-26.628V123.435C512,119.06,511.578,114.649,510.746,110.361z M34.823,99.104
+                  c0.951-1.392,2.165-2.821,3.714-4.382c7.689-7.685,17.886-11.914,28.706-11.914h377.51c10.915,0,21.115,4.236,28.719,11.929
+                  c1.313,1.327,2.567,2.8,3.661,4.272l2.887,3.88l-201.5,175.616c-6.212,5.446-14.21,8.443-22.523,8.443
+                  c-8.231,0-16.222-2.99-22.508-8.436L32.19,102.939L34.823,99.104z M26.755,390.913c-0.109-0.722-0.134-1.524-0.134-2.341V128.925
+                  l156.37,136.411L28.199,400.297L26.755,390.913z M464.899,423.84c-6.052,3.492-13.022,5.344-20.145,5.344H67.244
+                  c-7.127,0-14.094-1.852-20.142-5.344l-6.328-3.668l159.936-139.379l17.528,15.246c10.514,9.128,23.922,14.16,37.761,14.16
+                  c13.89,0,27.32-5.032,37.827-14.16l17.521-15.253L471.228,420.18L464.899,423.84z M485.372,388.572
+                  c0,0.803-0.015,1.597-0.116,2.304l-1.386,9.472L329.012,265.409l156.36-136.418V388.572z"
+                  fill="currentColor"/>
+
+                </svg>
+              </a>
+            </li>
+          </ul>
+    </div>
+  </footer>
 </body>
 </html>
