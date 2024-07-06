@@ -127,7 +127,7 @@ fieldset {
   background-color: transparent;
   border-radius: 10px;
   cursor: pointer;
-  
+
 }
 
 .burger__btn > .burger__line,
@@ -371,8 +371,9 @@ fieldset {
 }
 
 .article-block__fig--rsschool::before {
-  background-image: url('./rss-school.svg');
-  height: 20px;
+  background-image: url('./rs-school-logo.svg');
+  height: 36px;
+  width: 36px;
 }
 
 .article-block__title {
@@ -472,8 +473,8 @@ fieldset {
 }
 
 .footer__img {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
 }
 
 .social__svg--footer:hover{
