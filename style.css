@@ -425,10 +425,84 @@ fieldset {
   transform: translate(-50%, -50%);
 }
 /* tools */
+.tools__container {
+  padding: 30px 0;
+  border-bottom: 1px solid #ffa501;
+}
+
 .tools__list {
   display: flex;
   gap: 10px;
   justify-content: space-between;
+}
+/* portfolio */
+
+.portfolio__container {
+  padding: 30px 0;
+  border-bottom: 1px solid #ffa501;
+}
+
+.portfolio__title, .portfolio__subtitle {
+  text-align: center;
+}
+
+.portfolio__subtitle::before {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.portfolio__list {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-block--portfolio {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  transition: all 0.3s ease-out;
+	overflow: hidden;
+  height: 100%;
+}
+
+.article-block__title--portfolio {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.article-block__img--portfolio {
+  height: 100%;
+  width: 100%;
+  vertical-align: top;
+}
+
+.article-block--portfolio:hover .article-block__img--portfolio{
+  transition: all 0.24s ease-out;
+  transform: scale(1.2, 1.2);
+}
+
+.article-block--portfolio:hover .article-block__text--portfolio {
+  transform: translateX(0);
+}
+.article-block__text--portfolio {
+  padding: 20px;
+  background: rgba(27, 26, 26, 0.5);
+  transition: all 0.3s ease-out;
+  transform: translateX(-100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: left;
+  cursor: no-drop;
+  color: #FFF;
+  height: 100%;
+  width: 100%;
+}
+
+.article-block__description--portfolio {
+  margin-bottom: 20px;
 }
 /* contacts */
 .contacts__container {
@@ -476,8 +550,8 @@ fieldset {
 }
 .contacts__input:focus, .contacts__textarea:focus {
   background-color: #F3F4F8;
-  outline: rgba(0, 0, 0, 0.33);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE;
 }
 
 .contacts__input:focus .contacts__label {
@@ -505,6 +579,20 @@ fieldset {
   color: #fff;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #ffa501;
+  -webkit-text-fill-color: #ffa501;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
 /* footer */
 
 .footer__container {
