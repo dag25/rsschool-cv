@@ -319,6 +319,24 @@ fieldset {
   gap: 15px;
   justify-content: space-around;
 }
+
+.skills__item {
+  position: relative;
+}
+
+.skills__item::after {
+  position: absolute;
+  left: 90%;
+  top: 60%;
+  z-index: -1;
+  display: block;
+  content: "";
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgb(255, 165, 1, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
 /* article */
 .article-block {
   display: flex;
@@ -423,7 +441,6 @@ fieldset {
   height: 130px;
   border: 1px solid rgb(255, 165, 1, 0.3);
   border-radius: 50%;
-
   transform: translate(-50%, -50%);
 }
 /* tools */
