@@ -311,11 +311,31 @@ fieldset {
 }
 
 .skills__description {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .skills__list {
   display: flex;
+  gap: 15px;
+  justify-content: space-around;
+}
+
+.skills__item {
+  position: relative;
+}
+
+.skills__item::after {
+  position: absolute;
+  left: 90%;
+  top: 60%;
+  z-index: -1;
+  display: block;
+  content: "";
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgb(255, 165, 1, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
 }
 /* article */
 .article-block {
@@ -421,7 +441,6 @@ fieldset {
   height: 130px;
   border: 1px solid rgb(255, 165, 1, 0.3);
   border-radius: 50%;
-
   transform: translate(-50%, -50%);
 }
 /* tools */
@@ -577,6 +596,10 @@ fieldset {
 .contacts__btn:hover {
   background-color: #ffa501;
   color: #fff;
+}
+
+.contacts__privacy-policy input {
+  margin-right: 10px;
 }
 
 input:-webkit-autofill,
