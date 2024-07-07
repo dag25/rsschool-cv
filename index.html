@@ -252,13 +252,27 @@
           Contact with me
           </h2>
           <form class="contacts__form">
-            <input class="contacts__input" type="text" placeholder="Your name" required>
-            <input class="contacts__input" type="email" placeholder="Your email" required>
-            <textarea class="contacts__texarea" placeholder="Your message" required></textarea>
-            <button class="contacts__btn" type="submit">Send</button>
-            <p class="contacts__note">
+            <ul class="contacts__list">
+              <li class="contacts__item">
+                <label class="contacts__label" for="name">Name</label>
+                <input class="contacts__input" name="name" type="text" required maxlength="100">
+                <label class="contacts__label contacts__label--email" for="email">Email</label>
+                <input class="contacts__input"  name="email" type="email" required maxlength="100">
+              </li>
+              <li class="contacts__item">
+                <label class="contacts__label" for="bio">Your text</label>
+                <textarea class="contacts__textarea" name="bio" required cols="56" rows="5"></textarea>
+              </li>
+              <li class="contacts__item">
+                <button class="contacts__btn" type="submit">Send</button>
+              </li>
+            </ul>
+            <span class="contacts__note">
               *All fields are required
-            </p>
+            </span>
+            <span class="contacts__privacy-policy">
+              <input type="checkbox" name="field3">You agree to our Terms and Policy.
+            </span>
           </form>
         </div>
       </div>

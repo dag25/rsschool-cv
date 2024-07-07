@@ -442,6 +442,49 @@ fieldset {
   gap: 30px;
 }
 
+.contacts__item {
+  position: relative;
+  display: flex;
+  margin-bottom: 30px;
+  gap: 45px;
+}
+
+.contacts__label {
+  position: absolute;
+  left: 20px;
+  top: -15px;
+  z-index: 1;
+  display: block;
+  padding: 1px;
+  background-color: #F3F4F8;
+  border-radius: 5px;
+}
+
+.contacts__label--email {
+  left: 275px;
+}
+
+.contacts__input, .contacts__textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.33);
+
+  background-color: #F3F4F8;
+}
+.contacts__textarea {
+  resize: none;
+}
+.contacts__input:focus, .contacts__textarea:focus {
+  background-color: #F3F4F8;
+  outline: rgba(0, 0, 0, 0.33);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.contacts__input:focus .contacts__label {
+  top: 8px;
+}
+
+
 .contacts__btn {
   display: flex;
   align-items: center;
@@ -453,6 +496,7 @@ fieldset {
   font-size: 16px;
   font-weight: 600;
   border-radius: 5px;
+  box-shadow: 1px 1px 4px #DADADA;
   transition: all.34s ease-in-out;
 }
 
