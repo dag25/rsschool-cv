@@ -311,11 +311,13 @@ fieldset {
 }
 
 .skills__description {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .skills__list {
   display: flex;
+  gap: 15px;
+  justify-content: space-around;
 }
 /* article */
 .article-block {
@@ -577,6 +579,10 @@ fieldset {
 .contacts__btn:hover {
   background-color: #ffa501;
   color: #fff;
+}
+
+.contacts__privacy-policy input {
+  margin-right: 10px;
 }
 
 input:-webkit-autofill,
