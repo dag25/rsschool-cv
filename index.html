@@ -85,13 +85,33 @@
 
     <section class="about section" id="about">
       <div class="container  about__container">
-          <p class="about__subtitle  section__subtitle">About</p>
-          <h2 class="about__title  section__title">
-            About me
-          </h2>
-          <p class="about__description">
-            I work on various methodologies. I can understand someone else's code. I conduct business correspondence in English.
-          </p>
+        <p class="about__subtitle  section__subtitle">About</p>
+        <h2 class="about__title  section__title">
+          About me
+        </h2>
+        <p class="about__description">
+          I work on various methodologies. I can understand someone else's code. I conduct business correspondence in English.
+        </p>
+
+        <div class="about__code">
+          <h3 class="about__example-title">
+            Code example
+          </h3>
+          <pre class="about__example-code">
+            <code>
+              const tags = ["javascript", "php", "javascript", "sql", "java", "python", "sql"];
+              let result;
+              let sorted = [];
+              tags.filter((value, index, array) => {
+                if (array.indexOf(value) === index) {
+                  sorted.push(`${value}: ${array.filter(item => item === value).length}`);
+                }
+              });
+              result = sorted.join(', ');
+              console.log(result);
+            </code>
+          </pre>
+        </div>
       </div>
     </section>
 
