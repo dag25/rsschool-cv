@@ -323,6 +323,21 @@ fieldset {
   text-align: center;
 }
 
+.about__description {
+  margin-bottom: 30px;
+}
+
+.about__example-title {
+  margin-bottom: 30px;
+}
+
+.about__example-code {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ffa501;
+  text-align: left;
+}
+
 
 /* skills */
 .skills__container {
