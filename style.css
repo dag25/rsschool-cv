@@ -118,16 +118,16 @@ fieldset {
 .burger__btn{
   display: flex;
   align-items: center;
-  position: absolute;
-  top: 30px;
-  left:250px;
+  position: relative;
+  /* top: 30px;
+  left:250px; */
   z-index: 4;
   width: 40px;
   height: 40px;
   background-color: transparent;
   border-radius: 10px;
   cursor: pointer;
-
+  transform: translate(450%,-50%);
 }
 
 .burger__btn > .burger__line,
