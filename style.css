@@ -325,7 +325,7 @@ fieldset {
 }
 
 .skills__item::after {
-  position: absolute;
+  position:absolute;
   left: 90%;
   top: 60%;
   z-index: -1;
