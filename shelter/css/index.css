@@ -374,7 +374,6 @@ iframe {
 .our-friends__item {
   padding: 300px 40px 30px;
   background-color: var(--color-light-s);
-  background-image: url('./../image/pets-katrine.png');
   background-size: 270px;
   background-position: top;
   background-repeat: no-repeat;
@@ -394,7 +393,7 @@ iframe {
   color: var(--color-dark-l);
 }
 .our-friends__item--katrine {
-  background-image: url('./../image/pets-katrine.png');
+  background-image: url('image/pets-katrine.png');
 }
 .our-friends__item--jennifer {
   background-image: url('./../image/pets-jennifer.png');
