@@ -272,6 +272,7 @@ iframe {
 }
 
 .not-only__btn {
+  display: inline-block;
   border-radius: 100px;
   padding: 15px 45px;
   background-color:var(--color-light-xl) ;
@@ -444,6 +445,7 @@ iframe {
 }
 
 .our-friends__btn-more {
+  display: inline-block;
   border-radius: 100px;
   padding: 15px 45px;
   background-color: var(--color-primary);
