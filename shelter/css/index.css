@@ -393,7 +393,7 @@ iframe {
   color: var(--color-dark-l);
 }
 .our-friends__item--katrine {
-  background-image: url('image/pets-katrine.png');
+  background-image: url('./../image/pets-katrine.png');
 }
 .our-friends__item--jennifer {
   background-image: url('./../image/pets-jennifer.png');
