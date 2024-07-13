@@ -4,21 +4,21 @@
   font-family: Georgia;
   font-style: normal;
   font-weight: 400;
-  src: url('./fonts/Georgia.woff2') format("woff2");
+  src: url('./../fonts/Georgia.woff2') format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: Georgia;
   font-style: bold;
   font-weight: 700;
-  src: url('./fonts/Georgia-Bold.woff2') format("woff2");
+  src: url('./../fonts/Georgia-Bold.woff2') format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: Georgia;
   font-style: italic;
   font-weight: 400;
-  src: url('./fonts/Georgia-Italic.woff2') format("woff2");
+  src: url('./../fonts/Georgia-Italic.woff2') format("woff2");
 }
 
 :root {
@@ -231,7 +231,7 @@ iframe {
   position: relative;
   padding: 343px 0 243px;
   background-color: var(--color-dark-3xl);
-  background-image: url('./image/noise_transparent.png');
+  background-image: url('./../image/noise_transparent.png');
   background-size: cover;
 }
 
@@ -248,7 +248,7 @@ iframe {
   display: block;
   width: 698px;
   height: 728px;
-  background-image: url('./image/start-screen-puppy.png');
+  background-image: url('./../image/start-screen-puppy.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position:center right;
@@ -315,7 +315,7 @@ iframe {
   display: block;
   flex-basis: 50%;
   height: 408px;
-  background-image: url('./image/about-pets.png');
+  background-image: url('./../image/about-pets.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -374,7 +374,7 @@ iframe {
 .our-friends__item {
   padding: 300px 40px 30px;
   background-color: var(--color-light-s);
-  background-image: url('./image/pets-katrine.png');
+  background-image: url('./../image/pets-katrine.png');
   background-size: 270px;
   background-position: top;
   background-repeat: no-repeat;
@@ -394,33 +394,33 @@ iframe {
   color: var(--color-dark-l);
 }
 .our-friends__item--katrine {
-  background-image: url('./image/pets-katrine.png');
+  background-image: url('./../image/pets-katrine.png');
 }
 .our-friends__item--jennifer {
-  background-image: url('./image/pets-jennifer.png');
+  background-image: url('./../image/pets-jennifer.png');
 }
 .our-friends__item--woody {
-  background-image: url('./image/pets-woody.png');
+  background-image: url('./../image/pets-woody.png');
 }
 
 .our-friends__item--sophie {
-  background-image: url('./image/pets-sophia.png');
+  background-image: url('./../image/pets-sophia.png');
 }
 
 .our-friends__item--timmy {
-  background-image: url('./image/pets-timmy.png');
+  background-image: url('./../image/pets-timmy.png');
 }
 
 .our-friends__item--charly {
-  background-image: url('./image/pets-charly.png');
+  background-image: url('./../image/pets-charly.png');
 }
 
 .our-friends__item--scarlet {
-  background-image: url('./image/pets-scarlet.png');
+  background-image: url('./../image/pets-scarlet.png');
 }
 
 .our-friends__item--freddie {
-  background-image: url('./image/pets-freddie.png');
+  background-image: url('./../image/pets-freddie.png');
 }
 
 .our-friends__subtitle {
@@ -591,7 +591,7 @@ iframe {
   display: block;
   flex-basis: 60%;
   height: 261px;
-  background-image: url('./image/donation-dog.png');
+  background-image: url('./../image/donation-dog.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
@@ -656,7 +656,7 @@ iframe {
 .footer {
   padding: 56px 0 60px;
   background-color: var(--color-dark-3xl);
-  background-image: url('./image/noise_transparent.png');
+  background-image: url('./../image/noise_transparent.png');
   background-size: cover;
 }
 
@@ -677,7 +677,7 @@ iframe {
   display: block;
   width: 300px;
   height: 310px;
-  background-image: url('./image/footer-puppy.png');
+  background-image: url('./../image/footer-puppy.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
