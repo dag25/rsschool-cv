@@ -52,6 +52,7 @@
 html {
   position: relative;
   box-sizing:border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -117,9 +118,10 @@ iframe {
   border: none;
 }
 
-/*
-Доступно скрываю элементы
-*/
+.no-click {
+  pointer-events: none;
+  cursor: default;
+}
 
 .visually-hidden {
   position: fixed;
@@ -156,6 +158,7 @@ iframe {
   display: flex;
   flex-direction: column;
   width: 186px;
+  cursor: pointer;
 }
 
 .header__logo-title {
@@ -196,10 +199,7 @@ iframe {
   line-height: 1.6;
   color: var(--color-dark-s);
   transition: color .24s ease-in-out;
-}
-
-.nav__link--pets {
-  color: var(--color-dark-l);
+  cursor: pointer;
 }
 
 .nav__link::after {
@@ -214,36 +214,45 @@ iframe {
   color: var(--color-light-s);
 }
 
-.nav__link:hover,
-.nav__link.active,
-.nav__link.focus {
-  color: var(--color-light-s);
-}
-
-.nav__link--pets:hover,
-.nav__link--pets.active,
-.nav__link--pets.focus {
-  color: var(--color-dark-3xl);
-}
-
 .nav__link:hover::after,
-.nav__link.active::after,
-.nav__link.focus::after {
+.nav__link.active::after {
   width: 100%;
 }
 
+.nav__link--pets {
+  color: var(--color-dark-l);
+}
+
+.nav__link--pets:hover {
+  color: var(--color-dark-3xl);
+}
 /* not-only */
 .not-only {
   position: relative;
   padding: 343px 0 243px;
   background-color: var(--color-dark-3xl);
-  background-image: url('/image/start-screen-puppy.png');
-  background-repeat: no-repeat;
-  background-size: content;
-  background-position: bottom right  ;
+  background-image: url('/image/noise_transparent.png');
+  background-size: cover;
 }
 
+.not-only__container {
+  position: relative;
+}
 
+.not-only__container::after {
+  content: '';
+  position: absolute;
+  top: -65%;
+  right: 0;
+  z-index: 1;
+  display: block;
+  width: 698px;
+  height: 728px;
+  background-image: url('/image/start-screen-puppy.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:center right;
+}
 .not-only__title {
   margin-bottom: 42px;
   max-width: 310px;
@@ -265,13 +274,14 @@ iframe {
 .not-only__btn {
   border-radius: 100px;
   padding: 15px 45px;
-  background-color: var(--color-primary);
+  background-color:var(--color-light-xl) ;
   border: 2px solid var(--color-primary);
   transition: background-color 0.24s ease-in-out;
+  cursor: pointer;
 }
 
 .not-only__btn:hover {
-  background-color: var(--color-light-xl);
+  background: var(--color-primary-light);
 }
 
 /* about */
@@ -369,11 +379,13 @@ iframe {
   background-position: top;
   background-repeat: no-repeat;
   border-radius: 9px;
-  transition: box-shadow 0.24s ease-in-out, transform 0.24s ease-in-out;
+  transition: box-shadow 0.24s ease-in-out, transform 0.24s ease-in-out, background-color 0.24s ease-in-out;
+  cursor: pointer;
 }
 
 .our-friends__item:hover {
   box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+  background-color: var(--color-light-xl);
   transform: translateY(-5px);
 }
 
@@ -461,6 +473,7 @@ iframe {
   border: 2px solid var(--color-primary);
   color: #292929;
   transition: background-color 0.24s ease-in-out, color 0.24s ease-in-out;
+  cursor: pointer;
 }
 
 .our-friends__arrow--right {
@@ -491,7 +504,7 @@ iframe {
   color: var(--color-dark-s);
 }
 
-.pagination__link:hover {
+.pagination__link--doublenext:hover, .pagination__link--next:hover {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-dark-3xl);
@@ -507,6 +520,7 @@ iframe {
   background-color: transparent;
   border-color: var(--color-primary);
   color: var(--color-dark-3xl);
+  cursor: pointer;
 }
 
 
@@ -621,6 +635,7 @@ iframe {
   letter-spacing: 0.06em;
   color: var(--color-dark-l);
   transition: color 0.24s ease-in-out, background-color 0.24s ease-in-out;
+  cursor: pointer;
 }
 
 .in-addition__card:hover {
@@ -641,6 +656,8 @@ iframe {
 .footer {
   padding: 56px 0 60px;
   background-color: var(--color-dark-3xl);
+  background-image: url('/image/noise_transparent.png');
+  background-size: cover;
 }
 
 .footer__container {
@@ -692,6 +709,7 @@ iframe {
   letter-spacing: 0.06em;
   color: var(--color-primary);
   transition: color 0.24s ease-in-out;
+  cursor: pointer;
 }
 
 
