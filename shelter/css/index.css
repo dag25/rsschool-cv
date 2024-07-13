@@ -141,6 +141,12 @@ iframe {
   z-index: 50;
 }
 
+.header--pets {
+  position: static;
+  padding: 30px 0 ;
+  background-color: var(--color-light-xl);
+}
+
 .header__container {
   display: flex;
   align-items: center;
@@ -162,11 +168,19 @@ iframe {
   color: var(--color-primary);
 }
 
+.header__logo-title--pets {
+  color: var(--color-dark-l);
+}
+
 .header__logo-subtitle {
   font-weight: 400;
   font-size: 13px;
   letter-spacing: 0.1em;
   color: var(--color-light-xl);
+}
+
+.header__logo-subtitle--pets {
+  color: var(--color-dark-3xl);
 }
 
 .nav__list {
@@ -184,6 +198,10 @@ iframe {
   transition: color .24s ease-in-out;
 }
 
+.nav__link--pets {
+  color: var(--color-dark-l);
+}
+
 .nav__link::after {
   content: '';
   display: block;
@@ -196,13 +214,26 @@ iframe {
   color: var(--color-light-s);
 }
 
+.nav__link:hover,
+.nav__link.active,
+.nav__link.focus {
+  color: var(--color-light-s);
+}
+
+.nav__link--pets:hover,
+.nav__link--pets.active,
+.nav__link--pets.focus {
+  color: var(--color-dark-3xl);
+}
+
 .nav__link:hover::after,
-.nav__link.active::after {
+.nav__link.active::after,
+.nav__link.focus::after {
   width: 100%;
 }
 
-/* hero */
-.hero {
+/* not-only */
+.not-only {
   position: relative;
   padding: 343px 0 243px;
   background-color: var(--color-dark-3xl);
@@ -213,7 +244,7 @@ iframe {
 }
 
 
-.hero__title {
+.not-only__title {
   margin-bottom: 42px;
   max-width: 310px;
   font-weight: 400;
@@ -222,7 +253,7 @@ iframe {
   color: var(--color-light-xl);
 }
 
-.hero__text {
+.not-only__text {
   margin-bottom: 42px;
   max-width: 460px;
   font-weight: 400;
@@ -231,7 +262,7 @@ iframe {
   color: var(--color-dark-s);
 }
 
-.hero__btn {
+.not-only__btn {
   border-radius: 100px;
   padding: 15px 45px;
   background-color: var(--color-primary);
@@ -239,7 +270,7 @@ iframe {
   transition: background-color 0.24s ease-in-out;
 }
 
-.hero__btn:hover {
+.not-only__btn:hover {
   background-color: var(--color-light-xl);
 }
 
@@ -292,21 +323,21 @@ iframe {
   line-height: 1.6;
   color: var(--color-dark-xl);
 }
-/* friends */
+/* our-friends */
 
-.friends {
+.our-friends {
   padding: 80px 0 100px;
   background-color: var(--color-light-l);
 }
 
-.friends__container {
+.our-friends__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.friends__title {
+.our-friends__title {
   margin-bottom: 60px;
   max-width: 400px;
   font-weight: 400;
@@ -317,7 +348,7 @@ iframe {
   color: var(--color-dark-l);
 }
 
-.friends__list {
+.our-friends__list {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 270px);
@@ -325,25 +356,62 @@ iframe {
   margin-bottom: 60px;
 }
 
-.friends__item {
+.our-friends__list--pets {
+  grid-template-columns: repeat(4, 270px);
+  column-gap: 40px;
+  row-gap: 30px;
+}
+.our-friends__item {
   padding: 300px 40px 30px;
   background-color: var(--color-light-s);
   background-image: url('/image/pets-katrine.png');
   background-size: 270px;
   background-position: top;
   background-repeat: no-repeat;
+  border-radius: 9px;
+  transition: box-shadow 0.24s ease-in-out, transform 0.24s ease-in-out;
 }
-.friends__item--katrine {
+
+.our-friends__item:hover {
+  box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+  transform: translateY(-5px);
+}
+
+.our-friends__item:hover .our-friends__btn {
+  background-color:var(--color-primary);
+  color: var(--color-dark-l);
+}
+.our-friends__item--katrine {
   background-image: url('/image/pets-katrine.png');
 }
-.friends__item--jennifer {
+.our-friends__item--jennifer {
   background-image: url('/image/pets-jennifer.png');
 }
-.friends__item--woody {
+.our-friends__item--woody {
   background-image: url('/image/pets-woody.png');
 }
 
-.friends__subtitle {
+.our-friends__item--sophie {
+  background-image: url('/image/pets-sophia.png');
+}
+
+.our-friends__item--timmy {
+  background-image: url('/image/pets-timmy.png');
+}
+
+.our-friends__item--charly {
+  background-image: url('/image/pets-charly.png');
+}
+
+.our-friends__item--scarlet {
+  background-image: url('/image/pets-scarlet.png');
+}
+
+.our-friends__item--freddie {
+  background-image: url('/image/pets-freddie.png');
+}
+
+.our-friends__subtitle {
   margin-bottom: 30px;
   font-weight: 400;
   font-size: 20px;
@@ -352,7 +420,7 @@ iframe {
   color: var(--color-dark-l);
 }
 
-.friends__btn {
+.our-friends__btn {
   border: 2px solid var(--color-primary);
   border-radius: 100px;
   padding: 15px 40px;
@@ -364,12 +432,7 @@ iframe {
   transition: background-color 0.24s ease-in-out, color 0.24s ease-in-out;
 }
 
-.friends__btn:hover {
-  background-color: var(--color-dark-l);
-  color: var(--color-primary);
-}
-
-.friends__btn-more {
+.our-friends__btn-more {
   border-radius: 100px;
   padding: 15px 45px;
   background-color: var(--color-primary);
@@ -381,12 +444,12 @@ iframe {
   transition: background-color 0.24s ease-in-out, color 0.24s ease-in-out;
 }
 
-.friends__btn-more:hover {
+.our-friends__btn-more:hover {
   background-color: var(--color-dark-l);
   color: var(--color-primary);
 }
 
-.friends__arrow {
+.our-friends__arrow {
   position: absolute;
   top: 50%;
   display: flex;
@@ -400,16 +463,53 @@ iframe {
   transition: background-color 0.24s ease-in-out, color 0.24s ease-in-out;
 }
 
-.friends__arrow--right {
+.our-friends__arrow--right {
   right: 40px;
 }
-.friends__arrow--left {
+.our-friends__arrow--left {
   left: 40px;
 }
-.friends__arrow:hover {
-  background-color: var(--color-dark-l);
-  color: var(--color-primary);
+.our-friends__arrow:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-dark-3xl);
 }
+
+.pagination {
+  display: flex;
+  gap: 20px;
+}
+
+.pagination__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--color-dark-s);
+  border-radius: 100px;
+  color: var(--color-dark-s);
+}
+
+.pagination__link:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-dark-3xl);
+}
+
+.pagination__link--active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-dark-3xl);
+}
+
+.pagination__link--next, .pagination__link--doublenext {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-dark-3xl);
+}
+
+
 /* help */
 
 .help {
@@ -457,14 +557,14 @@ iframe {
   text-align: center;
   color: var(--color-dark-l);
 }
-/* donation */
+/* in-addition */
 
-.donation {
+.in-addition {
   padding: 80px 0 100px;
   background-color: var(--color-light-l);
 }
 
-.donation__container {
+.in-addition__container {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -472,7 +572,7 @@ iframe {
   gap: 30px;
 }
 
-.donation__container::before {
+.in-addition__container::before {
   content: '';
   display: block;
   flex-basis: 60%;
@@ -483,12 +583,12 @@ iframe {
   background-position: right;
 }
 
-.donation__content {
+.in-addition__content {
   padding: 10px 24px;
   flex-basis: 40%;
 }
 
-.donation__title {
+.in-addition__title {
   margin-bottom: 20px;
   max-width: 300px;
   font-weight: 400;
@@ -498,7 +598,7 @@ iframe {
   color: var(--color-dark-l);
 }
 
-.donation__bank {
+.in-addition__bank {
   margin-bottom: 20px;
   font-weight: 400;
   font-size: 15px;
@@ -507,7 +607,7 @@ iframe {
   color: var(--color-dark-l);
 }
 
-.donation__card {
+.in-addition__card {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
@@ -523,12 +623,12 @@ iframe {
   transition: color 0.24s ease-in-out, background-color 0.24s ease-in-out;
 }
 
-.donation__card:hover {
+.in-addition__card:hover {
   background-color: var(--color-dark-l);
   color: var(--color-primary);
 }
 
-.donation__description {
+.in-addition__description {
   max-width: 380px;
   font-style: italic;
   font-weight: 400;
@@ -583,6 +683,7 @@ iframe {
 }
 
 .footer__link {
+  position: relative;
   display: flex;
   gap: 20px;
   font-weight: 400;
@@ -592,6 +693,7 @@ iframe {
   color: var(--color-primary);
   transition: color 0.24s ease-in-out;
 }
+
 
 .footer__link:hover {
   color: var(--color-light-l)
