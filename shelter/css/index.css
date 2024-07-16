@@ -233,6 +233,7 @@ iframe {
   background-color: var(--color-dark-3xl);
   background-image: url('./../image/noise_transparent.png');
   background-size: cover;
+  overflow: hidden;
 }
 
 .not-only__container {
@@ -251,7 +252,8 @@ iframe {
   background-image: url('./../image/start-screen-puppy.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position:center right;
+  background-position: center right;
+  animation: floating 6s ease-in-out infinite;
 }
 .not-only__title {
   margin-bottom: 42px;
@@ -659,6 +661,7 @@ iframe {
   background-color: var(--color-dark-3xl);
   background-image: url('./../image/noise_transparent.png');
   background-size: cover;
+  overflow: hidden;
 }
 
 .footer__container {
@@ -682,11 +685,13 @@ iframe {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
+  animation: floating 6s ease-in-out infinite;
 }
 
 .footer__contacts {
   max-width: 302px;
 }
+
 .footer__title {
   margin-bottom: 40px;
   font-weight: 400;
@@ -720,4 +725,16 @@ iframe {
 
 .footer__address {
   max-width: 302px;
+}
+/* floatingY */
+@keyframes floating {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(-10px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }
