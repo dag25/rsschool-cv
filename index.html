@@ -10,11 +10,15 @@
 <body>
   <header class="header">
     <div class="container  header__container">
-      <div class="header__burger burger">
-        <input id="burger__toggle" type="checkbox"/>
+
+      <div class="header__burger  burger">
+
+        <input class="burger__toggle" id="burger__toggle" type="checkbox"/>
+
         <label class="burger__btn" for="burger__toggle">
-        <span class="burger__line"></span>
+          <span class="burger__line"></span>
         </label>
+
         <nav class="header__nav  nav">
           <ul class="nav__list">
             <li class="nav__item">
@@ -72,6 +76,7 @@
           </ul>
         </nav>
       </div>
+
     </div>
   </header>
 
@@ -96,12 +101,15 @@
           I work on various methodologies. I can understand someone else's code. I conduct business correspondence in English.
         </p>
 
-        <div class="about__code">
-          <h3 class="about__example-title">
+        <div class="about__code  code">
+          <h3 class="code__title">
             Code example
           </h3>
-          <pre class="about__example-code">
-            <code>
+          <div class="code__container">
+            <span class="code__border"></span>
+            <span class="code__border"></span>
+            <span class="code__border"></span>
+            <pre class="code__content">
               const tags = ["javascript", "php", "javascript", "sql", "java", "python", "sql"];
               let result;
               let sorted = [];
@@ -112,8 +120,9 @@
               });
               result = sorted.join(', ');
               console.log(result);
-            </code>
-          </pre>
+            </pre>
+          </div>
+
         </div>
       </div>
     </section>
@@ -234,60 +243,70 @@
         </h2>
         <ul class="tools__list">
           <li class="tools__item">
-            <article class="article-block  article-block--tools">
-              <img class="article-block__img" src="./html5.svg" alt="HTML5">
-              <div class="article-block__text">
-                <h3 class="article-block__title">
+            <div class="tools__img-box">
+              <img class="tools__img" src="./html5.svg" alt="HTML5">
+            </div>
+            <div class="tools__content">
+              <div>
+                <h3 class="tools__content-title">
                     HTML5
                 </h3>
-                <p class="article-block__description">
+                <p class="tools__description">
                   It is he who creates the framework of your website or application, and the fifth version will allow me to create a more SEO-optimized structure of your product
                 </p>
               </div>
-            </article>
+            </div>
           </li>
           <li class="tools__item">
-            <article class="article-block  article-block--tools">
-              <img class="article-block__img" src="./css3.svg" alt="CSS3">
-              <div class="article-block__text">
-                <h3 class="article-block__title">
+            <div class="tools__img-box">
+              <img class="tools__img" src="./css3.svg" alt="CSS3">
+            </div>
+            <div class="tools__content">
+              <div>
+                <h3 class="tools__content-title">
                     CSS3
                 </h3>
-                <p class="article-block__description">
+                <p class="tools__description">
                   This style language allows me to create absolutely any appearance of your website or application. Everything is limited only by your imagination!
                 </p>
               </div>
-            </article>
+            </div>
           </li>
           <li class="tools__item">
-            <article class="article-block  article-block--tools">
-              <img class="article-block__img" src="./js.svg" alt="JavaScript">
-              <div class="article-block__text">
-                <h3 class="article-block__title">
+            <div class="tools__img-box">
+              <img class="tools__img" src="./js.svg" alt="JavaScript">
+            </div>
+            <div class="tools__content">
+              <div>
+                <h3 class="tools__content-title">
                     JavaScript
                 </h3>
-                <p class="article-block__description">
+                <p class="tools__description">
                   This programming language allows you to animate anything: sliders, windows, tooltips, tabs, receiving data from the server and much more
                 </p>
               </div>
-            </article>
+            </div>
           </li>
           <li class="tools__item">
-            <article class="article-block  article-block--tools">
-              <img class="article-block__img" src=".//figma_logo.svg" alt="Figma">
-              <div class="article-block__text">
-                <h3 class="article-block__title">
-                    FIGMA
+            <div class="tools__img-box">
+              <img class="tools__img" src="./figma_logo.svg" alt="Figma">
+            </div>
+            <div class="tools__content">
+              <div>
+                <h3 class="tools__content-title">
+                    Figma
                 </h3>
-                <p class="article-block__description">
+                <p class="tools__description">
                   An online editor where it is convenient to design interfaces, create layouts for websites, mobile applications, presentations, illustrations, logos and animations.
                 </p>
               </div>
-            </article>
+            </div>
           </li>
+
         </ul>
       </div>
     </section>
+
 
     <section class="portfolio  section" id="portfolio">
       <div class="container  portfolio__container">
