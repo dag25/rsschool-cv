@@ -334,7 +334,7 @@ fieldset {
 .about__example-title {
   margin-bottom: 30px;
 }
-
+/* code */
 .code {
   display: flex;
   flex-direction: column;
