@@ -102,6 +102,8 @@ fieldset {
   transform: translateY(-50%);
 }
 
+
+
 /* header */
 .header {
   position: absolute;
@@ -321,6 +323,7 @@ fieldset {
 }
 
 .hero__content {
+  position: relative;
   max-width: 532px;
 }
 
@@ -927,6 +930,10 @@ select:-webkit-autofill:focus {
   gap: 30px;
   padding: 30px 0;
   border-top: 1px solid #ffa501;
+}
+
+.footer__link:hover {
+  color: #ffa501;
 }
 
 .footer__img {
