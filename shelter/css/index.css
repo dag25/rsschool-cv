@@ -553,10 +553,10 @@ iframe {
 }
 
 .our-friends__arrow--right {
-  transform: translateX(-160px);
+  transform: translateX(-190px);
 }
 .our-friends__arrow--left {
-  transform: translateX(160px);
+  transform: translateX(190px);
 }
 
 
