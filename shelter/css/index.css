@@ -215,7 +215,7 @@ iframe {
   padding-right: 2px;
 }
 
-.nav__list--pets {}
+
 
 .nav__link {
   position: relative;
@@ -275,7 +275,7 @@ iframe {
   content: '';
   position: absolute;
   bottom: -75%;
-  right: 4%;
+  right: 3%;
   z-index: 1;
   display: block;
   width: 698px;
@@ -417,6 +417,10 @@ iframe {
   color: var(--color-dark-l);
 }
 
+.our-friends__title--pets {
+  margin-bottom: 57px;
+}
+
 .our-friends__list {
   display: grid;
   grid-template-columns: repeat(3, 270px);
@@ -427,7 +431,7 @@ iframe {
 .our-friends__list--pets {
   grid-template-columns: repeat(4, 270px);
   column-gap: 40px;
-  row-gap: 30px;
+  row-gap: 33px;
   margin-bottom: 63px;
 }
 .our-friends__item {
