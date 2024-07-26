@@ -101,6 +101,8 @@ fieldset {
   background-color: #ffa501;
   transform: translateY(-50%);
 }
+/* burger */
+
 
 
 
@@ -126,6 +128,7 @@ fieldset {
   flex-grow: 1;
 	gap: 24px;
 }
+
 
 /* nav */
 
@@ -299,7 +302,6 @@ fieldset {
 
 
 
-
 /* hero */
 .hero {
   margin: 0 auto;
@@ -380,13 +382,6 @@ fieldset {
 }
 /* code */
 
-.code {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .code__title {
   margin-bottom: 30px;
 }
@@ -400,7 +395,7 @@ fieldset {
   width: 800px;
   height: 250px;
   border-radius: 15px;
-  filter: drop-shadow(0 15px 10px #000);
+
   transition: .5s;
   overflow: hidden;
 }
@@ -587,21 +582,6 @@ fieldset {
   margin-bottom: 15px;
 }
 
-.article-block__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  width: 100%;
-  background-color: #ffa501;
-  border-radius: 15px;
-}
-
-.article-block__link:hover {
-  background-color: #fff;
-  color: #ff8c00;
-}
-
 
 /* education */
 
@@ -685,7 +665,7 @@ fieldset {
   width: 40%;
   height: 250px;
   border-radius: 20px;
-  filter: drop-shadow(0 15px 10px #000);
+
   background-color: #fff;
 }
 
@@ -699,6 +679,7 @@ fieldset {
 
 .tools__img {
   max-width: 100px;
+
 }
 .tools__item:hover .tools__img {
   max-width: 75px;
