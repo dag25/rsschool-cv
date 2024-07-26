@@ -398,6 +398,7 @@ iframe {
 }
 
 .our-friends__container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -417,7 +418,6 @@ iframe {
 }
 
 .our-friends__list {
-  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 270px);
   gap: 90px;
@@ -531,7 +531,7 @@ iframe {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  transform: translateY(19px);
+  transform: translateY(-12%);
 }
 .our-friends__arrow {
   display: flex;
@@ -553,10 +553,10 @@ iframe {
 }
 
 .our-friends__arrow--right {
-  transform: translateX(-190px);
+  transform: translateX(-40px);
 }
 .our-friends__arrow--left {
-  transform: translateX(190px);
+  transform: translateX(40px);
 }
 
 
