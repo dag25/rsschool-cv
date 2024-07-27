@@ -240,9 +240,14 @@ iframe {
   color: var(--color-light-s);
 }
 
-.nav__link:hover::after,
+
 .nav__link.active::after {
   width: 100%;
+}
+
+.nav__link.active {
+  color: var(--color-light-s);
+  cursor:auto;
 }
 
 .nav__link--pets {
@@ -252,7 +257,10 @@ iframe {
 .nav__link--pets:hover {
   color: var(--color-dark-3xl);
 }
-
+.nav__link--pets.active {
+  color: var(--color-dark-3xl);
+  cursor:auto;
+}
 
 /* not-only */
 .not-only {
@@ -513,7 +521,8 @@ iframe {
 .our-friends__btn-more {
   display: inline-block;
   border-radius: 100px;
-  padding: 15px 45px;
+  padding: 14px 44px;
+  border: 1px solid transparent;
   background-color: var(--color-primary);
   font-weight: 400;
   font-size: 17px;
@@ -526,6 +535,7 @@ iframe {
 .our-friends__btn-more:hover {
   background-color: var(--color-light-l);
   color: var(--color-primary);
+  border-color:var(--color-primary);
 }
 
 .our-friends__arrows {
