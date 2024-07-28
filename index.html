@@ -15,8 +15,10 @@
 
         <input class="burger__toggle" id="burger__toggle" type="checkbox"/>
 
-        <label class="burger__btn" for="burger__toggle">
-          <span class="burger__line"></span>
+        <label class="burger__box" for="burger__toggle">
+          <div class="burger__overlay">
+            <div class="burger__icon"></div>
+          </div>
         </label>
 
         <nav class="header__nav  nav">
@@ -85,6 +87,14 @@
       <div class="container  hero__container">
         <div class="hero__content">
           <p class="hero__description">My name Dmitri</p>
+          <svg class="hero__svg" width="400" height="400" viewBox="0 0 400 400">
+            <path id="circlePath" d="M 30 200 a 120, 120 0 1, 1 320, 0 a 120, 120 0 1, 1 -320, 0" fill="none"></path>
+            <text class="hero__svg-text">
+              <textPath href="#circlePath">
+                HTML --- CSS --- JavaScript --- Figma --- SEO ---
+              </textPath>
+            </text>
+          </svg>
           <h1 class="hero__title">
             I am
             Front-End Developer
@@ -391,7 +401,7 @@
 
     <section class="contacts section" id="contacts">
       <div class="container contacts__container">
-        <img class="contacts__img" src="./skills-bg.jpg" width="400" height="600" alt="notebook">
+        <img class="contacts__img" src="./skills-bg.jpg" width="600" height="700" alt="notebook">
         <div class="contacts__content">
           <p class="contacts__subtitle  section__subtitle">
             Contacts
