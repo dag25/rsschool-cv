@@ -136,7 +136,7 @@ iframe {
 
 .no-click {
   pointer-events: none;
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .visually-hidden {
