@@ -242,6 +242,36 @@ fieldset {
   transform: scale(1.1) translateZ(20px);
 }
 
+
+
+.social__circle{
+    position: absolute;
+    bottom: 0;
+    right: 315px;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(255, 166, 1, 0.206);
+    border-radius: 50%;
+    animation: iconSlide 8s ease 1s infinite alternate;
+}
+
+@keyframes iconSlide {
+    0%{
+        right: 194px;
+    }
+    50%{
+        right: 249px;
+    }
+    100%{
+        right: 305px;
+    }
+}
+
+.social__link--footer:hover .social__circle{
+    border-color: transparent;
+    animation-play-state: paused;
+}
 /* burger */
 .burger__box {
   display: flex;
@@ -919,25 +949,101 @@ fieldset {
   top: 8px;
 }
 
+.contacts__item--btn {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  overflow: hidden;
+  border: 1px solid;
+  border-radius: 8px;
+  font-weight: 300;
+  font-size: 20px;
+  color: #ffa501;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
 
 .contacts__btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px 20px;
-  border: 1px solid #ffa501;
-  color: #ffa501;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px #DADADA;
-  transition: all.34s ease-in-out;
+  width: 101%;
+  height: 100%;
+
+  background-color: #ffa501;
+  mask: url('./nature-sprite.png');
+  -webkit-mask-size: 2300% 100%;
+  mask-size: 2300% 100%;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-animation: ani 0.7s steps(22) forwards;
+  animation: ani2 0.7s steps(22) forwards;
 }
 
 .contacts__btn:hover {
-  background-color: #ffa501;
-  color: #fff;
+  -webkit-animation: ani 0.7s steps(22) forwards;
+  animation: ani 0.7s steps(22) forwards;
+}
+@-webkit-keyframes ani {
+  from {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  }
+
+  to {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+  }
+}
+
+@keyframes ani {
+  from {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  }
+
+  to {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+  }
+}
+
+@-webkit-keyframes ani2 {
+  from {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+  }
+
+  to {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  }
+}
+
+@keyframes ani2 {
+  from {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+  }
+
+  to {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  }
+}
+
+.contacts__btn-mask {
+  position: absolute;
+  padding: 12px 20px;
+  color: #ffa501;
+  text-align: center;
+  width: 101%;
+  font-weight: 300;
+  font-size: 20px;
+  overflow: hidden;
 }
 
 .contacts__privacy-policy input {
