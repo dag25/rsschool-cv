@@ -357,34 +357,7 @@ fieldset {
 
 
 
-.social__circle{
-    position: absolute;
-    bottom: 0;
-    right: 315px;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    border: 2px solid rgba(255, 166, 1, 0.206);
-    border-radius: 50%;
-    animation: iconSlide 8s ease 1s infinite alternate;
-}
 
-@keyframes iconSlide {
-    0%{
-        right: 194px;
-    }
-    50%{
-        right: 249px;
-    }
-    100%{
-        right: 305px;
-    }
-}
-
-.social__link--footer:hover .social__circle{
-    border-color: transparent;
-    animation-play-state: paused;
-}
 /* burger */
 .burger__box {
   display: flex;
