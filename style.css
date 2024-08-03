@@ -255,10 +255,8 @@ fieldset {
   transform: scale(1.1) translateZ(20px);
 }
 
-
-
-
 /* burger */
+
 .burger__box {
   display: flex;
   align-items: center;
@@ -385,6 +383,7 @@ fieldset {
   left: 50px;
   animation: rotate 20s linear infinite;
 }
+
 .hero__svg-text {
   font-size: 36px;
   text-transform: uppercase;
@@ -433,6 +432,7 @@ fieldset {
   background-color: #ffa501;
   transform: translateY(-50%);
 }
+
 /* about */
 
 .about__container {
@@ -473,6 +473,7 @@ fieldset {
   transition: .5s;
   overflow: hidden;
 }
+
 .code__container::before {
   position: absolute;
   content: "";
@@ -513,6 +514,7 @@ fieldset {
   border-radius: 15px;
   background-color: #fff;
 }
+
 .code__border::after {
   content: "";
   position: absolute;
@@ -533,6 +535,7 @@ fieldset {
 
 
 /* skills */
+
 .skills__container {
   display: flex;
   gap: 70px;
@@ -578,6 +581,7 @@ fieldset {
   animation: autoRotateAnimation;
   animation-timeline: view();
 }
+
 @keyframes autoRotateAnimation {
   from {
     transform: rotate(0deg);
@@ -625,7 +629,6 @@ fieldset {
   content: "";
   width: 25px;
   height: 25px;
-
   background-repeat: no-repeat;
   background-size:contain;
   transform: translateY(-15%);
