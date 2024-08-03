@@ -78,7 +78,20 @@ fieldset {
   line-height: 167%;
   color: #000;
   text-align: left;
+  animation: autoShowAnimation both;
+  animation-timeline: view(70% 5%);
 }
+@keyframes autoShowAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-100%) scale(.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 
 .section__subtitle {
   position: relative;
@@ -547,20 +560,31 @@ fieldset {
 
 .skills__item {
   position: relative;
+  z-index: 5;
 }
 
 .skills__item::after {
+  content: "";
   position:absolute;
-  left: 70%;
-  top: 65%;
+  left: 50%;
+  top: 30%;
   z-index: -1;
   display: block;
-  content: "";
   width: 150px;
   height: 150px;
-  border: 1px solid rgb(255, 165, 1, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+  background-image: url('./gear.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: autoRotateAnimation;
+  animation-timeline: view();
+}
+@keyframes autoRotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 /* article */
 
@@ -647,17 +671,19 @@ fieldset {
 /* education */
 
 .education__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 30px 0;
   border-bottom: 1px solid #ffa501;
 }
-.education__title, .education__subtitle {
-  text-align-last: left;
-}
+
 
 .education__list {
   display: flex;
   justify-content: space-between;
-  gap: 25px;
+  gap: 100px;
 }
 
 .education__item {
@@ -703,9 +729,13 @@ fieldset {
 .education__item:hover.education__item::before {
   animation-play-state:running;
 }
+
 /* tools */
 
 .tools__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 30px 0;
   border-bottom: 1px solid #ffa501;
 }
