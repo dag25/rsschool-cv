@@ -364,22 +364,22 @@ fieldset {
 
 .hero__container {
   padding-top: 240px;
-  padding-bottom: 240px;
+  padding-bottom: 299px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
 }
 
 .hero__content {
   position: relative;
-  max-width: 532px;
+  width: 500px;
 }
 
 .hero__svg {
   position: absolute;
-  top: 0;
+  top: -10px;
   left: 50px;
   animation: rotate 20s linear infinite;
 }
@@ -405,6 +405,43 @@ fieldset {
   font-weight: 700;
   color: #fff;
 }
+
+.hero__title-variant {
+  position: relative;
+  color: rgba(255, 255, 255, 0.1);
+  animation: titleAnimation 12s infinite;
+  animation-delay: calc(-4s * var(--i));
+}
+
+.hero__title-variant::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #ffa501;
+  overflow: hidden;
+  animation: titleAnimation2 4s linear infinite;
+}
+
+@keyframes titleAnimation {
+  0% {
+    display: inline-block;
+  }
+  33.33%, 100% {
+    display: none;
+  }
+}
+
+@keyframes titleAnimation2 {
+  0%, 10%, 100% {
+    width: 0;
+  }
+  70%, 90% {
+    width: 100%;
+  }
+}
+
 
 .hero__description {
   position: relative;
