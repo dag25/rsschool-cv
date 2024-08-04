@@ -730,19 +730,20 @@ fieldset {
   position: relative;
   width: 300px;
   height: 300px;
-  background: repeating-conic-gradient(from var(--a), #ff8c00 0%, #ff8c00 5%, transparent 5%, transparent 40%,#ff8c00 50%);
+  background: repeating-conic-gradient(from var(--a), #ff8c00 0%, #ff8c00 5%, transparent 15%, transparent 40%,#ff8c00 50%);
   animation: animateBorder 2s linear infinite;
   animation-play-state: paused;
-  border-radius: 100%;
-  filter: drop-shadow(0 15px 10px #000);
+  border-radius: 25px;
+  filter: drop-shadow(0 5px 5px #f20680);
 }
 
 .education__item:nth-child(1) {
-  filter: drop-shadow(0 15px 10px #000);
+  filter: drop-shadow(0 5px 5px #A435F0);
+
 }
 
 .education__item:nth-child(3) {
-  filter: drop-shadow(0 15px 10px #000);
+  filter: drop-shadow(0 5px 5px #646362);
 }
 
 .education__item::before {
@@ -750,18 +751,19 @@ fieldset {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: repeating-conic-gradient(from var(--a), #ffa501 0%, #ffa501 5%, transparent 5%, transparent 40%,#ffa501 50%);
+  background: repeating-conic-gradient(from var(--a), #ffa501 0%, #ffa501 5%, transparent 15%, transparent 40%,#ffa501 50%);
   animation: animateBorder 2s linear infinite;
   animation-delay: -0.5s;
   animation-play-state: paused;
-  border-radius: 100%;
+  border: 1px solid #f1c46f;
+  border-radius: 25px;
 }
 
 .education__item::after {
   content: '';
   position: absolute;
   inset: 6px;
-  border-radius: 100%;
+  border-radius: 25px;
   background-color: #fff;
 }
 
@@ -964,6 +966,8 @@ fieldset {
 .article-block__title--portfolio {
   margin-bottom: 50px;
   text-align: center;
+  background-color:#ffa501;
+  border-radius: 5px;
 }
 
 .article-block__img--portfolio {
@@ -971,6 +975,21 @@ fieldset {
   width: 100%;
   vertical-align: top;
   transition: all .5s ease-out;
+}
+
+.article-block__link--portfolio {
+  display: block;
+  padding: 10px 0;
+  border: 1px solid #ffa501;
+  border-radius: 5px;
+  text-align: center;
+  color:#ff8c00;
+  transition: .34s;
+}
+
+.article-block__link--portfolio:hover {
+  background-color: #ffa501;
+  color: #fff;
 }
 
 .article-block--portfolio:hover .article-block__img--portfolio{
@@ -981,6 +1000,7 @@ fieldset {
 .article-block--portfolio:hover .article-block__text--portfolio {
   transform: translateX(0);
 }
+
 .article-block__text--portfolio {
   padding: 20px;
   background: rgba(27, 26, 26, 0.5);
