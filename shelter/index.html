@@ -27,35 +27,36 @@
           Shelter for pets in Boston
         </span>
       </a>
-      <nav class="header__nav nav burger">
+      <div class="header__burger burger">
         <input class="burger__toggle" id="burger__toggle" type="checkbox">
-        <label class="burger__btn" for="burger__toggle">
-          <img class="burger__icon" src="./image/burger.svg" alt="burger btn">
+        <label class="burger__box" for="burger__toggle">
+            <img class="burger__icon burger__icon--pets" src="./image/burger.svg" alt="burger btn">
         </label>
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a class="nav__link active" href="#index.html">
-              About the shelter
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="pets.html">
-              Our pets
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#help">
-              Help the shelter
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#footer">
-              Contacts
-            </a>
-          </li>
-        </ul>
-      </nav>
-
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a class="nav__link active" href="#index.html">
+                About the shelter
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="pets.html">
+                Our pets
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#help">
+                Help the shelter
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#footer">
+                Contacts
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
   <main class="main">
@@ -94,55 +95,92 @@
     </section>
 
     <section class="our-friends" id="our-friends">
+
       <div class="container  our-friends__container">
         <h2 class="our-friends__title">
           Our friends who<br>are looking for a&nbsp;house
         </h2>
-        <ul class="our-friends__list">
-          <li class="our-friends__item  our-friends__item--katrine">
-            <h3 class="our-friends__subtitle">
-              Katrine
-            </h3>
-            <button class="our-friends__btn">
-              Learn more
-            </button>
-          </li>
-          <li class="our-friends__item  our-friends__item--jennifer">
-            <h3 class="our-friends__subtitle">
-              Jennifer
-            </h3>
-            <button class="our-friends__btn">
-              Learn more
-            </button>
-          </li>
-          <li class="our-friends__item  our-friends__item--woody">
-            <h3 class="our-friends__subtitle">
-              Woody
-            </h3>
-            <button class="our-friends__btn">
-              Learn more
-            </button>
-          </li>
-        </ul>
-        <a class="our-friends__btn-more" href="pets.html">
-          Get to know the rest
-        </a>
-        <div class="our-friends__arrows">
-          <div class="our-friends__arrow our-friends__arrow--left">
+        <div class="wrapper">
+          <div class="our-friends__arrow our-friends__arrow--left"  id="right">
             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="currentColor" />
             </svg>
           </div>
-          <div class="our-friends__arrow our-friends__arrow--right">
+          <ul class="our-friends__list carousel">
+            <li class="our-friends__item  our-friends__item--sophia card">
+                <h3 class="our-friends__subtitle">
+                  Sophia
+                </h3>
+                <button class="our-friends__btn">
+                  Learn more
+                </button>
+            </li>
+            <li class="our-friends__item  our-friends__item--timmy card">
+                <h3 class="our-friends__subtitle">
+                  Timmy
+                </h3>
+                <button class="our-friends__btn">
+                  Learn more
+                </button>
+            </li>
+            <li class="our-friends__item  our-friends__item--charly card">
+                <h3 class="our-friends__subtitle">
+                  Charly
+                </h3>
+                <button class="our-friends__btn">
+                  Learn more
+                </button>
+            </li>
+            <li class="our-friends__item  our-friends__item--katrine card">
+                <h3 class="our-friends__subtitle">
+                  Katrine
+                </h3>
+                <button class="our-friends__btn">
+                  Learn more
+                </button>
+            </li>
+            <li class="our-friends__item  our-friends__item--jennifer card">
+                <h3 class="our-friends__subtitle">
+                  Jennifer
+                </h3>
+                <button class="our-friends__btn">
+                  Learn more
+                </button>
+            </li>
+            <li class="our-friends__item  our-friends__item--woody card">
+                <h3 class="our-friends__subtitle">
+                  Woody
+                </h3>
+                <button class="our-friends__btn">
+                  Learn more
+                </button>
+            </li>
+            <li class="our-friends__item  our-friends__item--scarlett card">
+              <h3 class="our-friends__subtitle">
+                Scarlett
+              </h3>
+              <button class="our-friends__btn">
+                Learn more
+              </button>
+            </li>
+            <li class="our-friends__item  our-friends__item--freddie card">
+                <h3 class="our-friends__subtitle">
+                  Freddie
+                </h3>
+                <button class="our-friends__btn">
+                  Learn more
+                </button>
+            </li>
+          </ul>
+          <div class="our-friends__arrow our-friends__arrow--right" id="left">
             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="currentColor" />
           </svg>
-          </div>
-        </div>
+        </div></div>
+        <a class="our-friends__btn-more" href="pets.html">
+          Get to know the rest
+        </a>
       </div>
-
-
-
     </section>
 
     <section class="help" id="help">
@@ -232,7 +270,7 @@
       <div class="container  in-addition__container">
         <div class="in-addition__content">
           <h2 class="in-addition__title">
-            You can also make a donation
+            You can also<br> make a donation
           </h2>
           <p class="in-addition__bank">
             Name of the bank / Type of bank account

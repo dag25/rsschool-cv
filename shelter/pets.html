@@ -26,36 +26,42 @@
           Shelter for pets in Boston
         </span>
       </a>
-      <nav class="header__nav nav">
-        <ul class="nav__list  nav__list--pets">
-          <li class="nav__item">
-            <a class="nav__link  nav__link--pets" href="index.html">
-              About the shelter
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link  active   nav__link--pets" href="#">
-              Our pets
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link   nav__link--pets" href="index.html#help">
-              Help the shelter
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link   nav__link--pets" href="#footer">
-              Contacts
-            </a>
-          </li>
-        </ul>
-      </nav>
 
+      <div class="header__burger burger burger--pets">
+        <input class="burger__toggle" id="burger__toggle" type="checkbox">
+        <label class="burger__box" for="burger__toggle">
+            <img class="burger__icon" src="./image/burger-pets.svg" alt="burger btn">
+        </label>
+        <nav class="header__nav nav nav--pets">
+          <ul class="nav__list nav__list--pets">
+            <li class="nav__item">
+              <a class="nav__link  nav__link--pets" href="index.html">
+                About the shelter
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link  nav__link--pets active" href="pets.html">
+                Our pets
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link  nav__link--pets" href="index.html#help">
+                Help the shelter
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link  nav__link--pets" href="#footer">
+                Contacts
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
   <main class="main">
     <section class="our-friends  our-friends--pets" id="our-friends">
-      <div class="container  our-friends__container">
+      <div class="container  our-friends__container  our-friends__container--pets">
         <h1 class="our-friends__title  our-friends__title--pets">
           Our friends who<br>
           are looking for a house
@@ -85,9 +91,9 @@
               Learn more
             </button>
           </li>
-          <li class="our-friends__item  our-friends__item--sophie">
+          <li class="our-friends__item  our-friends__item--sophia">
             <h3 class="our-friends__subtitle">
-              Sophie
+              Sophia
             </h3>
             <button class="our-friends__btn">
               Learn more
@@ -109,7 +115,7 @@
               Learn more
             </button>
           </li>
-          <li class="our-friends__item  our-friends__item--scarlet">
+          <li class="our-friends__item  our-friends__item--scarlett">
             <h3 class="our-friends__subtitle">
               Scarlett
             </h3>
