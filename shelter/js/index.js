@@ -1,3 +1,72 @@
-const selfAssessment =
-	'верстка страницы валидная: для проверки валидности вёрстки используйте сервис https://validator.w3.org/ . +4\nлоготип в хедере состоит из текстовых элементов +1\nстраница содержит ровно один элемент <h1> +1\nдобавлен favicon +1\nблок <header> +5\nблок Not only +5\nблок About +5\nблок Our Friends +5\nблок Help +5\nблок In addition +5\nблок <footer> +5\nдля позиционирования элементов блока Help использована сеточная верстка (flexbox или grid) +2\nпри уменьшении масштаба страницы браузера или увеличении ширины страницы (>1280px) вёрстка размещается по центру, а не сдвигается в сторону и не растягивается по всей ширине +2\nфоновый цвет тянется на всю ширину страницы +2\nэлемент About the Shelter в навигации подсвечен и неинтерактивен, остальные элементы навигации интерактивны +2\nкаждая карточка с питомцем в блоке Our Friends интерактивна при наведении на любую область этой карточки +2\nплавная прокрутка по якорям +2\nвыполняются все ссылочные связи согласно Перечню ссылочных связей для страницы Main +2n\nвыполнена интерактивность ссылок и кнопок\nвыполнена интерактивность ссылок и кнопок. Интерактивность заключается не только в изменении внешнего вида курсора, например, при помощи свойства cursor: pointer, но и в использовании и других визуальных эффектов, например, изменение цвета фона или цвета шрифта, согласно стайлгайду в макете. Если в макете стили не указаны, реализуете их по своему усмотрению, руководствуясь общим стилем макета +2\nобязательное требование к интерактивности: плавное изменение внешнего вида элемента при наведении и клике, не влияющее на соседние элементы +2\nСтраница Pets (40)\nверстка страницы валидная: для проверки валидности вёрстки используйте сервис https://validator.w3.org/ . +4\nоготип в хедере состоит из текстовых элементов +1\nстраница содержит ровно один элемент <h1> +1\nдобавлен favicon +1\nблок <header> +5\nблок Our Friends +5\nблок <footer> +5\nпри уменьшении масштаба страницы браузера или увеличении ширины страницы (>1280px) вёрстка размещается по центру, а не сдвигается в сторону и не растягивается по всей ширине +2\nфоновый цвет тянется на всю ширину страницы +2\nэлемент Our pets в навигации подсвечен и неинтерактивен, остальные элементы навигации интерактивны +2\nдоступные кнопки пагинации (вправо) активны, недоступные (влево) - неактивны (disabled) +2\nкаждая карточка с питомцем в блоке Our Friends интерактивна при наведении на любую область этой карточки +2\nплавная прокрутка по якорям +2\nыполняются все ссылочные связи согласно Перечню ссылочных связей для страницы Pets +2\nвыполнена интерактивность ссылок и кнопок. Интерактивность заключается не только в изменении внешнего вида курсора, например, при помощи свойства cursor: pointer, но и в использовании и других визуальных эффектов, например, изменение цвета фона или цвета шрифта, согласно стайлгайду в макете. Если в макете стили не указаны, реализуете их по своему усмотрению, руководствуясь общим стилем макета +2\nобязательное требование к интерактивности: плавное изменение внешнего вида элемента при наведении и клике, не влияющее на соседние элементы +2';
-console.log(selfAssessment);
+const wrapper = document.querySelector('.wrapper');
+const carousel = document.querySelector('.carousel');
+const firstCardWidth = document.querySelector('.card').offsetWidth;
+const arrowBtns = document.querySelectorAll('.our-friends__arrow');
+const carouselChildrens = [...carousel.children];
+
+let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+
+let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+  carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
+});
+
+carouselChildrens.slice(0, cardPerView).forEach(card => {
+  carousel.insertAdjacentHTML('beforeend', card.outerHTML);
+});
+
+carousel.classList.add('no-transition');
+carousel.scrollLeft = carousel.offsetWidth;
+carousel.classList.remove('no-transition');
+
+arrowBtns.forEach(btn => {
+  btn.addEventListener('click', e => {
+    carousel.scrollLeft += btn.id == 'left' ? -firstCardWidth : firstCardWidth;
+  });
+});
+const dragStart = (e) => {
+  isDragging = true;
+  carousel.classList.add('dragging');
+  startX = e.pageX;
+  startScrollLeft = carousel.scrollLeft;
+};
+
+const dragging = (e) => {
+  if (!isDragging) return;
+  carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+};
+
+const dragStop = (e) => {
+  isDragging = false;
+  carousel.classList.remove('dragging');
+};
+
+const infiniteScroll = (e) => {
+  if (carousel.scrollLeft === 0) {
+    carousel.classList.add('no-transition');
+    carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.scrollWidth);
+    carousel.classList.remove('no-transition');
+  } else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+    carousel.classList.add('no-transition');
+    carousel.scrollLeft = carousel.offsetWidth;
+    carousel.classList.remove('no-transition');
+  }
+  clearTimeout(timeoutId);
+  if (!wrapper.matches(':hover')) autoPlay();
+};
+
+const autoPlay = () => {
+  if (window.innerWidth < 800 || !isAutoPlay) return;
+  timeoutId = setTimeout(() => {
+    carousel.scrollLeft += firstCardWidth;
+  }, 2500);
+};
+autoPlay();
+
+carousel.addEventListener('mousedown', dragStart);
+carousel.addEventListener('mousemove', dragging);
+document.addEventListener('mouseup', dragStop);
+carousel.addEventListener('scroll', infiniteScroll);
+wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
+wrapper.addEventListener('mouseleave', autoPlay);
