@@ -1178,6 +1178,14 @@ iframe {
     grid-template-columns: 270px;
   }
 
+  .our-friends__item--sophia,
+  .our-friends__item--timmy,
+  .our-friends__item--charly,
+  .our-friends__item--scarlett,
+  .our-friends__item--freddie {
+    display: none;
+  }
+
   .pagination {
     gap: 10px;
   }
