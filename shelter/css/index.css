@@ -394,6 +394,7 @@ iframe {
   line-height: 1.6;
   color: var(--color-dark-xl);
 }
+
 /* our-friends */
 
 .our-friends {
@@ -442,6 +443,7 @@ iframe {
   row-gap: 33px;
   margin-bottom: 63px;
 }
+
 .our-friends__item {
   padding: 294px 43px 30px;
   background-color: var(--color-light-s);
@@ -463,12 +465,15 @@ iframe {
   background-color:var(--color-primary);
   color: var(--color-dark-l);
 }
+
 .our-friends__item--katrine {
   background-image: url('./../image/pets-katrine.png');
 }
+
 .our-friends__item--jennifer {
   background-image: url('./../image/pets-jennifer.png');
 }
+
 .our-friends__item--woody {
   background-image: url('./../image/pets-woody.png');
 }
