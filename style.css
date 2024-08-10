@@ -802,7 +802,7 @@ fieldset {
 }
 
 .article-block__fig--rsschool::before {
-  background-image: url('./rs-school-logo.svg');
+  background-image: url('./rs_school_logo.svg');
   height: 36px;
   width: 36px;
 }
