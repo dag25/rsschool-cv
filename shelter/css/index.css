@@ -507,6 +507,10 @@ iframe {
   scroll-snap-align: start;
 }
 
+.our-friends__list:hover .our-friends__item{
+  filter: grayscale(1);
+}
+
 .our-friends__list--pets {
   display: grid;
   grid-template-columns: repeat(4, 270px);
@@ -528,10 +532,11 @@ iframe {
 }
 
 
-.our-friends__item:hover {
+.our-friends__list .our-friends__item:hover {
   box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
   background-color: var(--color-light-xl);
   transform: translateY(-5px);
+  filter: grayscale(0);
 }
 
 .our-friends__item:hover .our-friends__btn {
