@@ -1145,7 +1145,8 @@ iframe {
     padding-top: 248px;
     padding-right: 28px;
     padding-left: 28px;
-    padding-bottom: 577px;
+    padding-bottom: 600px;
+    width: 320px;
     background: var(--color-dark-3xl);
   }
 
@@ -1185,7 +1186,7 @@ iframe {
 
 @media (max-width: 620px) {
   .nav__list {
-    padding-bottom: 212px;
+    padding-bottom: 237px;
   }
   .not-only {
     padding-bottom: 377px;
@@ -1371,7 +1372,7 @@ iframe {
 
 @media (max-width: 480px) {
   .nav__list {
-    padding-bottom: 224px;
+    padding-bottom: 250px;
   }
   .nav__link {
     font-size: 30px;
@@ -1381,6 +1382,12 @@ iframe {
     padding: 0 20px;
   }
 }
+@media (max-width: 375px) {
+  .nav__list {
+    padding-bottom: 275px;
+  }
+}
+
 
 @media (max-width: 320px) {
   .container {
