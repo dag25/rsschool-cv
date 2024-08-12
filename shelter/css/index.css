@@ -981,6 +981,8 @@ iframe {
     gap: 80px;
   }
 
+
+
   .about__img {
     order: 1;
   }
@@ -1413,6 +1415,7 @@ iframe {
 
   .about__content {
     gap: 25px;
+    align-items: center;
   }
 
   .about__text {
