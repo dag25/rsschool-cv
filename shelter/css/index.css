@@ -1410,7 +1410,7 @@ iframe {
     padding: 0 20px;
   }
 }
-@media (max-width: 375px) {
+@media (max-width: 405px) {
   .nav__list {
     padding-bottom: 275px;
   }
