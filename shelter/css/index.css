@@ -1128,7 +1128,7 @@ iframe {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767px) {
   .header__container--pets {
     display: flex;
     align-items: center;
