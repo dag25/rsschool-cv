@@ -1410,10 +1410,19 @@ iframe {
     padding: 0 20px;
   }
 }
+
 @media (max-width: 405px) {
   .nav__list {
     padding-bottom: 275px;
   }
+
+
+  .not-only__text {
+    margin-bottom: 40px;
+    width: 300px;
+    text-align: center;
+  }
+
 }
 
 
@@ -1429,11 +1438,6 @@ iframe {
     letter-spacing: 0.06em;
   }
 
-  .not-only__text {
-    margin-bottom: 40px;
-    width: 300px;
-    text-align: center;
-  }
 
   .about {
     padding-top: 39px;
