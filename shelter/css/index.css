@@ -268,7 +268,6 @@ iframe {
 }
 
 /* burger */
-
 .burger {
   display: flex;
   align-items: center;
@@ -302,7 +301,6 @@ iframe {
 
 
 /* not-only */
-
 .not-only {
   position: relative;
   padding: 343px 0 243px;
