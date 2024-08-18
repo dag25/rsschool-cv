@@ -1,6 +1,6 @@
 const wrapper = document.querySelector('.wrapper');
 const carousel = document.querySelector('.carousel');
-const firstCardWidth = document.querySelector('.card').offsetWidth;
+const firstCardWidth = document.querySelector('.our-friends__item').offsetWidth;
 const arrowBtns = document.querySelectorAll('.our-friends__arrow');
 const carouselChildrens = [...carousel.children];
 
@@ -70,3 +70,114 @@ document.addEventListener('mouseup', dragStop);
 carousel.addEventListener('scroll', infiniteScroll);
 wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
 wrapper.addEventListener('mouseleave', autoPlay);
+
+// Scroll
+const disabledScroll = () => {
+  document.body.scrollPosition = window.scrollY;
+  document.body.style.cssText = `
+  overflow: hidden;
+  position: fixed;
+  top: -${document.body.scrollPosition}px;
+  left: 0;
+  height: 100wh;
+  width: 100vw;
+  padding-right: ${window.innerWidth - document.body.offsetWidth}px;
+  `;
+};
+
+const enabledScroll = () => {
+  document.body.style.cssText = '';
+  window.scroll({top: document.body.scrollPosition});
+};
+
+// modal
+
+
+const createElement = (tag, attr) => {
+  const element = document.createElement(tag);
+  return Object.assign(element, {...attr});
+};
+
+const createModal = (title) => {
+  const overlayElement = createElement('div', {className: 'overlay'});
+  const modalElement = createElement('div', {className: 'modal'});
+  const modalContainerElement = createElement('div', {className: 'modal__container'});
+  const modalImgElement = createElement('img', {className: 'modal__img', src:'image/pets-freddie.png', alt: 'Timmy'});
+  const modalContentElement = createElement('div', {className: 'modal__content'});
+  modalContainerElement.append(modalImgElement, modalContentElement);
+
+
+  const titleElement = createElement('h2', {className: 'modal__title', textContent: `${title}`});
+  const breedElement = createElement('p', {
+		className: 'modal__breed',
+		textContent: 'Dog - Labrador',
+	});
+  const descriptionElement = createElement('p', {className: 'modal__description', textContent: "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys."});
+
+  const modalListElement = createElement('ul', {className: 'modal__list'});
+
+  const listItem1Element = createElement('li', {
+    className: 'modal__item',
+    innerHTML:`<b>Age:</b> 2 months,`});
+  const listItem2Element = createElement('li', {
+		className: 'modal__item',
+    innerHTML:`<b>Inoculations:</b> none`,
+	});
+  const listItem3Element = createElement('li', {
+		className: 'modal__item',
+    innerHTML:`<b>Diseases:</b> none`,
+	});
+  const listItem4Element = createElement('li', {
+		className: 'modal__item',
+    innerHTML:`<b>Parasites:</b> none`,
+	});
+
+
+
+  modalListElement.append(listItem1Element, listItem2Element, listItem3Element, listItem4Element);
+
+  modalContentElement.append(titleElement, breedElement, descriptionElement, modalListElement);
+
+  const closeBtnElement = createElement('button', {
+		className: 'modal__close',
+		innerHTML: `<svg width="52" height="52" viewBox="0 0 52 52" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="50" height="50" rx="25" stroke="#F1CDB3" stroke-width="2"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M27.4262 26L31.7046 21.7216C32.0985 21.3277 32.0985 20.6892 31.7046 20.2954C31.3108 19.9016 30.6723 19.9016 30.2785 20.2954L26 24.5739L21.7215 20.2954C21.3276 19.9015 20.6892 19.9015 20.2953 20.2954C19.9016 20.6892 19.9016 21.3277 20.2953 21.7215L24.5738 26L20.2953 30.2785C19.9016 30.6723 19.9016 31.3108 20.2953 31.7046C20.6892 32.0985 21.3276 32.0985 21.7215 31.7046L26 27.4261L30.2785 31.7046C30.6723 32.0985 31.3108 32.0985 31.7046 31.7046C32.0985 31.3108 32.0985 30.6723 31.7046 30.2785L27.4262 26Z" fill="#292929"/>
+    </svg>
+    `,
+	});
+
+  overlayElement.addEventListener('click', ({target}) => {
+    if (target === overlayElement || target.closest('.modal__close')) {
+      overlayElement.remove();
+      enabledScroll();
+    }
+  });
+
+
+  modalElement.append(modalContainerElement, closeBtnElement);
+  overlayElement.append(modalElement);
+
+  disabledScroll();
+
+  document.body.appendChild(overlayElement);
+};
+
+const productTitles = document.querySelectorAll('.our-friends__subtitle');
+const productBtns = document.querySelectorAll('.our-friends__btn');
+
+for (let i = 0; i < productBtns.length; i++) {
+  productBtns[i].addEventListener('click', () => {
+    const title = productTitles[i].textContent.trim();
+    createModal(title);
+  });
+}
+
+fetch('data/pets.json')
+.then(response => response.json())
+.then(data => {
+  data.forEach(item => {
+    
+  })
+})
+// burger
