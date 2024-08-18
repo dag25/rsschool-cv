@@ -98,47 +98,79 @@ const createElement = (tag, attr) => {
   return Object.assign(element, {...attr});
 };
 
-const createModal = (title) => {
-  const overlayElement = createElement('div', {className: 'overlay'});
-  const modalElement = createElement('div', {className: 'modal'});
-  const modalContainerElement = createElement('div', {className: 'modal__container'});
-  const modalImgElement = createElement('img', {className: 'modal__img', src:'image/pets-freddie.png', alt: 'Timmy'});
-  const modalContentElement = createElement('div', {className: 'modal__content'});
-  modalContainerElement.append(modalImgElement, modalContentElement);
+const createModal = (
+	name,
+	img,
+	type,
+	breed,
+	description,
+	age,
+	inoculations,
+	diseases,
+	parasites,
+) => {
+	const overlayElement = createElement('div', { className: 'overlay' });
+	const modalElement = createElement('div', { className: 'modal' });
+	const modalContainerElement = createElement('div', {
+		className: 'modal__container',
+	});
+	const modalImgElement = createElement('img', {
+		className: 'modal__img',
+		src: img,
+		alt: name,
+	});
+	const modalContentElement = createElement('div', {
+		className: 'modal__content',
+	});
+	modalContainerElement.append(modalImgElement, modalContentElement);
 
-
-  const titleElement = createElement('h2', {className: 'modal__title', textContent: `${title}`});
-  const breedElement = createElement('p', {
+	const titleElement = createElement('h2', {
+		className: 'modal__title',
+		textContent: name,
+	});
+	const breedElement = createElement('p', {
 		className: 'modal__breed',
-		textContent: 'Dog - Labrador',
+		textContent: `${type} - ${breed}`,
 	});
-  const descriptionElement = createElement('p', {className: 'modal__description', textContent: "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys."});
+	const descriptionElement = createElement('p', {
+		className: 'modal__description',
+		textContent: description,
+	});
 
-  const modalListElement = createElement('ul', {className: 'modal__list'});
+	const modalListElement = createElement('ul', { className: 'modal__list' });
 
-  const listItem1Element = createElement('li', {
-    className: 'modal__item',
-    innerHTML:`<b>Age:</b> 2 months,`});
-  const listItem2Element = createElement('li', {
+	const listItem1Element = createElement('li', {
 		className: 'modal__item',
-    innerHTML:`<b>Inoculations:</b> none`,
+		innerHTML: `<b>Age:</b> ${age},`,
 	});
-  const listItem3Element = createElement('li', {
+	const listItem2Element = createElement('li', {
 		className: 'modal__item',
-    innerHTML:`<b>Diseases:</b> none`,
+		innerHTML: `<b>Inoculations:</b> ${inoculations}`,
 	});
-  const listItem4Element = createElement('li', {
+	const listItem3Element = createElement('li', {
 		className: 'modal__item',
-    innerHTML:`<b>Parasites:</b> none`,
+		innerHTML: `<b>Diseases:</b> ${diseases}`,
+	});
+	const listItem4Element = createElement('li', {
+		className: 'modal__item',
+		innerHTML: `<b>Parasites:</b> ${parasites}`,
 	});
 
+	modalListElement.append(
+		listItem1Element,
+		listItem2Element,
+		listItem3Element,
+		listItem4Element,
+	);
 
+	modalContentElement.append(
+		titleElement,
+		breedElement,
+		descriptionElement,
+		modalListElement,
+	);
 
-  modalListElement.append(listItem1Element, listItem2Element, listItem3Element, listItem4Element);
-
-  modalContentElement.append(titleElement, breedElement, descriptionElement, modalListElement);
-
-  const closeBtnElement = createElement('button', {
+	const closeBtnElement = createElement('button', {
 		className: 'modal__close',
 		innerHTML: `<svg width="52" height="52" viewBox="0 0 52 52" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <rect x="1" y="1" width="50" height="50" rx="25" stroke="#F1CDB3" stroke-width="2"/>
@@ -147,20 +179,22 @@ const createModal = (title) => {
     `,
 	});
 
-  overlayElement.addEventListener('click', ({target}) => {
-    if (target === overlayElement || target.closest('.modal__close')) {
-      overlayElement.remove();
-      enabledScroll();
-    }
-  });
+	overlayElement.addEventListener('click', event => {
+		const target = event.target;
+		if (
+			target === overlayElement ||
+			target.closest('.modal__close')
+		) {
+			overlayElement.remove();
+			enabledScroll();
+		}
+	});
+	modalElement.append(modalContainerElement, closeBtnElement);
+	overlayElement.append(modalElement);
 
+	disabledScroll();
 
-  modalElement.append(modalContainerElement, closeBtnElement);
-  overlayElement.append(modalElement);
-
-  disabledScroll();
-
-  document.body.appendChild(overlayElement);
+	document.body.appendChild(overlayElement);
 };
 
 const productTitles = document.querySelectorAll('.our-friends__subtitle');
@@ -169,15 +203,38 @@ const productBtns = document.querySelectorAll('.our-friends__btn');
 for (let i = 0; i < productBtns.length; i++) {
   productBtns[i].addEventListener('click', () => {
     const title = productTitles[i].textContent.trim();
-    createModal(title);
+    const jsonFile = 'data/pets.json';
+		fetch(jsonFile)
+			.then(response => {
+				return response.json();
+			})
+			.then(data => {
+				data.map(pet => {
+					const {
+						name,
+						img,
+						type,
+						breed,
+						description,
+						age,
+						inoculations,
+						diseases,
+						parasites,
+					} = pet;
+          if (pet.name === title) {
+            createModal(
+							name,
+							img,
+							type,
+							breed,
+							description,
+							age,
+							inoculations,
+							diseases,
+							parasites,
+						);
+          }
+				});
+			});
   });
 }
-
-fetch('data/pets.json')
-.then(response => response.json())
-.then(data => {
-  data.forEach(item => {
-    
-  })
-})
-// burger

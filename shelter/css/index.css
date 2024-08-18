@@ -901,6 +901,8 @@ iframe {
 .footer__address {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   max-width: 302px;
 }
 
@@ -989,6 +991,7 @@ iframe {
 
 .modal__container {
   display: flex;
+  gap: 30px;
   margin: auto;
   background-color: var(--color-light-s);
   border-radius: 9px;
@@ -997,7 +1000,8 @@ iframe {
 
 .modal__img {
   min-width: 500px;
-  border-radius: 9px
+  border-radius: 9px 0 0 9px;
+  object-fit: cover;
 }
 
 .modal__content {
@@ -1040,6 +1044,11 @@ iframe {
 .modal__item {
   position: relative;
   padding-left: 15px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  color: #000;
 }
 
 .modal__item::before {
@@ -1199,6 +1208,24 @@ iframe {
   .footer__link-svg--pets {
     padding-top: 4px;
   }
+
+  .modal__container {
+    gap: 10px;
+  }
+
+  .modal__breed {
+    margin-bottom: 20px;
+  }
+
+  .modal__description {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  .modal__img {
+    min-width: 349px;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -1334,6 +1361,31 @@ iframe {
 
   .our-friends__arrow--right {
     right: 40px;
+  }
+
+
+
+  .modal__title {
+    text-align: center;
+  }
+
+  .modal__breed {
+    text-align: center;
+  }
+
+  .modal__content {
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
+
+  .modal__description {
+    margin-bottom: 24px;
+    font-size: 13px;
+    text-align: justify;
+  }
+
+  .modal__img {
+    display: none;
   }
 }
 
@@ -1495,7 +1547,7 @@ iframe {
   }
 
   .footer__title {
-    margin-bottom: 29px;
+    margin-bottom: 30px;
     font-size: 25px;
     text-align: center;
   }
@@ -1517,8 +1569,8 @@ iframe {
   }
 
   .footer__title--address {
+    max-width: 270px;
     margin-bottom: 39px;
-    padding-left: 6px;
   }
 
   .footer__title-address--pets {
@@ -1668,5 +1720,9 @@ iframe {
   }
   .footer__container--pets::after {
     bottom: -333px;
+  }
+
+  .modal {
+    padding-left: 40px;
   }
 }
