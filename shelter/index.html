@@ -17,7 +17,7 @@
   <script src="./js/index.js" defer></script>
 </head>
 <body>
-  <header class="header">
+  <header class="header" id="header">
     <div class="container  header__container">
       <a class="header__logo" href="#index.html">
         <span class="header__logo-title">
@@ -27,38 +27,36 @@
           Shelter for pets in Boston
         </span>
       </a>
-      <div class="header__burger  burger">
-        <input class="burger__toggle" id="burger__toggle" type="checkbox">
-        <label class="burger__wrapper" for="burger__toggle">
-          <div class="burger__box burger__box--pets">
-            <span class="burger__line"></span>
-          </div>
-        </label>
-        <nav class="header__nav nav">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a class="nav__link active" href="#index.html">
+
+      <nav class="header__nav nav">
+        <ul class="nav__list">
+            <li class="nav__item  link">
+              <a class="nav__link nav__link--active" href="#header">
                 About the shelter
               </a>
             </li>
-            <li class="nav__item">
+            <li class="nav__item  link">
               <a class="nav__link" href="pets.html">
                 Our pets
               </a>
             </li>
-            <li class="nav__item">
+            <li class="nav__item  link">
               <a class="nav__link" href="#help">
                 Help the shelter
               </a>
             </li>
-            <li class="nav__item">
+            <li class="nav__item  link">
               <a class="nav__link" href="#footer">
                 Contacts
               </a>
             </li>
-          </ul>
-        </nav>
+        </ul>
+      </nav>
+
+      <div class="header__burger  burger">
+        <span class="burger__line"></span>
       </div>
+
     </div>
   </header>
   <main class="main">
@@ -270,6 +268,7 @@
 
     <section class="in-addition">
       <div class="container  in-addition__container">
+        <img class="in-addition__img" src="./image/donation-dog.png" alt="Dog">
         <div class="in-addition__content">
           <h2 class="in-addition__title">
             You can also<br> make a donation
@@ -318,7 +317,7 @@
       </div>
       <div class="footer__address">
         <h3 class="footer__title footer__title--address">
-          We are waiting&nbsp;for your visit
+          We are waiting for your visit
         </h3>
         <ul class="footer__list footer__list--address">
           <li  class="footer__item">
@@ -343,6 +342,6 @@
       </div>
     </div>
   </footer>
-
+  <div class="blackout"></div>
 </body>
 </html>
