@@ -1,75 +1,91 @@
-const wrapper = document.querySelector('.wrapper');
-const carousel = document.querySelector('.carousel');
-const firstCardWidth = document.querySelector('.our-friends__item').offsetWidth;
-const arrowBtns = document.querySelectorAll('.our-friends__arrow');
-const carouselChildrens = [...carousel.children];
+console.log(window.location.pathname);
+if (window.location.pathname === '/shelter/index.html') {
+	const wrapper = document.querySelector('.wrapper');
+	const carousel = document.querySelector('.carousel');
+	const firstCardWidth =
+		document.querySelector('.our-friends__item').offsetWidth;
+	const arrowBtns = document.querySelectorAll('.our-friends__arrow');
+	const carouselChildrens = [...carousel.children];
 
-let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+	let isDragging = false,
+		isAutoPlay = true,
+		startX,
+		startScrollLeft,
+		timeoutId;
 
-let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+	let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 
-carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-  carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
-});
+	carouselChildrens
+		.slice(-cardPerView)
+		.reverse()
+		.forEach(card => {
+			carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
+		});
 
-carouselChildrens.slice(0, cardPerView).forEach(card => {
-  carousel.insertAdjacentHTML('beforeend', card.outerHTML);
-});
+	carouselChildrens.slice(0, cardPerView).forEach(card => {
+		carousel.insertAdjacentHTML('beforeend', card.outerHTML);
+	});
 
-carousel.classList.add('no-transition');
-carousel.scrollLeft = carousel.offsetWidth;
-carousel.classList.remove('no-transition');
+	carousel.classList.add('no-transition');
+	carousel.scrollLeft = carousel.offsetWidth;
+	carousel.classList.remove('no-transition');
 
-arrowBtns.forEach(btn => {
-  btn.addEventListener('click', e => {
-    carousel.scrollLeft += btn.id == 'left' ? -firstCardWidth : firstCardWidth;
-  });
-});
-const dragStart = (e) => {
-  isDragging = true;
-  carousel.classList.add('dragging');
-  startX = e.pageX;
-  startScrollLeft = carousel.scrollLeft;
-};
+	arrowBtns.forEach(btn => {
+		btn.addEventListener('click', e => {
+			carousel.scrollLeft +=
+				btn.id == 'left' ? -firstCardWidth : firstCardWidth;
+		});
+	});
+	const dragStart = e => {
+		isDragging = true;
+		carousel.classList.add('dragging');
+		startX = e.pageX;
+		startScrollLeft = carousel.scrollLeft;
+	};
 
-const dragging = (e) => {
-  if (!isDragging) return;
-  carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
-};
+	const dragging = e => {
+		if (!isDragging) return;
+		carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+	};
 
-const dragStop = (e) => {
-  isDragging = false;
-  carousel.classList.remove('dragging');
-};
+	const dragStop = e => {
+		isDragging = false;
+		carousel.classList.remove('dragging');
+	};
 
-const infiniteScroll = (e) => {
-  if (carousel.scrollLeft === 0) {
-    carousel.classList.add('no-transition');
-    carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.scrollWidth);
-    carousel.classList.remove('no-transition');
-  } else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-    carousel.classList.add('no-transition');
-    carousel.scrollLeft = carousel.offsetWidth;
-    carousel.classList.remove('no-transition');
-  }
-  clearTimeout(timeoutId);
-  if (!wrapper.matches(':hover')) autoPlay();
-};
+	const infiniteScroll = e => {
+		if (carousel.scrollLeft === 0) {
+			carousel.classList.add('no-transition');
+			carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.scrollWidth;
+			carousel.classList.remove('no-transition');
+		} else if (
+			Math.ceil(carousel.scrollLeft) ===
+			carousel.scrollWidth - carousel.offsetWidth
+		) {
+			carousel.classList.add('no-transition');
+			carousel.scrollLeft = carousel.offsetWidth;
+			carousel.classList.remove('no-transition');
+		}
+		clearTimeout(timeoutId);
+		if (!wrapper.matches(':hover')) autoPlay();
+	};
 
-const autoPlay = () => {
-  if (window.innerWidth < 800 || !isAutoPlay) return;
-  timeoutId = setTimeout(() => {
-    carousel.scrollLeft += firstCardWidth;
-  }, 2500);
-};
-autoPlay();
+	const autoPlay = () => {
+		if (window.innerWidth < 800 || !isAutoPlay) return;
+		timeoutId = setTimeout(() => {
+			carousel.scrollLeft += firstCardWidth;
+		}, 2500);
+	};
+	autoPlay();
 
-carousel.addEventListener('mousedown', dragStart);
-carousel.addEventListener('mousemove', dragging);
-document.addEventListener('mouseup', dragStop);
-carousel.addEventListener('scroll', infiniteScroll);
-wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
-wrapper.addEventListener('mouseleave', autoPlay);
+	carousel.addEventListener('mousedown', dragStart);
+	carousel.addEventListener('mousemove', dragging);
+	document.addEventListener('mouseup', dragStop);
+	carousel.addEventListener('scroll', infiniteScroll);
+	wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
+	wrapper.addEventListener('mouseleave', autoPlay);
+}
+
 
 // Scroll
 const disabledScroll = () => {
@@ -98,47 +114,79 @@ const createElement = (tag, attr) => {
   return Object.assign(element, {...attr});
 };
 
-const createModal = (title) => {
-  const overlayElement = createElement('div', {className: 'overlay'});
-  const modalElement = createElement('div', {className: 'modal'});
-  const modalContainerElement = createElement('div', {className: 'modal__container'});
-  const modalImgElement = createElement('img', {className: 'modal__img', src:'image/pets-freddie.png', alt: 'Timmy'});
-  const modalContentElement = createElement('div', {className: 'modal__content'});
-  modalContainerElement.append(modalImgElement, modalContentElement);
+const createModal = (
+	name,
+	img,
+	type,
+	breed,
+	description,
+	age,
+	inoculations,
+	diseases,
+	parasites,
+) => {
+	const overlayElement = createElement('div', { className: 'overlay' });
+	const modalElement = createElement('div', { className: 'modal' });
+	const modalContainerElement = createElement('div', {
+		className: 'modal__container',
+	});
+	const modalImgElement = createElement('img', {
+		className: 'modal__img',
+		src: img,
+		alt: name,
+	});
+	const modalContentElement = createElement('div', {
+		className: 'modal__content',
+	});
+	modalContainerElement.append(modalImgElement, modalContentElement);
 
-
-  const titleElement = createElement('h2', {className: 'modal__title', textContent: `${title}`});
-  const breedElement = createElement('p', {
+	const titleElement = createElement('h2', {
+		className: 'modal__title',
+		textContent: name,
+	});
+	const breedElement = createElement('p', {
 		className: 'modal__breed',
-		textContent: 'Dog - Labrador',
+		textContent: `${type} - ${breed}`,
 	});
-  const descriptionElement = createElement('p', {className: 'modal__description', textContent: "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys."});
+	const descriptionElement = createElement('p', {
+		className: 'modal__description',
+		textContent: description,
+	});
 
-  const modalListElement = createElement('ul', {className: 'modal__list'});
+	const modalListElement = createElement('ul', { className: 'modal__list' });
 
-  const listItem1Element = createElement('li', {
-    className: 'modal__item',
-    innerHTML:`<b>Age:</b> 2 months,`});
-  const listItem2Element = createElement('li', {
+	const listItem1Element = createElement('li', {
 		className: 'modal__item',
-    innerHTML:`<b>Inoculations:</b> none`,
+		innerHTML: `<b>Age:</b> ${age}`,
 	});
-  const listItem3Element = createElement('li', {
+	const listItem2Element = createElement('li', {
 		className: 'modal__item',
-    innerHTML:`<b>Diseases:</b> none`,
+		innerHTML: `<b>Inoculations:</b> ${inoculations}`,
 	});
-  const listItem4Element = createElement('li', {
+	const listItem3Element = createElement('li', {
 		className: 'modal__item',
-    innerHTML:`<b>Parasites:</b> none`,
+		innerHTML: `<b>Diseases:</b> ${diseases}`,
+	});
+	const listItem4Element = createElement('li', {
+		className: 'modal__item',
+		innerHTML: `<b>Parasites:</b> ${parasites}`,
 	});
 
+	modalListElement.append(
+		listItem1Element,
+		listItem2Element,
+		listItem3Element,
+		listItem4Element,
+	);
 
+	modalContentElement.append(
+		titleElement,
+		breedElement,
+		descriptionElement,
+		modalListElement,
+	);
 
-  modalListElement.append(listItem1Element, listItem2Element, listItem3Element, listItem4Element);
-
-  modalContentElement.append(titleElement, breedElement, descriptionElement, modalListElement);
-
-  const closeBtnElement = createElement('button', {
+	const closeBtnElement = createElement('button', {
 		className: 'modal__close',
 		innerHTML: `<svg width="52" height="52" viewBox="0 0 52 52" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <rect x="1" y="1" width="50" height="50" rx="25" stroke="#F1CDB3" stroke-width="2"/>
@@ -147,20 +195,22 @@ const createModal = (title) => {
     `,
 	});
 
-  overlayElement.addEventListener('click', ({target}) => {
-    if (target === overlayElement || target.closest('.modal__close')) {
-      overlayElement.remove();
-      enabledScroll();
-    }
-  });
+	overlayElement.addEventListener('click', event => {
+		const target = event.target;
+		if (
+			target === overlayElement ||
+			target.closest('.modal__close')
+		) {
+			overlayElement.remove();
+			enabledScroll();
+		}
+	});
+	modalElement.append(modalContainerElement, closeBtnElement);
+	overlayElement.append(modalElement);
 
+	disabledScroll();
 
-  modalElement.append(modalContainerElement, closeBtnElement);
-  overlayElement.append(modalElement);
-
-  disabledScroll();
-
-  document.body.appendChild(overlayElement);
+	document.body.appendChild(overlayElement);
 };
 
 const productTitles = document.querySelectorAll('.our-friends__subtitle');
@@ -169,15 +219,72 @@ const productBtns = document.querySelectorAll('.our-friends__btn');
 for (let i = 0; i < productBtns.length; i++) {
   productBtns[i].addEventListener('click', () => {
     const title = productTitles[i].textContent.trim();
-    createModal(title);
+    const jsonFile = 'data/pets.json';
+		fetch(jsonFile)
+			.then(response => {
+				return response.json();
+			})
+			.then(data => {
+				data.map(pet => {
+					const {
+						name,
+						img,
+						type,
+						breed,
+						description,
+						age,
+						inoculations,
+						diseases,
+						parasites,
+					} = pet;
+          if (pet.name === title) {
+            createModal(
+							name,
+							img,
+							type,
+							breed,
+							description,
+							age,
+							inoculations,
+							diseases,
+							parasites,
+						);
+          }
+				});
+			});
   });
 }
 
-fetch('data/pets.json')
-.then(response => response.json())
-.then(data => {
-  data.forEach(item => {
-    
-  })
-})
 // burger
+
+const burgerHide = document.querySelector('.burger__hide');
+const burgerBtnElement = document.querySelector('.burger__box');
+const navElement = document.querySelector('.nav');
+const navLinkElements = document.querySelectorAll('.nav__link');
+const overlayElement = document.querySelector('.blackout');
+
+if (burgerBtnElement) {
+		burgerBtnElement.addEventListener('click', () => {
+		document.body.classList.toggle('body--locked');
+    burgerBtnElement.classList.toggle('nav--open');
+    navElement.classList.toggle('nav--open');
+		overlayElement.classList.toggle('overlay');
+		burgerHide.classList.toggle('nav--open');
+  });
+}
+
+if (navLinkElements.length > 0) {
+	navLinkElements.forEach((navLinkElement) => {
+		navLinkElement.addEventListener('click', () => {
+      document.body.classList.remove('body--locked');
+      burgerBtnElement.classList.remove('nav--open');
+      navElement.classList.remove('nav--open');
+			overlayElement.classList.remove('overlay');
+			navLinkElements.forEach((navLinkElement) => {
+				navLinkElement.classList.remove('nav__link--active');
+			});
+			navLinkElement.classList.add('nav__link--active');
+
+		});
+  });
+}
