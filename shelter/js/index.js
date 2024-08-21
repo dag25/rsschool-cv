@@ -257,7 +257,8 @@ for (let i = 0; i < productBtns.length; i++) {
 
 // burger
 
-const burgerBtnElement = document.querySelector('.burger');
+const burgerHide = document.querySelector('.burger__hide');
+const burgerBtnElement = document.querySelector('.burger__box');
 const navElement = document.querySelector('.nav');
 const navLinkElements = document.querySelectorAll('.nav__link');
 const overlayElement = document.querySelector('.blackout');
@@ -268,6 +269,7 @@ if (burgerBtnElement) {
     burgerBtnElement.classList.toggle('nav--open');
     navElement.classList.toggle('nav--open');
 		overlayElement.classList.toggle('overlay');
+		burgerHide.classList.toggle('nav--open');
   });
 }
 
