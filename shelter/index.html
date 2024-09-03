@@ -11,10 +11,12 @@
   <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>Document</title>
+  <title>
+    Cozy House - Shelter for pets in Boston
+  </title>
   <link href="./css/normalize.css" rel="stylesheet">
   <link href="./css/index.css" rel="stylesheet">
-  <script src="./js/index.js" defer></script>
+  <script src="./js/index.js" type="module"></script>
 </head>
 <body>
   <header class="header" id="header">
@@ -105,83 +107,20 @@
         <h2 class="our-friends__title">
           Our friends who<br>are looking for&nbsp;a&nbsp;house
         </h2>
-        <div class="wrapper">
-          <div class="our-friends__arrow our-friends__arrow--left"  id="right">
+        <div class="our-friends__slider  slider">
+          <div class="our-friends__arrow our-friends__arrow--left"  id="left">
             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="currentColor" />
             </svg>
           </div>
-          <ul class="our-friends__list carousel">
-            <li class="our-friends__item  our-friends__item--sophia card">
-                <h3 class="our-friends__subtitle">
-                  Sophia
-                </h3>
-                <button class="our-friends__btn">
-                  Learn more
-                </button>
-            </li>
-            <li class="our-friends__item  our-friends__item--timmy card">
-                <h3 class="our-friends__subtitle">
-                  Timmy
-                </h3>
-                <button class="our-friends__btn">
-                  Learn more
-                </button>
-            </li>
-            <li class="our-friends__item  our-friends__item--charly card">
-                <h3 class="our-friends__subtitle">
-                  Charly
-                </h3>
-                <button class="our-friends__btn">
-                  Learn more
-                </button>
-            </li>
-            <li class="our-friends__item  our-friends__item--katrine card">
-                <h3 class="our-friends__subtitle">
-                  Katrine
-                </h3>
-                <button class="our-friends__btn">
-                  Learn more
-                </button>
-            </li>
-            <li class="our-friends__item  our-friends__item--jennifer card">
-                <h3 class="our-friends__subtitle">
-                  Jennifer
-                </h3>
-                <button class="our-friends__btn">
-                  Learn more
-                </button>
-            </li>
-            <li class="our-friends__item  our-friends__item--woody card">
-                <h3 class="our-friends__subtitle">
-                  Woody
-                </h3>
-                <button class="our-friends__btn">
-                  Learn more
-                </button>
-            </li>
-            <li class="our-friends__item  our-friends__item--scarlett card">
-              <h3 class="our-friends__subtitle">
-                Scarlett
-              </h3>
-              <button class="our-friends__btn">
-                Learn more
-              </button>
-            </li>
-            <li class="our-friends__item  our-friends__item--freddie card">
-                <h3 class="our-friends__subtitle">
-                  Freddie
-                </h3>
-                <button class="our-friends__btn">
-                  Learn more
-                </button>
-            </li>
+          <ul class="our-friends__list slider__line">
           </ul>
-          <div class="our-friends__arrow our-friends__arrow--right" id="left">
+          <div class="our-friends__arrow our-friends__arrow--right" id="right">
             <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="currentColor" />
           </svg>
-        </div></div>
+          </div>
+        </div>
         <a class="our-friends__btn-more" href="pets.html">
           Get to know the rest
         </a>
@@ -347,6 +286,32 @@
       </div>
     </div>
   </footer>
-  <div class="blackout"></div>
+  <div class="overlay">
+    <div class="modal">
+      <!-- <img class="modal__img" src="./image/pets-woody.png" alt="Woody">
+      <div class="modal__content">
+        <h2 class="modal__title">Woody</h2>
+        <p class="modal__breed">Woody</p>
+        <p class="modal__description">
+          Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.
+        </p>
+        <ul class="modal__list">
+          <li class="modal__item">
+            Age: 2 months
+          </li>
+          <li class="modal__item">
+            Inoculations: none
+          </li>
+          <li class="modal__item">
+            Diseases: none
+          </li>
+          <li class="modal__item">
+            Parasites: none
+          </li>
+        </ul>
+      </div>
+      <button class="modal__close-btn"></button> -->
+    </div>
+  </div>
 </body>
 </html>
