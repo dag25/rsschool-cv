@@ -1,290 +1,74 @@
-console.log(window.location.pathname);
-if (window.location.pathname === '/shelter/index.html') {
-	const wrapper = document.querySelector('.wrapper');
-	const carousel = document.querySelector('.carousel');
-	const firstCardWidth =
-		document.querySelector('.our-friends__item').offsetWidth;
-	const arrowBtns = document.querySelectorAll('.our-friends__arrow');
-	const carouselChildrens = [...carousel.children];
+import { pagination } from './modules/pagination.js';
+import { getGoods } from './modules/serviceGoods.js';
+import { renderGoods } from './modules/renderGoods.js';
+import { slider } from './modules/slider.js';
 
-	let isDragging = false,
-		isAutoPlay = true,
-		startX,
-		startScrollLeft,
-		timeoutId;
-
-	let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
-
-	carouselChildrens
-		.slice(-cardPerView)
-		.reverse()
-		.forEach(card => {
-			carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
-		});
-
-	carouselChildrens.slice(0, cardPerView).forEach(card => {
-		carousel.insertAdjacentHTML('beforeend', card.outerHTML);
-	});
-
-	carousel.classList.add('no-transition');
-	carousel.scrollLeft = carousel.offsetWidth;
-	carousel.classList.remove('no-transition');
-
-	arrowBtns.forEach(btn => {
-		btn.addEventListener('click', e => {
-			carousel.scrollLeft +=
-				btn.id == 'left' ? -firstCardWidth : firstCardWidth;
-		});
-	});
-	const dragStart = e => {
-		isDragging = true;
-		carousel.classList.add('dragging');
-		startX = e.pageX;
-		startScrollLeft = carousel.scrollLeft;
-	};
-
-	const dragging = e => {
-		if (!isDragging) return;
-		carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
-	};
-
-	const dragStop = e => {
-		isDragging = false;
-		carousel.classList.remove('dragging');
-	};
-
-	const infiniteScroll = e => {
-		if (carousel.scrollLeft === 0) {
-			carousel.classList.add('no-transition');
-			carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.scrollWidth;
-			carousel.classList.remove('no-transition');
-		} else if (
-			Math.ceil(carousel.scrollLeft) ===
-			carousel.scrollWidth - carousel.offsetWidth
-		) {
-			carousel.classList.add('no-transition');
-			carousel.scrollLeft = carousel.offsetWidth;
-			carousel.classList.remove('no-transition');
-		}
-		clearTimeout(timeoutId);
-		if (!wrapper.matches(':hover')) autoPlay();
-	};
-
-	const autoPlay = () => {
-		if (window.innerWidth < 800 || !isAutoPlay) return;
-		timeoutId = setTimeout(() => {
-			carousel.scrollLeft += firstCardWidth;
-		}, 2500);
-	};
-	autoPlay();
-
-	carousel.addEventListener('mousedown', dragStart);
-	carousel.addEventListener('mousemove', dragging);
-	document.addEventListener('mouseup', dragStop);
-	carousel.addEventListener('scroll', infiniteScroll);
-	wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
-	wrapper.addEventListener('mouseleave', autoPlay);
+try {
+	slider(getGoods);
+} catch (error) {
+	console.log(error);
+	console.log('не main.html');
 }
 
 
-// Scroll
-const disabledScroll = () => {
-  document.body.scrollPosition = window.scrollY;
-  document.body.style.cssText = `
-  overflow: hidden;
-  position: fixed;
-  top: -${document.body.scrollPosition}px;
-  left: 0;
-  height: 100wh;
-  width: 100vw;
-  padding-right: ${window.innerWidth - document.body.offsetWidth}px;
-  `;
-};
 
-const enabledScroll = () => {
-  document.body.style.cssText = '';
-  window.scroll({top: document.body.scrollPosition});
-};
-
-// modal
-
-
-const createElement = (tag, attr) => {
-  const element = document.createElement(tag);
-  return Object.assign(element, {...attr});
-};
-
-const createModal = (
-	name,
-	img,
-	type,
-	breed,
-	description,
-	age,
-	inoculations,
-	diseases,
-	parasites,
-) => {
-	const overlayElement = createElement('div', { className: 'overlay' });
-	const modalElement = createElement('div', { className: 'modal' });
-	const modalContainerElement = createElement('div', {
-		className: 'modal__container',
-	});
-	const modalImgElement = createElement('img', {
-		className: 'modal__img',
-		src: img,
-		alt: name,
-	});
-	const modalContentElement = createElement('div', {
-		className: 'modal__content',
-	});
-	modalContainerElement.append(modalImgElement, modalContentElement);
-
-	const titleElement = createElement('h2', {
-		className: 'modal__title',
-		textContent: name,
-	});
-	const breedElement = createElement('p', {
-		className: 'modal__breed',
-		textContent: `${type} - ${breed}`,
-	});
-	const descriptionElement = createElement('p', {
-		className: 'modal__description',
-		textContent: description,
-	});
-
-	const modalListElement = createElement('ul', { className: 'modal__list' });
-
-	const listItem1Element = createElement('li', {
-		className: 'modal__item',
-		innerHTML: `<b>Age:</b> ${age}`,
-	});
-	const listItem2Element = createElement('li', {
-		className: 'modal__item',
-		innerHTML: `<b>Inoculations:</b> ${inoculations}`,
-	});
-	const listItem3Element = createElement('li', {
-		className: 'modal__item',
-		innerHTML: `<b>Diseases:</b> ${diseases}`,
-	});
-	const listItem4Element = createElement('li', {
-		className: 'modal__item',
-		innerHTML: `<b>Parasites:</b> ${parasites}`,
-	});
-
-	modalListElement.append(
-		listItem1Element,
-		listItem2Element,
-		listItem3Element,
-		listItem4Element,
-	);
-
-	modalContentElement.append(
-		titleElement,
-		breedElement,
-		descriptionElement,
-		modalListElement,
-	);
-
-	const closeBtnElement = createElement('button', {
-		className: 'modal__close',
-		innerHTML: `<svg width="52" height="52" viewBox="0 0 52 52" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <rect x="1" y="1" width="50" height="50" rx="25" stroke="#F1CDB3" stroke-width="2"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M27.4262 26L31.7046 21.7216C32.0985 21.3277 32.0985 20.6892 31.7046 20.2954C31.3108 19.9016 30.6723 19.9016 30.2785 20.2954L26 24.5739L21.7215 20.2954C21.3276 19.9015 20.6892 19.9015 20.2953 20.2954C19.9016 20.6892 19.9016 21.3277 20.2953 21.7215L24.5738 26L20.2953 30.2785C19.9016 30.6723 19.9016 31.3108 20.2953 31.7046C20.6892 32.0985 21.3276 32.0985 21.7215 31.7046L26 27.4261L30.2785 31.7046C30.6723 32.0985 31.3108 32.0985 31.7046 31.7046C32.0985 31.3108 32.0985 30.6723 31.7046 30.2785L27.4262 26Z" fill="#292929"/>
-    </svg>
-    `,
-	});
-
-	overlayElement.addEventListener('click', event => {
-		const target = event.target;
-		if (
-			target === overlayElement ||
-			target.closest('.modal__close')
-		) {
-			overlayElement.remove();
-			enabledScroll();
-		}
-	});
-	modalElement.append(modalContainerElement, closeBtnElement);
-	overlayElement.append(modalElement);
-
-	disabledScroll();
-
-	document.body.appendChild(overlayElement);
-};
-
-const productTitles = document.querySelectorAll('.our-friends__subtitle');
-const productBtns = document.querySelectorAll('.our-friends__btn');
-
-for (let i = 0; i < productBtns.length; i++) {
-  productBtns[i].addEventListener('click', () => {
-    const title = productTitles[i].textContent.trim();
-    const jsonFile = 'data/pets.json';
-		fetch(jsonFile)
-			.then(response => {
-				return response.json();
-			})
-			.then(data => {
-				data.map(pet => {
-					const {
-						name,
-						img,
-						type,
-						breed,
-						description,
-						age,
-						inoculations,
-						diseases,
-						parasites,
-					} = pet;
-          if (pet.name === title) {
-            createModal(
-							name,
-							img,
-							type,
-							breed,
-							description,
-							age,
-							inoculations,
-							diseases,
-							parasites,
-						);
-          }
-				});
-			});
-  });
+try {
+	const goodsList = document.querySelector('.our-friends__list--pets');
+	const paginationWrapper = document.querySelector('.pagination');
+	const pageURL = new URL(location);
+	const page = +pageURL.searchParams.get('page') || 1;
+	pagination(paginationWrapper, 6, page, 1);
+	goodsList.innerHTML = `
+		<div class='our-friends__preloader'>
+		  <svg class='our-friends__preloader-svg' width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M109.323 17.5573C113.468 16.9412 117.69 17.9763 121.08 20.44C124.471 22.9037 126.759 26.5993 127.453 30.7323C128.148 34.8654 127.193 39.1059 124.794 42.5424C122.395 45.9788 118.743 48.3367 114.624 49.1093C95.989 52.2695 79.0748 61.9258 66.8796 76.3663C54.6844 90.8068 47.996 109.099 48 128C48 149.217 56.4285 169.566 71.4315 184.568C86.4344 199.571 106.783 208 128 208V240C66.144 240 16 189.867 16 128C16 73.12 55.744 26.56 109.323 17.5573Z" fill="url(#paint0_linear_187135_379)"/>
+				<path d="M180.181 45.8453C181.584 44.2799 183.282 43.0064 185.178 42.0975C187.073 41.1887 189.129 40.6622 191.228 40.5483C193.328 40.4344 195.429 40.7352 197.411 41.4336C199.394 42.132 201.22 43.2143 202.784 44.6186C214.506 55.1149 223.88 67.9677 230.294 82.3362C236.707 96.7047 240.014 112.265 240 128C240 189.867 189.856 240 128 240V208C144.194 208 160.006 203.086 173.347 193.907C186.688 184.728 196.929 171.716 202.717 156.592C208.505 141.468 209.566 124.944 205.762 109.203C201.957 93.4631 193.465 79.248 181.408 68.4373C178.25 65.6038 176.346 61.632 176.116 57.3953C175.886 53.1586 177.348 49.004 180.181 45.8453Z" fill="url(#paint1_linear_187135_379)"/>
+				<defs>
+				<linearGradient id="paint0_linear_187135_379" x1="5616" y1="1190.8" x2="5616" y2="20452" gradientUnits="userSpaceOnUse">
+				<stop/>
+				<stop offset="1" stop-opacity="0.55"/>
+				</linearGradient>
+				<linearGradient id="paint1_linear_187135_379" x1="5728" y1="3080.53" x2="5728" y2="17424.8" gradientUnits="userSpaceOnUse">
+				<stop stop-opacity="0"/>
+				<stop offset="1" stop-opacity="0.55"/>
+				</linearGradient>
+				</defs>
+			</svg>
+		</div>
+	`;
+	renderGoods(goodsList, getGoods);
+} catch (error) {
+	console.log(error);
+	console.log('не Pets.html')
 }
 
-// burger
 
-const burgerHide = document.querySelector('.burger__hide');
-const burgerBtnElement = document.querySelector('.burger__box');
-const navElement = document.querySelector('.nav');
-const navLinkElements = document.querySelectorAll('.nav__link');
-const overlayElement = document.querySelector('.blackout');
+import burgerMenu from './modules/burgerMenu.js';
 
-if (burgerBtnElement) {
-		burgerBtnElement.addEventListener('click', () => {
-		document.body.classList.toggle('body--locked');
-    burgerBtnElement.classList.toggle('nav--open');
-    navElement.classList.toggle('nav--open');
-		overlayElement.classList.toggle('overlay');
-		burgerHide.classList.toggle('nav--open');
-  });
-}
+burgerMenu({
+	selectorBtn: '.burger__box',
+	selectorMenu: '.nav',
+	classActive: 'nav--open',
+	selectorHide: '.burger__hide',
+	selectorLink: '.nav__link',
+	selectorOverlay: '.overlay',
+	bodyClassActive: 'body--locked',
+	overlayClassActive: 'overlay--active',
+});
 
-if (navLinkElements.length > 0) {
-	navLinkElements.forEach((navLinkElement) => {
-		navLinkElement.addEventListener('click', () => {
-      document.body.classList.remove('body--locked');
-      burgerBtnElement.classList.remove('nav--open');
-      navElement.classList.remove('nav--open');
-			overlayElement.classList.remove('overlay');
-			navLinkElements.forEach((navLinkElement) => {
-				navLinkElement.classList.remove('nav__link--active');
-			});
-			navLinkElement.classList.add('nav__link--active');
 
-		});
-  });
-}
+
+
+
+
+
+import { itemModal } from './modules/modal.js';
+
+itemModal({
+	getGoods,
+	selectorProductBtn: '.our-friends__btn',
+	selectorOverlay: '.overlay',
+	classOverlayActive: 'overlay--active',
+	closeSelector: '.modal__close-btn',
+	selectorProductTitle: '.our-friends__subtitle',
+});
