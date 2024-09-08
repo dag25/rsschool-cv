@@ -1,8 +1,9 @@
 
-export const renderGoods = (wrapper, getGoods) => {
+
+export const renderCards = (wrapper, getData) => {
   wrapper.textContent = '';
 
-  const cards = getGoods.map(item => {
+  const cards = getData.map(item => {
 		const {
 			name,
 			img,
