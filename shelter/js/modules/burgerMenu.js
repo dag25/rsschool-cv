@@ -16,7 +16,7 @@ const enabledScroll = () => {
 	window.scroll({ top: document.body.scrollPosition });
 };
 
-const burgerMenu = ({
+export const burgerMenu = ({
 	classActive,
 	selectorBtn,
 	selectorMenu,
@@ -42,7 +42,7 @@ const burgerMenu = ({
       } else {
         enabledScroll();
       }
-			
+
 		});
 	}
 
@@ -69,4 +69,4 @@ const burgerMenu = ({
 	});
 };
 
-export default burgerMenu;
+

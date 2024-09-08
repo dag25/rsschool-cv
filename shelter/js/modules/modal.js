@@ -1,4 +1,4 @@
-import { renderGoods } from './renderGoods.js';
+
 
 const disabledScroll = () => {
 	document.body.scrollPosition = window.scrollY;
@@ -18,33 +18,33 @@ const enabledScroll = () => {
 	window.scroll({ top: document.body.scrollPosition });
 };
 
-const createModal = (title, goods) => {
-	for (const key in goods) {
-		if (goods[key].name === title) {
+const createModal = (title, cards) => {
+	for (const key in cards) {
+		if (cards[key].name === title) {
 			const modal = document.createElement('div');
 			modal.classList.add('modal');
 			modal.insertAdjacentHTML(
 				'beforeend',
 				`
-				<img class="modal__img" src=${goods[key].img} alt=${goods[key].name}>
+				<img class="modal__img" src=${cards[key].img} alt=${cards[key].name}>
 					<div class="modal__content">
-						<h2 class="modal__title">${goods[key].name}</h2>
-						<p class="modal__breed">${goods[key].type} - ${goods[key].breed}</p>
+						<h2 class="modal__title">${cards[key].name}</h2>
+						<p class="modal__breed">${cards[key].type} - ${cards[key].breed}</p>
 						<p class="modal__description">
-							${goods[key].description}
+							${cards[key].description}
 						</p>
 						<ul class="modal__list">
 							<li class="modal__item">
-								<b>Age:</b> ${goods[key].age}
+								<b>Age:</b> ${cards[key].age}
 							</li>
 							<li class="modal__item">
-								<b>Inoculations:</b> ${goods[key].inoculations}
+								<b>Inoculations:</b> ${cards[key].inoculations}
 							</li>
 							<li class="modal__item">
-								<b>Diseases:</b> ${goods[key].diseases}
+								<b>Diseases:</b> ${cards[key].diseases}
 							</li>
 							<li class="modal__item">
-								<b>Parasites:</b> ${goods[key].parasites}
+								<b>Parasites:</b> ${cards[key].parasites}
 							</li>
 						</ul>
 					</div>
@@ -60,7 +60,8 @@ const createModal = (title, goods) => {
 
 
 export const itemModal = ({
-	getGoods,
+	getData,
+	selectorCardList,
 	selectorProductBtn,
 	selectorOverlay,
 	classOverlayActive,
@@ -68,50 +69,34 @@ export const itemModal = ({
 	selectorProductTitle,
 }) => {
 
+	const cardList = document.querySelector(selectorCardList);
+	const overlay = document.querySelector(selectorOverlay);
+	const productTitles = document.querySelectorAll(selectorProductTitle);
+	const productBtns = document.querySelectorAll(selectorProductBtn);
 
-			const overlay = document.querySelector(selectorOverlay);
-			const productTitles = document.querySelectorAll(selectorProductTitle);
-			const productBtns = document.querySelectorAll(selectorProductBtn);
+	cardList.addEventListener('click', ({target}) => {
+		console.log(target)
+		console.log(productBtns);
+		for (let j = 0; j < productBtns.length; j++) {
+			if (target === productBtns[j]) {
+        const title = productTitles[j].textContent.trim();
+        console.log(title);
 
-			for (let i = 0; i < productBtns.length; i++) {
-				productBtns[i].addEventListener('click', () => {
-					const title = productTitles[i].textContent.trim();
-					console.log(title);
-					overlay.classList.add(classOverlayActive);
-					overlay.textContent = '';
-					disabledScroll();
+				overlay.classList.add(classOverlayActive);
+				overlay.textContent = '';
+				disabledScroll();
 
-					const modal = createModal(title, getGoods);
-					overlay.append(modal);
-					modal.addEventListener('click', event => {
-						const target = event.target;
-						if (target.matches(closeSelector) || target.closest(selectorModal)) {
-							modal.remove();
-							overlay.classList.remove(classOverlayActive);
-							enabledScroll();
-						}
-					});
+				const modal = createModal(title, getData);
+				overlay.append(modal);
+				modal.addEventListener('click', event => {
+					const target = event.target;
+					if (target.matches(closeSelector) || target.closest(selectorModal)) {
+						modal.remove();
+						overlay.classList.remove(classOverlayActive);
+						enabledScroll();
+					}
 				});
 			}
-
-	}
-
-
-
-
-
-			// parent.addEventListener('click', event => {
-		// 	const target = event.target;
-		// 	if (target.matches(selectorProductBtn)) {
-		// 		modal.classList.add(classModalActive);
-		// 		overlay.classList.add(classOverlayActive);
-		// 		overlay.textContent = '';
-
-		// 		createModal(selectorTitle, getGoods);
-
-// 				modal.addEventListener('click', event => {
-// 					const target = event.target;
-					// if (target.matches(closeSelector) || target.closest(selectorModal))
-// 						modal.classList.remove(classModalActive);
-// 						overlay.classList.remove(classOverlayActive);
-						// enabledScroll();}}}});}});})}}}')
+		}
+	});
+}
