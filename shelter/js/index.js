@@ -1,24 +1,63 @@
 import { pagination } from './modules/pagination.js';
-import { getGoods } from './modules/serviceGoods.js';
-import { renderGoods } from './modules/renderGoods.js';
+import { getData } from './modules/serviceData.js';
+import { renderCards } from './modules/renderCards.js';
 import { slider } from './modules/slider.js';
+import { itemModal } from './modules/modal.js';
+import { burgerMenu } from './modules/burgerMenu.js';
+// import { SliderCarousel } from './modules/slider1.js';
+import { paginate } from './modules/pagination.js';
+
+// try {
+
+// 	const carousel = new SliderCarousel({
+// 		main: '.slider__wrapper',
+// 		wrap: '.slider__carousel',
+// 		prev: '#btn-left',
+// 		next: '#btn-right',
+// 		slidesToShow: 3,
+// 		infinite: true,
+// 		responsive: [
+// 			{
+// 				breakpoint: 1024,
+// 				slidesToShow: 3,
+// 			},
+// 			{
+// 				breakpoint: 768,
+// 				slidesToShow: 2,
+// 			},
+// 			{
+// 				breakpoint: 576,
+// 				slidesToShow: 1,
+// 			},
+// 		],
+// 	});
+// 	carousel.init();
+// } catch (error) {
+// 	console.log(error);
+// }
 
 try {
-	slider(getGoods);
+	slider({
+		getData,
+		selectorWrapper: '.slider__wrapper',
+		selectorCardList: '.slider__carousel',
+		selectorBtns: '.our-friends__arrow',
+		selectorItem: '.card',
+	});
 } catch (error) {
 	console.log(error);
-	console.log('не main.html');
+	console.log('not main.html');
 }
 
 
 
 try {
-	const goodsList = document.querySelector('.our-friends__list--pets');
+	const cardsList = document.querySelector('.our-friends__list--pets');
 	const paginationWrapper = document.querySelector('.pagination');
 	const pageURL = new URL(location);
 	const page = +pageURL.searchParams.get('page') || 1;
 	pagination(paginationWrapper, 6, page, 1);
-	goodsList.innerHTML = `
+	cardsList.innerHTML = `
 		<div class='our-friends__preloader'>
 		  <svg class='our-friends__preloader-svg' width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M109.323 17.5573C113.468 16.9412 117.69 17.9763 121.08 20.44C124.471 22.9037 126.759 26.5993 127.453 30.7323C128.148 34.8654 127.193 39.1059 124.794 42.5424C122.395 45.9788 118.743 48.3367 114.624 49.1093C95.989 52.2695 79.0748 61.9258 66.8796 76.3663C54.6844 90.8068 47.996 109.099 48 128C48 149.217 56.4285 169.566 71.4315 184.568C86.4344 199.571 106.783 208 128 208V240C66.144 240 16 189.867 16 128C16 73.12 55.744 26.56 109.323 17.5573Z" fill="url(#paint0_linear_187135_379)"/>
@@ -36,39 +75,43 @@ try {
 			</svg>
 		</div>
 	`;
-	renderGoods(goodsList, getGoods);
+	renderCards(cardsList, getData);
+	paginate(getData);
 } catch (error) {
 	console.log(error);
-	console.log('не Pets.html')
+	console.log('not pets.html')
 }
 
 
-import burgerMenu from './modules/burgerMenu.js';
-
-burgerMenu({
-	selectorBtn: '.burger__box',
-	selectorMenu: '.nav',
-	classActive: 'nav--open',
-	selectorHide: '.burger__hide',
-	selectorLink: '.nav__link',
-	selectorOverlay: '.overlay',
-	bodyClassActive: 'body--locked',
-	overlayClassActive: 'overlay--active',
-});
 
 
+try {
+	burgerMenu({
+		selectorBtn: '.burger__box',
+		selectorMenu: '.nav',
+		classActive: 'nav--open',
+		selectorHide: '.burger__hide',
+		selectorLink: '.nav__link',
+		selectorOverlay: '.overlay',
+		bodyClassActive: 'body--locked',
+		overlayClassActive: 'overlay--active',
+	});
+} catch (error) {
+	console.log(error);
+	console.log('burgerError');
+}
 
-
-
-
-
-import { itemModal } from './modules/modal.js';
-
-itemModal({
-	getGoods,
-	selectorProductBtn: '.our-friends__btn',
-	selectorOverlay: '.overlay',
-	classOverlayActive: 'overlay--active',
-	closeSelector: '.modal__close-btn',
-	selectorProductTitle: '.our-friends__subtitle',
-});
+try {
+	itemModal({
+		getData,
+		selectorCardList: '.our-friends__list',
+		selectorProductBtn: '.our-friends__btn',
+		selectorOverlay: '.overlay',
+		classOverlayActive: 'overlay--active',
+		closeSelector: '.modal__close-btn',
+		selectorProductTitle: '.our-friends__subtitle',
+	});
+} catch (error) {
+	console.log(error);
+	console.log('modalError');
+}
