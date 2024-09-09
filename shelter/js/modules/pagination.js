@@ -65,21 +65,257 @@ export const pagination = (wrapper, pages, page, count) => {
   `;
   endItem.href = isEnd ? '' : `pets.html?page=${pages}`;
 	wrapper.append(firstItem, prevItem, paginationList, nextItem, endItem);
+
+  // const petsIndexes = get48();
+	// let currentIndex = 0;
+	// let currentPage;
+	// let currentCardNum;
+
+	// const MAX_CARDS = 48;
+	// const btnFirst = document.querySelector('.pagination__arrow--start');
+	// const btnPrev = document.querySelector('.pagination__arrow--prev');
+	// const pgNumber = document.querySelector('pagination__link--active');
+	// const btnNext = document.querySelector('.pagination__arrow--next');
+	// const btnLast = document.querySelector('.pagination__arrow--end');
+
+	// function shuffle(array) {
+	// 	for (let i = array.length - 1; i > 0; i--) {
+	// 		let j = Math.floor(Math.random() * (i + 1));
+	// 		[array[i], array[j]] = [array[j], array[i]];
+	// 	}
+	// }
+
+	// function getRandomArray(size) {
+	// 	const arr = Array(size)
+	// 		.fill()
+	// 		.map((el, i) => (el = i));
+	// 	shuffle(arr);
+	// 	return arr;
+	// }
+
+	// function get48() {
+	// 	let a6 = [],
+	// 		a8 = [],
+	// 		a48 = [];
+
+	// 	while (a48.length !== 48) {
+	// 		let index = 0;
+
+	// 		if (a6.length === 6) a48.push(...a6.splice(0));
+	// 		if (a8.length === 0) a8 = getRandomArray(8);
+	// 		while (a6.includes(a8[index])) index++;
+
+	// 		a6.push(...a8.splice(index, 1));
+	// 	}
+
+	// 	return a48;
+	// }
+
+	// function showPage() {
+	// 	const cards = document.querySelectorAll('.our-friends__item');
+
+	// 	currentPage = Math.floor(currentIndex / currentCardNum);
+	// 	currentIndex = currentPage * currentCardNum;
+
+	// 	for (let i = 0; i < currentCardNum; i++) {
+	// 		let petData = getData[petsIndexes[currentIndex + i]];
+  //     console.log(cards);
+
+	// 		cards[i]
+	// 			.querySelector('.our-friends__img')
+	// 			.setAttribute('src', getData.img);
+	// 		cards[i]
+	// 			.querySelector('.our-friends__img')
+	// 			.setAttribute('alt', getData.alt);
+	// 		cards[i].querySelector('.our-friends__subtitle').textContent =
+	// 			getData.name;
+	// 		cards[i].dataset.petindex = petsIndexes[currentIndex + i];
+	// 	}
+
+	// 	// Enable/Disable buttons, Refresh page number
+	// 	btnFirst.removeAttribute('disabled');
+	// 	btnPrev.removeAttribute('disabled');
+	// 	btnNext.removeAttribute('disabled');
+	// 	btnLast.removeAttribute('disabled');
+
+	// 	if (currentIndex === 0) btnFirst.disabled = btnPrev.disabled = 'true';
+
+	// 	if (currentIndex + currentCardNum === MAX_CARDS) {
+	// 		btnLast.disabled = btnNext.disabled = 'true';
+	// 	}
+
+	// 	pgNumber.textContent = currentPage + 1 + '';
+	// }
+
+	// function redrawPage() {
+	// 	let cardNum = getCardNumber();
+
+	// 	if (cardNum !== currentCardNum) {
+	// 		currentCardNum = cardNum;
+	// 		showPage();
+	// 	}
+	// }
+
+	// function getCardNumber() {
+	// 	let cardNumber = 8;
+	// 	const cards = document.querySelectorAll('.our-friends__item');
+
+	// 	// if (window.getComputedStyle(cards[6]).display === 'none') cardNumber = 6;
+	// 	// if (window.getComputedStyle(cards[3]).display === 'none') cardNumber = 3;
+
+	// 	return cardNumber;
+	// }
+
+	// window.addEventListener('resize', redrawPage);
+
+	// btnFirst.addEventListener('click', () => {
+	// 	currentIndex = 0;
+	// 	showPage();
+	// });
+
+	// btnPrev.addEventListener('click', () => {
+	// 	currentIndex -= currentCardNum;
+	// 	showPage();
+	// });
+
+	// btnNext.addEventListener('click', () => {
+	// 	currentIndex += currentCardNum;
+	// 	showPage();
+	// });
+
+	// btnLast.addEventListener('click', () => {
+	// 	currentIndex = MAX_CARDS - currentCardNum;
+	// 	showPage();
+	// });
+
+	// redrawPage();
 };
 
 
-export const paginate = (getData) => {
-  const itemsPerPage = 8;
-  const currentPage = Number(new URL(location).searchParams.get('page')) || 1;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  console.log(startIndex);
-  const endIndex = startIndex + itemsPerPage;
-  console.log(endIndex);
-  const productContainer = document.querySelector('.our-friends__list--pets');
-  const renderProducts = (getData, productContainer, productCount, currentPage) => {
-    productContainer.innerHTML = '';
+const paginate = (getData) => {
 
-    const productsOnPage = getData.slice(startIndex, endIndex);
-    console.log(productsOnPage);
-  }
+  const petsIndexes = get48();
+	let currentIndex = 0;
+	let currentPage;
+	let currentCardNum;
+
+	const MAX_CARDS = 48;
+	const btnFirst = document.querySelector('.pagination__arrow--start');
+	const btnPrev = document.querySelector('.pagination__arrow--prev');
+	const pgNumber = document.querySelector('pagination__link--active');
+	const btnNext = document.querySelector('.pagination__arrow--next');
+	const btnLast = document.querySelector('.pagination__arrow--end');
+
+
+  function shuffle(array) {
+		for (let i = array.length - 1; i > 0; i--) {
+			let j = Math.floor(Math.random() * (i + 1));
+			[array[i], array[j]] = [array[j], array[i]];
+		}
+	}
+
+  function getRandomArray(size) {
+		const arr = Array(size)
+			.fill()
+			.map((el, i) => (el = i));
+		shuffle(arr);
+		return arr;
+	}
+
+  function get48() {
+		let a6 = [],
+			a8 = [],
+			a48 = [];
+
+		while (a48.length !== 48) {
+			let index = 0;
+
+			if (a6.length === 6) a48.push(...a6.splice(0));
+			if (a8.length === 0) a8 = getRandomArray(8);
+			while (a6.includes(a8[index])) index++;
+
+			a6.push(...a8.splice(index, 1));
+		}
+
+		return a48;
+	}
+
+  function showPage() {
+		const cards = document.querySelectorAll('.our-friends__item');
+
+		currentPage = Math.floor(currentIndex / currentCardNum);
+		currentIndex = currentPage * currentCardNum;
+
+		for (let i = 0; i < currentCardNum; i++) {
+			let petData = getData[petsIndexes[currentIndex + i]];
+
+			cards[i].querySelector('img').setAttribute('src', getData.img);
+			cards[i].querySelector('img').setAttribute('alt', getData.alt);
+			cards[i].querySelector('h4').textContent = getData.name;
+			cards[i].dataset.petindex = petsIndexes[currentIndex + i];
+		}
+
+		// Enable/Disable buttons, Refresh page number
+		btnFirst.removeAttribute('disabled');
+		btnPrev.removeAttribute('disabled');
+		btnNext.removeAttribute('disabled');
+		btnLast.removeAttribute('disabled');
+
+		if (currentIndex === 0) btnFirst.disabled = btnPrev.disabled = 'true';
+
+		if (currentIndex + currentCardNum === MAX_CARDS) {
+			btnLast.disabled = btnNext.disabled = 'true';
+		}
+
+		pgNumber.textContent = currentPage + 1 + '';
+	}
+
+
+
+
+  function redrawPage() {
+		let cardNum = getCardNumber();
+
+		if (cardNum !== currentCardNum) {
+			currentCardNum = cardNum;
+			showPage();
+		}
+	}
+
+  function getCardNumber() {
+		let cardNumber = 8;
+		const cards = document.querySelectorAll('.our-friends__item');
+
+		if (window.getComputedStyle(cards[6]).display === 'none') cardNumber = 6;
+		if (window.getComputedStyle(cards[3]).display === 'none') cardNumber = 3;
+
+		return cardNumber;
+	}
+
+  window.addEventListener('resize', redrawPage);
+
+	btnFirst.addEventListener('click', () => {
+		currentIndex = 0;
+		showPage();
+	});
+
+	btnPrev.addEventListener('click', () => {
+		currentIndex -= currentCardNum;
+		showPage();
+	});
+
+	btnNext.addEventListener('click', () => {
+		currentIndex += currentCardNum;
+		showPage();
+	});
+
+	btnLast.addEventListener('click', () => {
+		currentIndex = MAX_CARDS - currentCardNum;
+		showPage();
+	});
+
+
+
+	redrawPage();
+
 }

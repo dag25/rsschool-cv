@@ -530,10 +530,10 @@ iframe {
 .slider__carousel {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100% / 3) - 60px);
+  grid-auto-columns: 100%;
+  gap: 90px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 90px;
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
@@ -543,13 +543,13 @@ iframe {
 .slider__carousel.no-transition {
   scroll-behavior: auto;
 }
-.slider__carousel.dragging {
-  scroll-snap-type: none;
-  scroll-behavior: auto;
-}
-.slider__carousel.dragging .card {
-  cursor: grab;
-  user-select: none;
+
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
 }
 
 
@@ -1088,8 +1088,6 @@ iframe {
 
 
 @media screen and (max-width: 1260px) {
-
-
   .slider {
     gap: 12px;
   }
@@ -1098,11 +1096,10 @@ iframe {
     width: 580px;
   }
 
-  .slider__carousel {
-    grid-auto-columns: calc((100% / 2));
+  .slider__carousel,
+  .card {
     gap: 40px;
   }
-
 
   .our-friends__list--pets {
     grid-template-columns: repeat(3, 270px);
@@ -1260,7 +1257,6 @@ iframe {
 
   .slider__carousel {
     grid-auto-columns: 100%;
-    gap: initial;
   }
 
 

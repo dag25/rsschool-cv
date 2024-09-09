@@ -1,20 +1,80 @@
+
+
 export const slider = ({
+	getData,
   selectorWrapper,
-  selectorCardList,
+	selectorCardList,
   selectorBtns,
   selectorItem,
 }) => {
+
   const wrapper = document.querySelector(selectorWrapper);
 	const carousel = document.querySelector(selectorCardList);
+	let randomElement = getData[Math.floor(Math.random() * getData.length)];
+	const sliderArr = [...getData, randomElement];
+
+	const renderSlider = () => {
+		const cards = sliderArr.map((item, index) => {
+			const {
+				name,
+				img,
+				type,
+				breed,
+				description,
+				age,
+				inoculations,
+				diseases,
+				parasites,
+			} = item;
+			const li = document.createElement('li');
+			li.dataset.petIndex = index;
+			li.classList.add('our-friends__item');
+			li.innerHTML = `
+							<img class="our-friends__img" src=${img} alt=${name} />
+							<h3 class="our-friends__subtitle">
+								${name}
+							</h3>
+							<button class="our-friends__btn">
+								Learn more
+							</button>
+						`;
+			return li;
+		});
+		carousel.innerHTML = '';
+		let width = document.body.offsetWidth;
+		let cardCount = 3;
+		let contentCardCount = 3;
+		if (width > 1260) {
+			cardCount = 3;
+			contentCardCount = 3;
+		} else if (width > 768 && width < 1260) {
+			cardCount = 4;
+      contentCardCount = 2;
+		} else {
+			cardCount = 8;
+      contentCardCount = 1;
+		}
+
+		for (let i = 0; i < cardCount; i++) {
+			const card = document.createElement('ul');
+			card.classList.add('card');
+
+			for (let k = 0; k < contentCardCount; k++) {
+				card.insertAdjacentElement('afterbegin',cards[i * contentCardCount + k]);
+			}
+			carousel.insertAdjacentElement('afterbegin',card);
+			// carousel.append(card);
+		}
+	}
+	renderSlider();
+	window.addEventListener('resize', renderSlider);
+	screen.orientation.addEventListener('change', renderSlider);
+	window.addEventListener('orientationchange', renderSlider);
 	const firstCardWidth = carousel.querySelector(selectorItem).offsetWidth;
 	const arrowBtns = document.querySelectorAll(selectorBtns);
   const carouselChildrens = [...carousel.children];
 
-  let isDragging = false,
-		isAutoPlay = true,
-		startX,
-		startScrollLeft,
-		timeoutId;
+
 
 	let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 
@@ -35,25 +95,13 @@ export const slider = ({
 
 	arrowBtns.forEach(btn => {
 		btn.addEventListener('click', () => {
+			console.log(btn.id);
 			carousel.scrollLeft +=
-				btn.id == 'left' ? -firstCardWidth : firstCardWidth;
+				btn.id == 'btn-right' ? -firstCardWidth : firstCardWidth;
+				console.log(carousel.scrollLeft);
 		});
 	});
-	const dragStart = e => {
-		isDragging = true;
-		carousel.classList.add('dragging');
 
-		startX = e.pageX;
-		startScrollLeft = carousel.scrollLeft;
-	};
-	const dragging = e => {
-		if (!isDragging) return;
-		carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
-	};
-	const dragStop = () => {
-		isDragging = false;
-		carousel.classList.remove('dragging');
-	};
 	const infiniteScroll = () => {
 
 		if (carousel.scrollLeft === 0) {
@@ -70,20 +118,6 @@ export const slider = ({
 			carousel.scrollLeft = carousel.offsetWidth;
 			carousel.classList.remove('no-transition');
 		}
-
-		clearTimeout(timeoutId);
-		if (!wrapper.matches(':hover')) autoPlay();
 	};
-	const autoPlay = () => {
-		if (window.innerWidth < 800 || !isAutoPlay) return; // 
-		timeoutId = setTimeout(() => (carousel.scrollLeft += firstCardWidth), 2500);
-	};
-	autoPlay();
-	carousel.addEventListener('mousedown', dragStart);
-	carousel.addEventListener('mousemove', dragging);
-	document.addEventListener('mouseup', dragStop);
 	carousel.addEventListener('scroll', infiniteScroll);
-	wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
-	wrapper.addEventListener('mouseleave', autoPlay);
-
 }
