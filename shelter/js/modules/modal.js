@@ -75,28 +75,24 @@ export const itemModal = ({
 	const productBtns = document.querySelectorAll(selectorProductBtn);
 
 	cardList.addEventListener('click', ({target}) => {
-		console.log(target)
-		console.log(productBtns);
-		for (let j = 0; j < productBtns.length; j++) {
-			if (target === productBtns[j]) {
-        const title = productTitles[j].textContent.trim();
-        console.log(title);
 
-				overlay.classList.add(classOverlayActive);
-				overlay.textContent = '';
-				disabledScroll();
+		if (target.classList.contains('our-friends__btn')) {
+			const title = target.previousElementSibling.textContent.trim();
+			overlay.classList.add(classOverlayActive);
+			overlay.textContent = '';
+			disabledScroll();
 
-				const modal = createModal(title, getData);
-				overlay.append(modal);
-				modal.addEventListener('click', event => {
-					const target = event.target;
-					if (target.matches(closeSelector) || target.closest(selectorModal)) {
-						modal.remove();
-						overlay.classList.remove(classOverlayActive);
-						enabledScroll();
-					}
-				});
-			}
+			const modal = createModal(title, getData);
+			overlay.append(modal);
+
+			modal.addEventListener('click', event => {
+				const target = event.target;
+				if (target.matches(closeSelector) || target.closest(selectorModal)) {
+					modal.remove();
+					overlay.classList.remove(classOverlayActive);
+					enabledScroll();
+				}
+			});
 		}
 	});
 }
