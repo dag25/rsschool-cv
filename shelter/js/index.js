@@ -5,7 +5,7 @@ import { slider } from './modules/slider.js';
 import { itemModal } from './modules/modal.js';
 import { burgerMenu } from './modules/burgerMenu.js';
 // import { SliderCarousel } from './modules/slider1.js';
-import { paginate } from './modules/pagination.js';
+// import { pagination } from './modules/pagination.js';
 
 // try {
 
@@ -35,6 +35,7 @@ import { paginate } from './modules/pagination.js';
 // } catch (error) {
 // 	console.log(error);
 // }
+
 
 try {
 	slider({
@@ -76,7 +77,7 @@ try {
 		</div>
 	`;
 	renderCards(cardsList, getData);
-	paginate(getData);
+	// paginate(getData);
 } catch (error) {
 	console.log(error);
 	console.log('not pets.html')

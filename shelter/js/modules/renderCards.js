@@ -3,7 +3,7 @@
 export const renderCards = (wrapper, getData) => {
   wrapper.textContent = '';
 
-  const cards = getData.map(item => {
+  const cards = getData.map((item, index) => {
 		const {
 			name,
 			img,
@@ -16,6 +16,7 @@ export const renderCards = (wrapper, getData) => {
 			parasites,
 		} = item;
 		const li = document.createElement('li');
+		li.dataset.petIndex = index;
 		li.classList.add('our-friends__item');
 		li.innerHTML = `
     <img class="our-friends__img" src=${img} alt=${name} />
@@ -29,4 +30,6 @@ export const renderCards = (wrapper, getData) => {
 		return li;
 	});
   wrapper.append(...cards);
+
+	console.log(cards);
 }

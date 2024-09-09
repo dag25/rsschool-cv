@@ -1,6 +1,5 @@
 [
 	{
-		"id" : "Katrine",
 		"name": "Katrine",
 		"img": "./image/pets-katrine.png",
 		"type": "Cat",
@@ -12,7 +11,6 @@
 		"parasites": ["none"]
 	},
 	{
-		"id": "Jennifer",
 		"name": "Jennifer",
 		"img": "./image/pets-jennifer.png",
 		"type": "Dog",
@@ -24,7 +22,6 @@
 		"parasites": ["none"]
 	},
 	{
-		"id": "Woody",
 		"name": "Woody",
 		"img": "./image/pets-woody.png",
 		"type": "Dog",
@@ -36,7 +33,6 @@
 		"parasites": ["none"]
 	},
 	{
-		"id": "Sophia",
 		"name": "Sophia",
 		"img": "./image/pets-sophia.png",
 		"type": "Dog",
@@ -48,7 +44,6 @@
 		"parasites": ["none"]
 	},
 	{
-		"id": "Timmy",
 		"name": "Timmy",
 		"img": "./image/pets-timmy.png",
 		"type": "Cat",
@@ -60,7 +55,6 @@
 		"parasites": ["none"]
 	},
 	{
-		"id": "Charly",
 		"name": "Charly",
 		"img": "./image/pets-charly.png",
 		"type": "Dog",
@@ -72,7 +66,6 @@
 		"parasites": ["lice", "fleas"]
 	},
 	{
-		"id": "Scarlett",
 		"name": "Scarlett",
 		"img": "./image/pets-scarlet.png",
 		"type": "Dog",
@@ -84,7 +77,6 @@
 		"parasites": ["none"]
 	},
   {
-		"id": "Freddie",
 		"name": "Freddie",
 		"img": "./image/pets-freddie.png",
 		"type": "Cat",
