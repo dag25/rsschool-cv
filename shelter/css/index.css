@@ -685,26 +685,22 @@ iframe {
 }
 
 
-.pagination__link,
+.pagination__item,
 .pagination__arrow {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 52px;
   height: 52px;
-  border: 2px solid var(--color-dark-s);
+  border: 2px solid var(--color-primary);
   border-radius: 100px;
-  color: var(--color-dark-s);
-}
-
-.pagination__arrow--end:hover,
-.pagination__arrow--next:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
   color: var(--color-dark-3xl);
 }
 
-.pagination__link--active {
+
+
+
+.pagination__item {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-dark-3xl);
@@ -718,6 +714,14 @@ iframe {
   cursor: pointer;
 }
 
+.arrow-disabled {
+  border-color: var(--color-dark-s);
+  color: var(--color-dark-s);
+  cursor: none;
+}
+.pagination__arrow:not([disabled]):hover {
+  background-color: var(--color-primary);
+}
 
 
 /* help */
