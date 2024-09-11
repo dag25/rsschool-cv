@@ -1406,9 +1406,7 @@ iframe {
 
 
 
-  .modal {
-    max-width: 240px;
-  }
+
 
   .modal__title {
     text-align: center;
@@ -1635,6 +1633,10 @@ iframe {
 
   .header__container {
     padding: 0 40px;
+  }
+
+  .modal {
+    max-width: 240px;
   }
 }
 
