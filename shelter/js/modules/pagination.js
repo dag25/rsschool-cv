@@ -58,19 +58,12 @@ export const pagination = ({
 	const btnStart = document.querySelector(selectorBtnStart);
 	const btnEnd = document.querySelector(selectorBtnEnd);
 	const paginationNumber = document.querySelector(selectorNumber);
-	let widthWindow = document.body.offsetWidth;
 
 	let productCount = 8;
 	let currentPage = 1;
 	const totalPages = 6;
 	paginationNumber.textContent = currentPage;
-	if (widthWindow > 1260) {
-		productCount = 8;
-	} else if (widthWindow > 680 && widthWindow < 1260) {
-		productCount = 6;
-	} else {
-		productCount = 3;
-	}
+
 
 	const renderProducts = (products, productContainer, numberOfProducts, page ) => {
 		productContainer.innerHTML = '';
@@ -98,8 +91,18 @@ export const pagination = ({
 	console.log(productCount);
 	renderProducts(cards, cardsList, productCount, currentPage);
 	window.addEventListener('resize', () => {
+		let widthWindow = document.body.offsetWidth;
+		if (widthWindow > 1260) {
+			productCount = 8;
+		} else if (widthWindow > 680 && widthWindow < 1260) {
+			productCount = 6;
+		} else {
+			productCount = 3;
+		}
 		renderProducts(cards, cardsList, productCount, currentPage);
 	});
+
+
 	// screen.orientation.addEventListener('change', renderProducts);
 	window.addEventListener('orientationchange', () => {
 		renderProducts(cards, cardsList, productCount, currentPage);
