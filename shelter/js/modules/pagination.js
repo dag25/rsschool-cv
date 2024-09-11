@@ -1,321 +1,166 @@
-import { getData } from './serviceData.js';
-const createItemPagination = (hrefLink, textContent, active) => {
-  const li = document.createElement('li');
-  li.classList.add('pagination__item');
-  const a = document.createElement('a');
-  a.classList.add('pagination__link');
-  a.textContent = textContent;
-  a.href = hrefLink;
-  if (active) {
-    a.classList.add('pagination__link--active');
-  }
-  li.append(a);
-  return li;
+
+
+export const pagination = ({
+	getData,
+	selectorCardList,
+	selectorPagination,
+	selectorBtnPrev,
+	selectorBtnNext,
+	selectorBtnStart,
+  selectorBtnEnd,
+	selectorNumber
+}) => {
+	const duplicateArray = (arr, times) => {
+		return [...Array(times)].map(() => [...arr]);
+	};
+
+	const data = duplicateArray(getData, 6);
+
+	const mix = data.map(array => {
+		return array.sort(() => Math.random() - 0.5);
+	});
+
+	let flattenedArray = mix.flat();
+	console.log(flattenedArray);
+
+
+	const cards = flattenedArray.map((item, index) => {
+		const {
+			name,
+			img,
+			type,
+			breed,
+			description,
+			age,
+			inoculations,
+			diseases,
+			parasites,
+		} = item;
+		const li = document.createElement('li');
+		li.dataset.petIndex = index;
+		li.classList.add('our-friends__item');
+		li.innerHTML = `
+    <img class="our-friends__img" src=${img} alt=${name} />
+    <h3 class="our-friends__subtitle">
+      ${name}
+    </h3>
+    <button class="our-friends__btn">
+      Learn more
+    </button>
+    `;
+		return li;
+	});
+
+	const cardsList = document.querySelector(selectorCardList);
+	const paginationWrapper = document.querySelector(selectorPagination);
+	const btnNext = document.querySelector(selectorBtnNext);
+	const btnPrev = document.querySelector(selectorBtnPrev);
+	const btnStart = document.querySelector(selectorBtnStart);
+	const btnEnd = document.querySelector(selectorBtnEnd);
+	const paginationNumber = document.querySelector(selectorNumber);
+	let widthWindow = document.body.offsetWidth;
+
+	let productCount = 8;
+	let currentPage = 1;
+	const totalPages = 6;
+	paginationNumber.textContent = currentPage;
+	if (widthWindow > 1260) {
+		productCount = 8;
+	} else if (widthWindow > 680 && widthWindow < 1260) {
+		productCount = 6;
+	} else {
+		productCount = 3;
+	}
+
+	const renderProducts = (products, productContainer, numberOfProducts, page ) => {
+		productContainer.innerHTML = '';
+
+		const firstProductIndex = numberOfProducts * page - numberOfProducts;
+
+
+		const lastProductIndex = firstProductIndex + numberOfProducts;
+
+
+		const productsOnPage = products.slice(firstProductIndex, lastProductIndex);
+
+
+		productContainer.append(...productsOnPage);
+
+	};
+
+
+	const pagesCount = Math.ceil(cards.length / productCount);
+
+
+	const showNumberOfPage = (page) => {
+		paginationNumber.textContent = page;
+	}
+	console.log(productCount);
+	renderProducts(cards, cardsList, productCount, currentPage);
+	window.addEventListener('resize', () => {
+		renderProducts(cards, cardsList, productCount, currentPage);
+	});
+	// screen.orientation.addEventListener('change', renderProducts);
+	window.addEventListener('orientationchange', () => {
+		renderProducts(cards, cardsList, productCount, currentPage);
+	});
+
+
+
+	const handlePagination = (event) => {
+
+		if (event.target.closest('.pagination__arrow--next')) {
+			currentPage++;
+		}else {
+			currentPage--;
+		}
+
+		if (currentPage > totalPages) {
+			currentPage = 1;
+		} else if (currentPage < 1) {
+			currentPage = totalPages;
+		}
+		updateBtn();
+		showNumberOfPage(currentPage);
+		renderProducts(cards, cardsList, productCount, currentPage);
+	}
+
+	btnEnd.addEventListener('click', () => {
+		currentPage = totalPages;
+    renderProducts(cards, cardsList, productCount, currentPage);showNumberOfPage(currentPage);
+	});
+
+	btnStart.addEventListener('click', () => {
+		currentPage = 1;
+    renderProducts(cards, cardsList, productCount, currentPage);
+		showNumberOfPage(currentPage);
+	});
+
+	const updateBtn = () => {
+		if (currentPage === totalPages) {
+      btnEnd.disabled = true;
+			btnEnd.classList.add('arrow-disabled');
+			btnNext.disabled = true;
+			btnNext.classList.add('arrow-disabled');
+    } else if(currentPage === 1) {
+			btnStart.disabled = true;
+			btnStart.classList.add('arrow-disabled');
+			btnPrev.disabled = true;
+			btnPrev.classList.add('arrow-disabled');
+		} else {
+			btnEnd.disabled = false;
+			btnEnd.classList.remove('arrow-disabled');
+			btnNext.disabled = false;
+			btnNext.classList.remove('arrow-disabled');
+			btnStart.disabled = false;
+			btnStart.classList.remove('arrow-disabled');
+			btnPrev.disabled = false;
+			btnPrev.classList.remove('arrow-disabled');
+		}
+	}
+
+	btnNext.addEventListener('click', handlePagination);
+	btnPrev.addEventListener('click', handlePagination);
+
+
 };
-export const pagination = (wrapper, pages, page, count) => {
-	const paginationList = document.createElement('ul');
-	paginationList.classList.add('pagination__list');
-  const isNotStart = page - Math.floor(count / 2) > 1;
-  const isEnd = page + Math.floor(count / 2) > pages;
-
-  if (count > pages) {
-    count = pages;
-  }
-
-	for (let i = 0; i < count; i++) {
-		let n = i + 1;
-    if (isNotStart) {
-      if (isEnd) {
-        n = pages - count + i + 1;
-      }else {
-        n = page - Math.floor(count / 2) + i;
-      }
-    }
-		const li = createItemPagination(`index.html?page=${n}`, n, page === n);
-    paginationList.append(li);
-	}
-  const firstItem = document.createElement('a');
-  firstItem.classList.add('pagination__arrow', 'pagination__arrow--start');
-  firstItem.innerHTML = `
-    <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.94687 10.7852L0.913671 6.08789V4.98438L9.94687 0.287109V1.625L2.43711 5.53125L9.94687 9.44727V10.7852ZM24.018 10.7852L14.9848 6.08789V4.98438L24.018 0.287109V1.625L16.5082 5.53125L24.018 9.44727V10.7852Z" fill="currentColor"/>
-    </svg>
-  `;
-  firstItem.href = isNotStart ? 'pets.html' : '';
-  const prevItem = document.createElement('a');
-  prevItem.classList.add('pagination__arrow', 'pagination__arrow--prev');
-  prevItem.innerHTML = `
-    <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.98242 10.7852L0.949219 6.08789V4.98438L9.98242 0.287109V1.625L2.47266 5.53125L9.98242 9.44727V10.7852Z" fill="currentColor"/>
-    </svg>
-  `;
-  const nextItem = document.createElement('a');
-  nextItem.classList.add('pagination__arrow', 'pagination__arrow--next');
-  nextItem.innerHTML = `
-    <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.04102 6.08789L0.0078125 10.7852V9.44727L7.51758 5.53125L0.0078125 1.625V0.287109L9.04102 4.98438V6.08789Z" fill="currentColor"/>
-    </svg>
-  `;
-  const endItem = document.createElement('a');
-	endItem.classList.add('pagination__arrow', 'pagination__arrow--end');
-  endItem.innerHTML = `
-    <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10.0055 6.08789L0.972265 10.7852V9.44727L8.48203 5.53125L0.972265 1.625V0.287109L10.0055 4.98438V6.08789ZM24.0766 6.08789L15.0434 10.7852V9.44727L22.5531 5.53125L15.0434 1.625V0.287109L24.0766 4.98438V6.08789Z" fill="currentColor"/>
-    </svg>
-  `;
-  endItem.href = isEnd ? '' : `pets.html?page=${pages}`;
-	wrapper.append(firstItem, prevItem, paginationList, nextItem, endItem);
-
-  // const petsIndexes = get48();
-	// let currentIndex = 0;
-	// let currentPage;
-	// let currentCardNum;
-
-	// const MAX_CARDS = 48;
-	// const btnFirst = document.querySelector('.pagination__arrow--start');
-	// const btnPrev = document.querySelector('.pagination__arrow--prev');
-	// const pgNumber = document.querySelector('pagination__link--active');
-	// const btnNext = document.querySelector('.pagination__arrow--next');
-	// const btnLast = document.querySelector('.pagination__arrow--end');
-
-	// function shuffle(array) {
-	// 	for (let i = array.length - 1; i > 0; i--) {
-	// 		let j = Math.floor(Math.random() * (i + 1));
-	// 		[array[i], array[j]] = [array[j], array[i]];
-	// 	}
-	// }
-
-	// function getRandomArray(size) {
-	// 	const arr = Array(size)
-	// 		.fill()
-	// 		.map((el, i) => (el = i));
-	// 	shuffle(arr);
-	// 	return arr;
-	// }
-
-	// function get48() {
-	// 	let a6 = [],
-	// 		a8 = [],
-	// 		a48 = [];
-
-	// 	while (a48.length !== 48) {
-	// 		let index = 0;
-
-	// 		if (a6.length === 6) a48.push(...a6.splice(0));
-	// 		if (a8.length === 0) a8 = getRandomArray(8);
-	// 		while (a6.includes(a8[index])) index++;
-
-	// 		a6.push(...a8.splice(index, 1));
-	// 	}
-
-	// 	return a48;
-	// }
-
-	// function showPage() {
-	// 	const cards = document.querySelectorAll('.our-friends__item');
-
-	// 	currentPage = Math.floor(currentIndex / currentCardNum);
-	// 	currentIndex = currentPage * currentCardNum;
-
-	// 	for (let i = 0; i < currentCardNum; i++) {
-	// 		let petData = getData[petsIndexes[currentIndex + i]];
-  //     console.log(cards);
-
-	// 		cards[i]
-	// 			.querySelector('.our-friends__img')
-	// 			.setAttribute('src', getData.img);
-	// 		cards[i]
-	// 			.querySelector('.our-friends__img')
-	// 			.setAttribute('alt', getData.alt);
-	// 		cards[i].querySelector('.our-friends__subtitle').textContent =
-	// 			getData.name;
-	// 		cards[i].dataset.petindex = petsIndexes[currentIndex + i];
-	// 	}
-
-	// 	// Enable/Disable buttons, Refresh page number
-	// 	btnFirst.removeAttribute('disabled');
-	// 	btnPrev.removeAttribute('disabled');
-	// 	btnNext.removeAttribute('disabled');
-	// 	btnLast.removeAttribute('disabled');
-
-	// 	if (currentIndex === 0) btnFirst.disabled = btnPrev.disabled = 'true';
-
-	// 	if (currentIndex + currentCardNum === MAX_CARDS) {
-	// 		btnLast.disabled = btnNext.disabled = 'true';
-	// 	}
-
-	// 	pgNumber.textContent = currentPage + 1 + '';
-	// }
-
-	// function redrawPage() {
-	// 	let cardNum = getCardNumber();
-
-	// 	if (cardNum !== currentCardNum) {
-	// 		currentCardNum = cardNum;
-	// 		showPage();
-	// 	}
-	// }
-
-	// function getCardNumber() {
-	// 	let cardNumber = 8;
-	// 	const cards = document.querySelectorAll('.our-friends__item');
-
-	// 	// if (window.getComputedStyle(cards[6]).display === 'none') cardNumber = 6;
-	// 	// if (window.getComputedStyle(cards[3]).display === 'none') cardNumber = 3;
-
-	// 	return cardNumber;
-	// }
-
-	// window.addEventListener('resize', redrawPage);
-
-	// btnFirst.addEventListener('click', () => {
-	// 	currentIndex = 0;
-	// 	showPage();
-	// });
-
-	// btnPrev.addEventListener('click', () => {
-	// 	currentIndex -= currentCardNum;
-	// 	showPage();
-	// });
-
-	// btnNext.addEventListener('click', () => {
-	// 	currentIndex += currentCardNum;
-	// 	showPage();
-	// });
-
-	// btnLast.addEventListener('click', () => {
-	// 	currentIndex = MAX_CARDS - currentCardNum;
-	// 	showPage();
-	// });
-
-	// redrawPage();
-};
-
-
-const paginate = (getData) => {
-
-  const petsIndexes = get48();
-	let currentIndex = 0;
-	let currentPage;
-	let currentCardNum;
-
-	const MAX_CARDS = 48;
-	const btnFirst = document.querySelector('.pagination__arrow--start');
-	const btnPrev = document.querySelector('.pagination__arrow--prev');
-	const pgNumber = document.querySelector('pagination__link--active');
-	const btnNext = document.querySelector('.pagination__arrow--next');
-	const btnLast = document.querySelector('.pagination__arrow--end');
-
-
-  function shuffle(array) {
-		for (let i = array.length - 1; i > 0; i--) {
-			let j = Math.floor(Math.random() * (i + 1));
-			[array[i], array[j]] = [array[j], array[i]];
-		}
-	}
-
-  function getRandomArray(size) {
-		const arr = Array(size)
-			.fill()
-			.map((el, i) => (el = i));
-		shuffle(arr);
-		return arr;
-	}
-
-  function get48() {
-		let a6 = [],
-			a8 = [],
-			a48 = [];
-
-		while (a48.length !== 48) {
-			let index = 0;
-
-			if (a6.length === 6) a48.push(...a6.splice(0));
-			if (a8.length === 0) a8 = getRandomArray(8);
-			while (a6.includes(a8[index])) index++;
-
-			a6.push(...a8.splice(index, 1));
-		}
-
-		return a48;
-	}
-
-  function showPage() {
-		const cards = document.querySelectorAll('.our-friends__item');
-
-		currentPage = Math.floor(currentIndex / currentCardNum);
-		currentIndex = currentPage * currentCardNum;
-
-		for (let i = 0; i < currentCardNum; i++) {
-			let petData = getData[petsIndexes[currentIndex + i]];
-
-			cards[i].querySelector('img').setAttribute('src', getData.img);
-			cards[i].querySelector('img').setAttribute('alt', getData.alt);
-			cards[i].querySelector('h4').textContent = getData.name;
-			cards[i].dataset.petindex = petsIndexes[currentIndex + i];
-		}
-
-		// Enable/Disable buttons, Refresh page number
-		btnFirst.removeAttribute('disabled');
-		btnPrev.removeAttribute('disabled');
-		btnNext.removeAttribute('disabled');
-		btnLast.removeAttribute('disabled');
-
-		if (currentIndex === 0) btnFirst.disabled = btnPrev.disabled = 'true';
-
-		if (currentIndex + currentCardNum === MAX_CARDS) {
-			btnLast.disabled = btnNext.disabled = 'true';
-		}
-
-		pgNumber.textContent = currentPage + 1 + '';
-	}
-
-
-
-
-  function redrawPage() {
-		let cardNum = getCardNumber();
-
-		if (cardNum !== currentCardNum) {
-			currentCardNum = cardNum;
-			showPage();
-		}
-	}
-
-  function getCardNumber() {
-		let cardNumber = 8;
-		const cards = document.querySelectorAll('.our-friends__item');
-
-		if (window.getComputedStyle(cards[6]).display === 'none') cardNumber = 6;
-		if (window.getComputedStyle(cards[3]).display === 'none') cardNumber = 3;
-
-		return cardNumber;
-	}
-
-  window.addEventListener('resize', redrawPage);
-
-	btnFirst.addEventListener('click', () => {
-		currentIndex = 0;
-		showPage();
-	});
-
-	btnPrev.addEventListener('click', () => {
-		currentIndex -= currentCardNum;
-		showPage();
-	});
-
-	btnNext.addEventListener('click', () => {
-		currentIndex += currentCardNum;
-		showPage();
-	});
-
-	btnLast.addEventListener('click', () => {
-		currentIndex = MAX_CARDS - currentCardNum;
-		showPage();
-	});
-
-
-
-	redrawPage();
-
-}
