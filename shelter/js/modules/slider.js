@@ -41,19 +41,10 @@ export const slider = ({
 			return li;
 		});
 		carousel.innerHTML = '';
-		let width = document.body.offsetWidth;
+
 		let cardCount = 3;
 		let contentCardCount = 3;
-		if (width > 1260) {
-			cardCount = 3;
-			contentCardCount = 3;
-		} else if (width > 768 && width < 1260) {
-			cardCount = 4;
-      contentCardCount = 2;
-		} else {
-			cardCount = 8;
-      contentCardCount = 1;
-		}
+
 
 		for (let i = 0; i < cardCount; i++) {
 			const card = document.createElement('ul');
@@ -67,8 +58,21 @@ export const slider = ({
 		}
 	}
 	renderSlider();
-	window.addEventListener('resize', renderSlider);
-	screen.orientation.addEventListener('change', renderSlider);
+	window.addEventListener('resize', () => {
+		let width = document.body.offsetWidth;
+		
+		if (width > 1260) {
+			cardCount = 3;
+			contentCardCount = 3;
+		} else if (width > 768 && width < 1260) {
+			cardCount = 4;
+      contentCardCount = 2;
+		} else {
+			cardCount = 8;
+      contentCardCount = 1;
+		}
+		renderSlider();
+	});
 	window.addEventListener('orientationchange', renderSlider);
 	const firstCardWidth = carousel.querySelector(selectorItem).offsetWidth;
 	const arrowBtns = document.querySelectorAll(selectorBtns);
