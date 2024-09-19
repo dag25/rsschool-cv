@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="style/normalize.css" rel="stylesheet">
+  <link href="style/index.css" rel="stylesheet">
+  <script src="scripts/index.js" type="module"></script>
+</head>
+<body>
+  <img id="background" src="./assets/img/beyonce.png" alt="">
+  <main>
+
+    <article class="player-block audio ">
+      <div class="container ">
+        <div class="audio-container ">
+          <div class="audio-cover ">
+            <img class="audio-img " src="./assets/img/beyonce.png " alt="обложка ">
+          </div>
+          <h3 class="audio-header ">check this sound</h3>
+          <audio class="audio-player " src="./assets/audio/beyonce.mp3 "></audio>
+        </div>
+      </div>
+      <footer class="footer-fix audio-footer ">
+        <nav class="audio-navigation ">
+          <div class="audio-btns ">
+            <button class="audio-button audio-button__prev fa fa-step-backward ">
+              <svg class="svg-prev" version="1.0" xmlns="http://www.w3.org/2000/svg"
+              width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+              preserveAspectRatio="xMidYMid meet">
+
+              <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+              fill="currentColor" stroke="none">
+              <path d="M2285 4819 c-534 -71 -1013 -313 -1375 -696 -263 -278 -457 -626
+              -549 -986 -59 -228 -66 -290 -66 -577 0 -287 7 -349 66 -577 208 -813 885
+              -1464 1708 -1643 300 -66 665 -67 961 -5 323 68 630 209 908 418 124 93 336
+              305 429 429 209 278 350 585 418 908 62 296 61 661 -5 961 -128 589 -504 1120
+              -1021 1440 -251 156 -521 258 -829 314 -111 20 -531 30 -645 14z m520 -284
+              c997 -124 1745 -971 1745 -1975 0 -1098 -892 -1990 -1990 -1990 -1004 0 -1851
+              748 -1975 1745 -94 749 249 1492 880 1908 247 163 576 283 860 315 128 15 351
+              13 480 -3z"/>
+              <path d="M1775 3093 c-346 -289 -631 -528 -632 -532 -2 -6 1250 -1053 1268
+              -1059 5 -2 10 178 11 451 l3 455 560 -453 560 -454 3 529 c1 292 1 769 0 1060
+              l-3 530 -560 -454 -560 -454 -3 454 c-1 250 -6 454 -10 454 -4 -1 -290 -237
+              -637 -527z"/>
+              </g>
+              </svg>
+            </button>
+            <button class="audio-button audio-button__play fa fa-play ">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="svg-play" d="M12 2C6.475 2 2 6.475 2 12C2 17.525 6.475 22 12 22C17.525 22 22 17.525 22 12C22 6.475 17.525 2 12 2ZM10 16.5V7.5L16 12L10 16.5Z" fill="currentColor"/>
+                <path class="svg-pause" d="M12 2C6.475 2 2 6.475 2 12 2 17.525 6.475 22 12 22 17.525 22 22 17.525 22 12 22 6.475 17.525 2 12 2ZM12 3C7.475 3 3 7.475 3 12 3 16.525 7.475 21 12 21 16.525 21 21 16.525 21 12 21 7.475 16.525 3 12 3ZM9 16 9 8C9 7 10 7 10 8L10 16C10 17 9 17 9 16ZM14 16 14 8C14 7 15 7 15 8L15 16C15 17 14 17 14 16Z" fill="currentColor" fill-rule="evenodd"/>
+              </svg>
+            </button>
+            <button class="audio-button audio-button__next fa fa-step-forward ">
+              <svg class="svg-next" version="1.0" xmlns="http://www.w3.org/2000/svg"
+              width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+              preserveAspectRatio="xMidYMid meet">
+
+              <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+              fill="currentColor" stroke="none">
+              <path d="M2105 4813 c-734 -98 -1394 -575 -1725 -1248 -315 -639 -315 -1372 0
+              -2010 321 -651 923 -1102 1648 -1236 142 -26 477 -37 633 -19 575 63 1121 352
+              1485 784 520 617 680 1440 428 2195 -258 771 -915 1352 -1709 1510 -55 11
+              -138 25 -185 31 -119 14 -444 11 -575 -7z m567 -279 c1075 -139 1848 -1122
+              1724 -2193 -110 -942 -837 -1661 -1781 -1762 -135 -14 -395 -6 -520 16 -412
+              73 -763 249 -1054 530 -177 171 -308 349 -410 559 -139 285 -201 553 -201 876
+              0 323 62 593 200 876 297 606 890 1026 1560 1103 125 14 350 12 482 -5z"/>
+              <path d="M1280 2560 c0 -583 3 -1060 6 -1060 3 0 290 205 637 455 l632 456 3
+              -456 c1 -250 5 -455 8 -455 9 0 1264 1052 1264 1060 0 8 -1255 1060 -1264
+              1060 -3 0 -7 -205 -8 -455 l-3 -456 -632 456 c-347 250 -634 455 -637 455 -3
+              0 -6 -477 -6 -1060z"/>
+              </g>
+              </svg>
+
+            </button>
+          </div>
+          <span class="audio-time audio-time__passed ">00:00</span>
+          <div class="audio-progress ">
+            <div class="audio-progress__timing "></div>
+          </div>
+          <span class="audio-time audio-time__total ">00:00</span>
+        </nav>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,349 @@
+html {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+body {
+	min-height: 100vh;
+	background: #f2f2f2;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	color: #0f1e36;
+}
+button,
+input {
+	font-family: inherit;
+}
+button {
+	cursor: pointer;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+h1,
+h2,
+h3,
+p {
+	padding: 0;
+	margin: 0;
+}
+main {
+	padding-bottom: 100px;
+}
+.temp {
+	height: 60%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.container {
+	min-width: 900px;
+	margin: 0 auto;
+}
+@media (max-width: 1024px) {
+	.container {
+		max-width: 550px;
+		min-width: auto;
+	}
+}
+@media (max-width: 650px) {
+	.container {
+		max-width: 300px;
+		min-width: auto;
+	}
+}
+#background {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	filter: blur(10px);
+	z-index: -1;
+}
+/* .header {
+	padding-top: 30px;
+	text-align: center;
+	margin-bottom: 50px;
+} */
+/* .player {
+	text-align: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+.player-btn {
+	width: 140px;
+	height: 30px;
+	padding: 0;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 2;
+	margin: 0;
+	cursor: pointer;
+	border-bottom: 2px solid #000;
+} */
+/* @media (max-width: 650px) {
+	.player-btn {
+		max-width: 100px;
+		min-width: auto;
+	}
+} */
+/* .player-video.active {
+	border-top: 2px solid #f51e38;
+	border-right: 2px solid #f51e38;
+	border-bottom: 2px solid transparent;
+} */
+/* .player-audio.active {
+	border-top: 2px solid #f51e38;
+	border-right: 2px solid #f51e38;
+	border-bottom: 2px solid transparent;
+	border-left: 2px solid #f51e38;
+}
+.player-radio.active {
+	border-top: 2px solid #f51e38;
+	border-bottom: 2px solid transparent;
+	border-left: 2px solid #f51e38;
+} */
+@-webkit-keyframes rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+.footer-fix {
+	width: 100%;
+	height: 80px;
+	background-color: #0f1e36;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 999;
+	color: #fff;
+}
+
+.audio {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin-top: 50px;
+	text-align: center;
+}
+.audio-container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.audio-cover {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	margin-right: 30px;
+}
+@media (max-width: 1024px) {
+	.audio-cover {
+		margin-right: 0;
+	}
+}
+.audio-cover:after {
+	content: '';
+	width: 16px;
+	height: 16px;
+	background-color: #f2f2f2;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.audio-img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	-webkit-animation: rotate 6s linear infinite;
+	animation: rotate 6s linear infinite;
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+.audio-header {
+	-webkit-box-flex: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	font-size: 48px;
+	color: #fff;
+}
+@media (max-width: 1024px) {
+	.audio-header {
+		width: 100%;
+	}
+}
+@media (max-width: 650px) {
+	.audio-header {
+		font-size: 36px;
+	}
+}
+.audio.play .audio-img {
+	-webkit-animation-play-state: running;
+	animation-play-state: running;
+}
+.audio-progress {
+	width: 450px;
+	height: 4px;
+	border-radius: 3px;
+	background-color: #fff;
+	margin: 12px 0;
+	cursor: pointer;
+}
+@media (max-width: 950px) {
+	.audio-progress {
+		width: 200px;
+	}
+}
+@media (max-width: 360px) {
+	.audio-progress {
+		width: 150px;
+	}
+}
+.audio-progress__timing {
+	background-color: #f51e38;
+	border-radius: 3px;
+	width: 0%;
+	height: 100%;
+	-webkit-transition: width 0.1s linear;
+	transition: width 0.1s linear;
+}
+.audio-navigation {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.audio-button {
+	padding: 0;
+	width: 40px;
+  height: 40px;
+	display: block;
+	background-color: transparent;
+	border: none;
+	font-size: 24px;
+	color: #fff;
+	outline: 0;
+	cursor: pointer;
+}
+.audio-button svg {
+  width: 100%;
+	height: 100%;
+}
+.audio-button .svg-play {display: block;}
+.audio-button .svg-pause {display: none;}
+
+.audio-button.play_btn--toggle .svg-play {display: none;}
+.audio-button.play_btn--toggle .svg-pause {display: block;}
+
+.audio-btns {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	width: 180px;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+}
+@media (max-width: 650px) {
+	.audio-btns {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+}
+.audio-time {
+	font-size: 13px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+@media (max-width: 650px) {
+	.audio-footer {
+		height: 120px;
+	}
+}
+
+
+.audio.active {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
