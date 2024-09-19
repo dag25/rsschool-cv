@@ -20,7 +20,8 @@ export const musicPlayerInit = () => {
   let trackIndex = 0;
   const loadTrack = () => {
     const isPlayed = audioPlayer.paused;
-    const track = playlist[trackIndex];
+    const track = playlist[trackIndex].toLowerCase();
+    console.log(track);
     background.src = `assets/img/${track}.png`;
     audioImg.src = `assets/img/${track}.png`;
     audioHeader.textContent = track.toUpperCase();
@@ -58,7 +59,7 @@ export const musicPlayerInit = () => {
       }else {
         audioPlayer.pause();
       }
-      const track = playlist[trackIndex];
+      const track = playlist[trackIndex].toLowerCase();
       audioHeader.textContent = track.toUpperCase();
       audioNameTrack.textContent = nameTracks[trackIndex];
 		}
