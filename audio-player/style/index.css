@@ -265,6 +265,10 @@ main {
 	color: #fff;
 	outline: 0;
 	cursor: pointer;
+	transition: .3s ease-in-out;
+}
+.audio-button:hover {
+	color: #c1ff13;
 }
 .audio-button svg {
   width: 100%;
