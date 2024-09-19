@@ -21,11 +21,11 @@ export const musicPlayerInit = () => {
   const loadTrack = () => {
     const isPlayed = audioPlayer.paused;
     const track = playlist[trackIndex];
-    background.src = `/assets/img/${track}.png`;
-    audioImg.src = `/assets/img/${track}.png`;
+    background.src = `assets/img/${track}.png`;
+    audioImg.src = `assets/img/${track}.png`;
     audioHeader.textContent = track.toUpperCase();
     audioNameTrack.textContent = nameTracks[trackIndex];
-    audioPlayer.src = `/assets/audio/${track}.mp3`;
+    audioPlayer.src = `assets/audio/${track}.mp3`;
     if (isPlayed) {
       audioPlayer.pause();
     }else {
