@@ -73,6 +73,7 @@ main {
 	bottom: 0;
 	filter: blur(10px);
 	z-index: -1;
+	object-fit: cover;
 }
 
 @-webkit-keyframes rotate {
@@ -168,7 +169,7 @@ main {
 
   position: relative;
   display: inline-block;
-  color: #fff;
+
   text-shadow: 0 0 10px #3d7a97;
 }
 @keyframes blink6 {
