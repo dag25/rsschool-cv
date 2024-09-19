@@ -12,7 +12,9 @@ export const musicPlayerInit = () => {
 	const audioTimePassed = document.querySelector('.audio-time__passed');
 	const audioTimeTotal = document.querySelector('.audio-time__total');
 
-  const playlist = ['beyonce', 'dontstartnow'];
+  const playlist = ['Beyonce', 'Dua Lipa'];
+
+  const nameTracks = ["Don't Hurt Yourself", "Don't Start Now"];
 
   let trackIndex = 0;
   const loadTrack = () => {
@@ -82,5 +84,12 @@ export const musicPlayerInit = () => {
     audioTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
     audioTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(
 			secondsTotal)}`;
+  });
+
+  audioProgress.addEventListener('click', ({offsetX}) => {
+
+    const allWidth = audioProgress.clientWidth;
+    const progress = (offsetX / allWidth) * audioPlayer.duration;
+    audioPlayer.currentTime = progress;
   });
 };

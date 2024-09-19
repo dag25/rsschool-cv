@@ -156,7 +156,7 @@ main {
 .footer-fix {
 	width: 100%;
 	height: 80px;
-	background-color: #0f1e36;
+	background: -webkit-linear-gradient(45deg, rgb(40, 40, 40), rgb(133, 133, 133));
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -239,7 +239,7 @@ main {
 	-ms-flex-positive: 1;
 	flex-grow: 1;
 	font-size: 48px;
-	color: #fff;
+	color: #C1FF13;
 }
 @media (max-width: 1024px) {
 	.audio-header {
@@ -274,7 +274,7 @@ main {
 	}
 }
 .audio-progress__timing {
-	background-color: #f51e38;
+	background-color: #C1FF13;
 	border-radius: 3px;
 	width: 0%;
 	height: 100%;
