@@ -4,6 +4,7 @@ export const musicPlayerInit = () => {
   const audio = document.querySelector('.audio');
 	const audioImg = document.querySelector('.audio-img');
 	const audioHeader = document.querySelector('.audio-header');
+	const audioNameTrack = document.querySelector('.audio__name-track');
 	const audioPlayer = document.querySelector('.audio-player');
   const audioNavigation = document.querySelector('.audio-navigation');
 	const audioBtnPlay = document.querySelector('.audio-button__play');
@@ -23,6 +24,7 @@ export const musicPlayerInit = () => {
     background.src = `./assets/img/${track}.png`;
     audioImg.src = `./assets/img/${track}.png`;
     audioHeader.textContent = track.toUpperCase();
+    audioNameTrack.textContent = nameTracks[trackIndex];
     audioPlayer.src = `./assets/audio/${track}.mp3`;
     if (isPlayed) {
       audioPlayer.pause();
@@ -58,6 +60,7 @@ export const musicPlayerInit = () => {
       }
       const track = playlist[trackIndex];
       audioHeader.textContent = track.toUpperCase();
+      audioNameTrack.textContent = nameTracks[trackIndex];
 		}
 
     if (target.closest('.audio-button__prev')) {

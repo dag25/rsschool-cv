@@ -235,11 +235,17 @@ main {
 	object-fit: cover;
 }
 .audio-header {
+	margin-bottom: 50px;
 	-webkit-box-flex: 1;
 	-ms-flex-positive: 1;
 	flex-grow: 1;
 	font-size: 48px;
 	color: #C1FF13;
+}
+
+.audio__name-track {
+	font-size: 18px;
+  color: #C1FF13;
 }
 @media (max-width: 1024px) {
 	.audio-header {
