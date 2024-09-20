@@ -75,33 +75,12 @@ main {
 		transform: rotate(360deg);
 	}
 }
-.footer-fix {
-	width: 100%;
-	height: 200px;
-	background: -webkit-linear-gradient(45deg, rgb(40, 40, 40), rgb(133, 133, 133));
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	z-index: 999;
-	color: #fff;
-}
 
-.footer__links {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-}
 
 .audio {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-top: 50px;
 	text-align: center;
 }
 .audio-container {
@@ -111,6 +90,7 @@ main {
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
+	margin-top: 50px;
 }
 .audio__cover {
 	position: relative;
@@ -307,7 +287,27 @@ main {
 	margin-right: 15px;
 }
 
+.footer-fix {
+	width: 100%;
+	height: 200px;
+	background: -webkit-linear-gradient(45deg, rgb(40, 40, 40), rgb(133, 133, 133));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 999;
+	color: #fff;
+}
 
+.footer__links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
 
 .audio.active {
 	display: flex;
@@ -385,6 +385,11 @@ main {
 @media (max-width: 425px) {
 	.audio__wrapper {
 		width: 380px;
+	}
+
+	.audio__cover {
+		width: 230px;
+		height: 230px;
 	}
 }
 
