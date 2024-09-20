@@ -2,11 +2,11 @@ import { addZero } from './supScript.js';
 export const musicPlayerInit = () => {
   const background = document.querySelector('#background');
   const audio = document.querySelector('.audio');
-	const audioImg = document.querySelector('.audio-img');
-	const audioHeader = document.querySelector('.audio-header');
+	const audioImg = document.querySelector('.audio__img');
+	const audioHeader = document.querySelector('.audio__header');
 	const audioNameTrack = document.querySelector('.audio__name-track');
 	const audioPlayer = document.querySelector('.audio-player');
-  const audioNavigation = document.querySelector('.audio-navigation');
+  const audioNavigation = document.querySelector('.audio__navigation');
 	const audioBtnPlay = document.querySelector('.audio-button__play');
 	const audioProgress = document.querySelector('.audio-progress');
 	const audioProgressTiming = document.querySelector('.audio-progress__timing');
