@@ -123,11 +123,11 @@ main {
 .audio__header {
 	flex-grow: 1;
 	font-size: 48px;
+	text-transform: uppercase;
 	color: #C1FF13;
 
   position: relative;
   display: inline-block;
-
   text-shadow: 0 0 10px #3d7a97;
 }
 @keyframes blink6 {
@@ -136,9 +136,11 @@ main {
 	100% { transform: scale(0, 0) rotate(0deg); }
 }
 
-.audio-header:after, .audio-header:before {
+.audio__header:after, .audio__header:before {
   content: "";
-  position: absolute; top: 0; left: 0;
+  position: absolute;
+	top: 0;
+	left: 0;
   display: block;
   width: 100px;
   height: 100px;
@@ -149,7 +151,7 @@ main {
   animation: blink6 10s linear infinite;
   transform: scale(0, 0) rotate(0deg);
 }
-.audio-header:before {
+.audio__header:before {
   top: -30%;
   right: 0;
 	left: auto;
