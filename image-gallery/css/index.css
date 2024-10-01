@@ -44,41 +44,99 @@ body{
 	gap: 10px;
 }
 .search__input{
+
 	outline: none;
 	padding: 4px 6px;
 	font-family: sans-serif;
 	font-size: 1.3rem;
 	background: transparent;
-	border: 1px solid #333;
-	color: #fff;
+	border: 1px solid #fff;
+	color: #333;
 	max-width: 300px;
 	width: 100%;
 	border-radius: 50px;
 	z-index: 1;
 	caret-color:#fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.search__btn {
+.search__button {
 	position: absolute;
 	top: 50%;
-  right: -5%;
-	z-index: 99;
-	transform: translate(-50%, -50%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	right: 0%;
+	z-index: 999;
+	transform: translate(-5%, -50%);
+	border-radius: 50px;
 	width: 30px;
 	height: 30px;
-	outline: 0;
-	background: transparent;
-	border: 1px solid transparent;
+	background-color: transparent;
+	transition: all 0.3s ease-in-out;
+	border-color: transparent;
 	cursor: pointer;
-	color: red;
+}
+
+.search__button::before {
+  content: "";
+  position: absolute;
+  top: 22.5%;
+  right: 23.5%;
+  width: 77.5%;
+  height: 1px;
+  margin-top: -2px;
+  background-color: #ffffff;
+  transform: rotate(-45deg);
+  transform-origin: right top;
+}
+
+.search__button::after {
+  content: "";
+  position: absolute;
+  bottom: 22.5%;
+  right: 23.5%;
+  width: 80%;
+  height: 1px;
+  margin-top: -2px;
+  background-color: #ffffff;
+  transform: rotate(45deg);
+  transform-origin: right bottom;
+}
+
+.search__icon {
+  position: absolute;
+  display: block;
+  top: 20%;
+  left: 20%;
+  width: 0%;
+  height: 0%;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+	border-color: transparent;
+
+}
+
+.search__button::before,
+.search__button::after,
+.search__button .search__icon {
+  transition: all 0.3s ease-in-out;
 }
 
 
-.search__input:not(:valid) ~ .search__btn {
-	display: none;
+
+.search__input:not(:valid) ~.search__button::before {
+	width: 0;
+}
+.search__input:not(:valid) ~.search__button::after {
+	width: 30%;
+}
+
+.search__input:not(:valid) ~.search__button .search__icon {
+	width: 45%;
+  height: 45%;
+  border-color: #ffffff;
+}
+.search__input:not(:valid) ~.search__button {
+	cursor:none;
 }
 
 .header__logo {
