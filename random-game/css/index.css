@@ -13,27 +13,54 @@ h1 {
   width: 500px;
   margin: 0 auto;
   display: grid;
-  gap: 50px;
+  gap: 10px;
   align-items: flex-start;
   grid-template-areas:
   'game next'
-  'game score';
+  'game score'
+  'game instructions';
 }
 
-.btn {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  grid-column: 1/3;
-  width: 150px;
-  justify-self: center;
-  border-radius: 5px;
-}
+
 
 .game-area {
   display: block;
   border: solid #000;
   border-width: 0 2px 3px 2px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+}
+
+.footer__link {
+	transition: .3s ease-in-out;
+}
+.footer__link:hover {
+	color: #c1ff13;
+}
+.rsschool__logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+}
+
+.github__logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
 }
