@@ -9,10 +9,5 @@ export const ROWS = 20;
 const game = new Game();
 const view = new View(document.querySelector('.container'));
 const controller = new Controller(game, view);
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', () => {
-  controller.init();
 
-});
-
-// controller.init('Enter');
+controller.init('Enter');

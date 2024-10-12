@@ -4,17 +4,15 @@ export class Controller {
     this.view = view;
   }
   init(codeKey) {
-		// window.addEventListener('keydown', event => {
-		//   if (event.code === codeKey) {
-		//     this.view.init();
-		//     this.start();
-		//     // window.removeEventListener('keydown', event);
-		//     // return;
-		//   }
-		// });
-		this.view.init();
-		this.start();
-	}
+    window.addEventListener('keydown', event => {
+      if (event.code === codeKey) {
+        this.view.init();
+        this.start();
+        // window.removeEventListener('keydown', event);
+        // return;
+      }
+    });
+  }
   start() {
     this.view.showArea(this.game.viewArea());
     const showScore = this.view.createBlockScore();
