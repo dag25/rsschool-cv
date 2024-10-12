@@ -94,7 +94,7 @@ export class Game {
 					: 3;
 
 			this.activeTetramino.block =
-				this.activeTetramino.rotation[this.activeTetramino.rotateIndex];
+				this.activeTetramino.randomTetramino[this.activeTetramino.rotateIndex];
 		}
 	}
 	viewArea() {
