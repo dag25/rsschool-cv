@@ -8,6 +8,7 @@ export class Game {
 	record = localStorage.getItem('tetris-record') || 0;
 	points = [0, 100, 300, 700, 1500];
 	gameOver = false;
+	pause = false;
 	area = [
 		['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
 		['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],

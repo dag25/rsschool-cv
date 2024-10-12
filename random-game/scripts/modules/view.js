@@ -22,9 +22,12 @@ export class View {
 
   preview() {
     this.container.textContent = '';
+    const btn = document.createElement('button');
+    btn.classList.add('btn');
+    btn.textContent = 'Start Game';
     const preview = document.createElement('div');
-    preview.innerHTML = 'Press Enter <br> to start the game';
-    this.container.append(preview);
+    preview.innerHTML = 'Press button <br> to start the game';
+    this.container.append(btn,preview);
     preview.style.cssText = `
     grid-column: 1/3;
     padding: 50px;
