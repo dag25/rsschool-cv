@@ -12,6 +12,12 @@ h1 {
 .container {
   width: 500px;
   margin: 0 auto;
+  display: grid;
+  gap: 50px;
+  align-items: flex-start;
+  grid-template-areas:
+  'game next'
+  'game score';
 }
 
 .game-area {
