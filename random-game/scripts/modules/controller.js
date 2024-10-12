@@ -1,15 +1,28 @@
 export class Controller {
+  pressed = 0;
+
   constructor(game, view) {
     this.game = game;
     this.view = view;
   }
   init(codeKey) {
     window.addEventListener('keydown', event => {
-      if (event.code === codeKey) {
+      if (event.code === codeKey && this.pressed === 0) {
+        this.pressed = 1;
         this.view.init();
         this.start();
         // window.removeEventListener('keydown', event);
         // return;
+      }else if (event.code === codeKey && this.pressed === 2) {
+        this.pressed = 1;
+				this.view.init();
+				this.game.restart();
+
+        this.view.showArea(this.game.viewArea);
+        const showScore = this.view.createBlockScore();
+				const showNextTetramino = this.view.createBlockNextTetramino();
+				this.game.createUpdatePanels(showScore, showNextTetramino);
+        this.view.createBlockInstructions();
       }
     });
   }
@@ -17,18 +30,27 @@ export class Controller {
     this.view.showArea(this.game.viewArea());
     const showScore = this.view.createBlockScore();
     const showNextTetramino = this.view.createBlockNextTetramino();
-    this.game.createUpdatePanels(showScore, showNextTetramino);
+    const showInstruction = this.view.createBlockInstructions();
+    this.game.createUpdatePanels(showScore, showNextTetramino, showInstruction);
 
     const tick = () => {
       const time = (1100 - 100 * this.game.level);
 
-      setTimeout(() => {
-        if (this.game.gameOver) return;
+      if (this.game.gameOver) {
+        this.view.gameOver();
+        this.pressed = 2;
+      }
 
-        this.game.moveDown();
-				this.view.showArea(this.game.viewArea());
-        tick();
-      }, time > 100 ? time : 0);
+      setTimeout(
+				() => {
+					// if (this.game.gameOver) return;
+
+					this.game.moveDown();
+					this.view.showArea(this.game.viewArea());
+					tick();
+				},
+				time > 100 ? time : 100 - 2 * this.game.level,
+			);
     };
     tick();
 

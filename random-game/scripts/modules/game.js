@@ -34,7 +34,7 @@ export class Game {
 	activeTetramino = this.createTetramino();
 	nextTetramino = this.createTetramino();
 
-	createTetramino(){
+	createTetramino() {
 		const keys = Object.keys(tetraminoes);
 		const randomKey = keys[Math.floor(Math.random() * keys.length)];
 		const randomTetramino = tetraminoes[randomKey];
@@ -47,12 +47,12 @@ export class Game {
 			randomTetramino,
 			x: 3,
 			y: 0,
-		}
+		};
 	}
 
-	changeTetramino(){
+	changeTetramino() {
 		this.activeTetramino = this.nextTetramino;
-    this.nextTetramino = this.createTetramino();
+		this.nextTetramino = this.createTetramino();
 	}
 	moveLeft() {
 		if (
@@ -129,6 +129,7 @@ export class Game {
 			}
 		}
 		return true;
+
 	}
 	stopMove() {
 		const { x, y, block: tetramino } = this.activeTetramino;
@@ -146,17 +147,20 @@ export class Game {
 		this.calcScore(countRow);
 		this.updatePanels();
 
-		this.gameOver = !this.checkOutPosition(this.activeTetramino.x, this.activeTetramino.y);
+		this.gameOver = !this.checkOutPosition(
+			this.activeTetramino.x,
+			this.activeTetramino.y,
+		);
 	}
 	clearRow() {
 		const rows = [];
 
 		for (let i = ROWS - 1; i >= 0; i--) {
-      let countBlock = 0;
+			let countBlock = 0;
 
 			for (let j = 0; j < COLUMNS; j++) {
-        if (this.area[i][j] !== 'o') countBlock += 1;
-      }
+				if (this.area[i][j] !== 'o') countBlock += 1;
+			}
 			if (!countBlock) break;
 			if (countBlock === COLUMNS) {
 				rows.unshift(i);
@@ -180,13 +184,49 @@ export class Game {
 		}
 	}
 
-	createUpdatePanels(showScore, showNextTetramino){
+	createUpdatePanels(showScore, showNextTetramino) {
 		showScore(this.lines, this.score, this.level, this.record);
 		showNextTetramino(this.nextTetramino.block);
 
 		this.updatePanels = () => {
 			showScore(this.lines, this.score, this.level, this.record);
 			showNextTetramino(this.nextTetramino.block);
-		}
+		};
+	}
+
+	restart() {
+		this.score = 0;
+		this.lines = 0;
+		this.level = 1;
+		this.record = localStorage.getItem('tetris-record') || 0;
+
+		this.gameOver = false;
+
+		this.area = [
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+			['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+		];
+
+		this.activeTetramino = this.createTetramino();
+
+		this.nextTetramino = this.createTetramino();
 	}
 };
