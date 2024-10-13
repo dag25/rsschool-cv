@@ -36,13 +36,14 @@ export class View {
 		const gameOver = document.createElement('div');
 		gameOver.classList.add('out-glass');
 		gameOver.innerHTML =
-			'<h2>Game Over</h2><br><p>Нажми "ENTER" <br> чтобы заново начать игру</p>';
+			'<h2>Game Over</h2><br><p>Press "ENTER" <br> to restart the game</p>';
 		gameOver.style.cssText = `
             margin-top: 10%;
             font-size: 18px;
             text-align: center;
             padding: 50px;
             grid-column: 1 / 3;
+            border: 1px solid black;
         `;
 
 		this.container.append(gameOver);
