@@ -39,6 +39,8 @@ export class Controller {
       if (this.game.gameOver) {
         this.view.gameOver();
         this.pressed = 2;
+        this.game.musicsound.pause();
+        // this.game.gameOverSound.play();
       }
 
       setTimeout(
