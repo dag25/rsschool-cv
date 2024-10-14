@@ -9,6 +9,12 @@ export class Game {
 	points = [0, 100, 300, 700, 1500];
 	gameOver = false;
 	pause = false;
+	rotateSound = document.querySelector('#rotatesound');
+	moveSound = document.querySelector('#movesound');
+	shiftsound = document.querySelector('#shiftsound');
+	musicsound = document.querySelector('#musicsound');
+	clearsound = document.querySelector('#clearsound');
+	gameOverSound = document.querySelector('#gameoversound');
 	area = [
 		['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
 		['o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
@@ -60,6 +66,7 @@ export class Game {
 		) {
 			this.activeTetramino.x -= 1;
 		}
+		this.moveSound.play();
 	}
 	moveRight() {
 		if (
@@ -67,6 +74,7 @@ export class Game {
 		) {
 			this.activeTetramino.x += 1;
 		}
+		this.moveSound.play();
 	}
 	moveDown() {
 		if (this.gameOver) return;
@@ -77,6 +85,7 @@ export class Game {
 		} else {
 			this.stopMove();
 		}
+		this.musicsound.play();
 	}
 	rotateTetramino() {
 		this.activeTetramino.rotateIndex =
@@ -97,6 +106,7 @@ export class Game {
 			this.activeTetramino.block =
 				this.activeTetramino.randomTetramino[this.activeTetramino.rotateIndex];
 		}
+		this.rotateSound.play();
 	}
 	viewArea() {
 		const area = JSON.parse(JSON.stringify(this.area));
@@ -129,7 +139,6 @@ export class Game {
 			}
 		}
 		return true;
-
 	}
 	stopMove() {
 		const { x, y, block: tetramino } = this.activeTetramino;
@@ -170,6 +179,7 @@ export class Game {
 			this.area.splice(i, 1);
 			this.area.unshift(Array(COLUMNS).fill('o'));
 		});
+		this.clearsound.play();
 		return rows.length;
 	}
 
