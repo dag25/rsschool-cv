@@ -1,15 +1,22 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   font-family: sans-serif;
+  background-image: url('../img/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
 
-h1 {
-  margin-bottom: 50px;
-  font-weight: 900;
-  text-transform: uppercase;
-  text-align: center;
-}
 
 .container {
+  padding: 20px;
   width: 500px;
   margin: 0 auto;
   display: grid;
@@ -24,15 +31,55 @@ h1 {
 
 
 .game-area {
+  position: relative;
+  z-index: 2;
   display: block;
   border: solid #000;
+  background-color: rgba(0, 0, 0, .7);
   border-width: 0 2px 3px 2px;
+  color: #fff;
+  animation: pulsate 1.5s infinite alternate;
+  border: 2px solid #fff;
+  box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 3px #bc13fe,
+            0 0 4px #bc13fe,
+            0 0 6px #bc13fe,
+            inset 0 0 1.3rem #bc13fe;
+}
+
+@keyframes pulsate {
+  100% {
+    box-shadow:
+      0 0 4px #fff,
+      0 0 8px #fff,
+      0 0 12px #fff,
+      0 0 16px #bc13fe,
+      0 0 20px #bc13fe,
+      0 0 24px #bc13fe,
+      0 0 30px #bc13fe,
+      0 0 34px #bc13fe;
+  }
+  0% {
+    box-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 6px #fff,
+      0 0 10px #bc13fe,
+      0 0 16px #bc13fe,
+      0 0 24px #bc13fe,
+      0 0 30px #bc13fe,
+      0 0 34px #bc13fe;
+  }
 }
 
 .footer {
+  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
+  color: #bc13fe;
 }
 
 .footer__links {
@@ -40,7 +87,7 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 50px;
-  margin-top: 50px;
+  padding: 10px;
 }
 
 .footer__link {

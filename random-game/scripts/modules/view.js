@@ -26,9 +26,11 @@ export class View {
 		preview.style.cssText = `
     grid-column: 1/3;
     padding: 50px;
-    border: 1px solid black;
+    border: 1px solid #bc13fe;
     font-size: 24px;
-    text-align: center;`;
+    text-align: center;
+		background-color: #fff;`;
+
 	}
 
 	gameOver() {
@@ -43,7 +45,8 @@ export class View {
             text-align: center;
             padding: 50px;
             grid-column: 1 / 3;
-            border: 1px solid black;
+            border: 1px solid #bc13fe;
+						background-color: #fff;
         `;
 
 		this.container.append(gameOver);
@@ -64,9 +67,11 @@ export class View {
 		scoreBlock.style.cssText = `
       grid-area: score;
       padding: 20px;
-      border: 1px solid black;
+      border: 1px solid #bc13fe;
       font-size: 18px;
       text-align: left;
+			background-color: rgba(0, 0, 0, .7);
+			color:#fff;
     `;
 		const linesElem = document.createElement('p');
 		const scoreElem = document.createElement('p');
@@ -88,9 +93,11 @@ export class View {
 		instructionsBlock.style.cssText = `
       grid-area: instructions;
       padding: 20px;
-      border: 1px solid black;
+      border: 1px solid #bc13fe;
       font-size: 18px;
       text-align: left;
+			background-color: rgba(0, 0, 0, .7);
+			color:#fff;
     `;
 		const controlsElemRight = document.createElement('p');
 		controlsElemRight.textContent = 'move right ▶';
@@ -115,10 +122,13 @@ export class View {
       height: ${SIZE_BLOCK * 4}px;
       grid-area: next;
       padding: 10px;
-      border: 1px solid black;
+      border: 1px solid #bc13fe;
       display: flex;
       align-items: center;
       justify-content: center;
+			background-color: rgba(0, 0, 0, .7);
+			color:#fff;
+
     `;
 		const canvas = document.createElement('canvas');
 		const context = canvas.getContext('2d');
