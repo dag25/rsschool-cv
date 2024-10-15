@@ -34,12 +34,12 @@ body {
   position: relative;
   z-index: 2;
   display: block;
-  border: solid #000;
+  
   background-color: rgba(0, 0, 0, .7);
   border-width: 0 2px 3px 2px;
   color: #fff;
   animation: pulsate 1.5s infinite alternate;
-  border: 2px solid #fff;
+  border: 2px solid #bc13fe;
   box-shadow: 0 0 .2rem #fff,
             0 0 .2rem #fff,
             0 0 3px #bc13fe,
